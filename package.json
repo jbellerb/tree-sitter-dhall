@@ -1,0 +1,25 @@
+{
+  "name": "tree-sitter-dhall",
+  "version": "0.0.1",
+  "description": "Dhall grammar for the tree-sitter parsing library",
+  "repository": "https://github.com/jbellerb/tree-sitter-dhall",
+  "homepage": "https://github.com/jbellerb/tree-sitter-dhall",
+  "main": "bindings/node",
+  "scripts": {
+    "test": "tree-sitter test"
+  },
+  "author": "Jared Beller",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "nan": "^2.15.0"
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.dhall",
+      "file-types": [
+        "dhall"
+      ],
+      "injection-regex": "^dhall$"
+    }
+  ]
+}
