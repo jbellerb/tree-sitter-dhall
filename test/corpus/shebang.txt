@@ -19,7 +19,7 @@ test
 Multi-line shebangs
 ==================
 #! /usr/bin/env nix-shell
-#! nix-shell -i "dhall text --file" -p 
+#! nix-shell -i "dhall text --file" -p
 
 '''
 test

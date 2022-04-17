@@ -1,0 +1,83 @@
+==================
+List of lists
+==================
+
+[ [ 1 ], [ 2 ], [ 3 ] ]
+
+---
+
+(complete_expression
+  (expression (primitive_expression
+    (non_empty_list_literal
+      (expression (primitive_expression
+        (non_empty_list_literal (expression (primitive_expression
+          (numeric_literal (natural_literal)))))))
+      (expression (primitive_expression
+        (non_empty_list_literal (expression (primitive_expression
+          (numeric_literal (natural_literal)))))))
+      (expression (primitive_expression
+        (non_empty_list_literal (expression (primitive_expression
+          (numeric_literal (natural_literal)))))))))))
+
+==================
+Multi-line lists
+==================
+
+[ [
+    1,
+    2,
+    3,
+  ]
+, [
+  , 1
+  , 2
+  , 3
+  ]
+]
+
+---
+
+(complete_expression
+  (expression (primitive_expression
+    (non_empty_list_literal
+      (expression (primitive_expression
+        (non_empty_list_literal
+          (expression (primitive_expression
+            (numeric_literal (natural_literal))))
+          (expression (primitive_expression
+            (numeric_literal (natural_literal))))
+          (expression (primitive_expression
+            (numeric_literal (natural_literal)))))))
+      (expression (primitive_expression
+        (non_empty_list_literal
+          (expression (primitive_expression
+            (numeric_literal (natural_literal))))
+          (expression (primitive_expression
+            (numeric_literal (natural_literal))))
+          (expression (primitive_expression
+            (numeric_literal (natural_literal)))))))))))
+
+==================
+Comments in lists
+==================
+
+[
+  1, -- item one
+{- foo -} 2, 3 ]
+
+---
+
+(complete_expression
+  (expression (primitive_expression
+    (non_empty_list_literal
+      (expression (primitive_expression
+        (numeric_literal (natural_literal))))
+      (line_comment (line_comment_prefix) (free_text))
+      (block_comment
+        (block_comment_open)
+        (block_comment_content)
+        (block_comment_close))
+      (expression (primitive_expression
+        (numeric_literal (natural_literal))))
+      (expression (primitive_expression
+        (numeric_literal (natural_literal))))))))

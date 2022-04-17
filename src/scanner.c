@@ -1,4 +1,4 @@
-#include <tree_sitter/parser.h>
+#include "tree_sitter/parser.h"
 
 enum TokenType
 {
@@ -49,10 +49,7 @@ tree_sitter_dhall_external_scanner_scan(void* payload, TSLexer* lexer,
                     depth -= 1;
                 }
             } else if (lexer->lookahead == 0) {
-                /* consume all characters if no terminator is found */
-                lexer->mark_end(lexer);
-
-                break;
+                return false;
             } else {
                 lexer->advance(lexer, false);
             }

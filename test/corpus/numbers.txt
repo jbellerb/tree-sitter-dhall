@@ -1,32 +1,86 @@
 ==================
-Natural literal
+Natural literals
 ==================
 
-10
+[ 0, 1, 10 ]
 
 ---
 
 (complete_expression
-  (expression (primitive_expression (numeric_literal (natural_literal)))))
+  (expression (primitive_expression
+    (non_empty_list_literal
+      (expression (primitive_expression
+        (numeric_literal (natural_literal))))
+      (expression (primitive_expression
+        (numeric_literal (natural_literal))))
+      (expression (primitive_expression
+        (numeric_literal (natural_literal))))))))
 
 ==================
-Integer literal
+Integer literals
 ==================
 
-+10
+[ +0, -1, +10 ]
 
 ---
 
 (complete_expression
-  (expression (primitive_expression (numeric_literal (integer_literal)))))
+  (expression (primitive_expression
+    (non_empty_list_literal
+      (expression (primitive_expression
+        (numeric_literal (integer_literal))))
+      (expression (primitive_expression
+        (numeric_literal (integer_literal))))
+      (expression (primitive_expression
+        (numeric_literal (integer_literal))))))))
 
 ==================
-Double literal
+Double literals
 ==================
 
-10.0
+[ 10.0, 11e1, 11.1e1 ]
 
 ---
 
 (complete_expression
-  (expression (primitive_expression (numeric_literal (double_literal)))))
+  (expression (primitive_expression
+    (non_empty_list_literal
+      (expression (primitive_expression
+        (numeric_literal (double_literal))))
+      (expression (primitive_expression
+        (numeric_literal (double_literal))))
+      (expression (primitive_expression
+        (numeric_literal (double_literal))))))))
+
+==================
+Hexadecimal natural and integer literals
+==================
+
+[ 0x00, +0x11, -0x12 ]
+
+---
+
+(complete_expression
+  (expression (primitive_expression
+    (non_empty_list_literal
+      (expression (primitive_expression
+        (numeric_literal (natural_literal))))
+      (expression (primitive_expression
+        (numeric_literal (integer_literal))))
+      (expression (primitive_expression
+        (numeric_literal (integer_literal))))))))
+
+==================
+Naturals and integers can not have leading zeros
+==================
+
+[ 01, +01 ]
+---
+
+(complete_expression
+  (expression (primitive_expression
+    (non_empty_list_literal
+      (expression (primitive_expression
+        (numeric_literal (natural_literal))))
+      (expression (primitive_expression
+        (numeric_literal (integer_literal))))))))

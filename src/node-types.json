@@ -103,6 +103,29 @@
     "fields": {}
   },
   {
+    "type": "non_empty_list_literal",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "block_comment",
+          "named": true
+        },
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "line_comment",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "numeric_literal",
     "named": true,
     "fields": {},
@@ -133,6 +156,10 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "non_empty_list_literal",
+          "named": true
+        },
         {
           "type": "numeric_literal",
           "named": true
@@ -176,6 +203,10 @@
     "named": false
   },
   {
+    "type": ",",
+    "named": false
+  },
+  {
     "type": "-",
     "named": false
   },
@@ -189,6 +220,14 @@
   },
   {
     "type": "NaN",
+    "named": false
+  },
+  {
+    "type": "[",
+    "named": false
+  },
+  {
+    "type": "]",
     "named": false
   },
   {

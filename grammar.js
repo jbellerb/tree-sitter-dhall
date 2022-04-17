@@ -22,7 +22,10 @@ module.exports = grammar({
       optional($.line_comment_prefix),
     ),
     expression: $ => $.primitive_expression,
-    primitive_expression: $ => $.numeric_literal,
+    primitive_expression: $ => choice(
+      $.numeric_literal,
+      $.non_empty_list_literal,
+    ),
 
     free_text: $ => /.*/,
     _tab: $ => '\t',
@@ -59,6 +62,24 @@ module.exports = grammar({
     ),
     block_comment_open: $ => '{-',
     block_comment_close: $ => '-}',
+
+    non_empty_list_literal: $ => seq(
+      '[',
+      repeat($._whitespace_chunk),
+      optional(seq(',', repeat($._whitespace_chunk))),
+      $.expression,
+      repeat($._whitespace_chunk),
+      repeat(
+        seq(
+          ',',
+          repeat($._whitespace_chunk),
+          $.expression,
+          repeat($._whitespace_chunk),
+        ),
+      ),
+      optional(seq(',', repeat($._whitespace_chunk))),
+      ']',
+    ),
 
     numeric_literal: $ => choice(
       $.double_literal,
