@@ -1,0 +1,32 @@
+==================
+Natural literal
+==================
+
+10
+
+---
+
+(complete_expression
+  (expression (primitive_expression (numeric_literal (natural_literal)))))
+
+==================
+Integer literal
+==================
+
++10
+
+---
+
+(complete_expression
+  (expression (primitive_expression (numeric_literal (integer_literal)))))
+
+==================
+Double literal
+==================
+
+10.0
+
+---
+
+(complete_expression
+  (expression (primitive_expression (numeric_literal (double_literal)))))

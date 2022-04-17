@@ -1,0 +1,96 @@
+==================
+Line comment
+==================
+-- foo
+
+1
+
+---
+
+(complete_expression
+  (line_comment (line_comment_prefix) (free_text))
+  (expression (primitive_expression (numeric_literal (natural_literal)))))
+
+==================
+Block comment
+==================
+{- foo -}
+
+1
+
+---
+
+(complete_expression
+  (block_comment
+    (block_comment_open)
+    (block_comment_content)
+    (block_comment_close))
+  (expression (primitive_expression (numeric_literal (natural_literal)))))
+
+==================
+Nested block comments
+==================
+
+{- foo {- bar -} baz -}
+
+1
+
+---
+
+(complete_expression
+  (block_comment
+    (block_comment_open)
+    (block_comment_content)
+    (block_comment_close))
+  (expression (primitive_expression (numeric_literal (natural_literal)))))
+
+==================
+Mixed comments
+==================
+
+{- foo -}
+-- bar
+{- --baz -}
+
+1
+
+---
+
+(complete_expression
+  (block_comment
+    (block_comment_open)
+    (block_comment_content)
+    (block_comment_close))
+  (line_comment (line_comment_prefix) (free_text))
+  (block_comment
+    (block_comment_open)
+    (block_comment_content)
+    (block_comment_close))
+  (expression (primitive_expression (numeric_literal (natural_literal)))))
+
+==================
+Unicode comment
+==================
+
+-- fꝏ
+
+1
+
+---
+
+(complete_expression
+  (line_comment (line_comment_prefix) (free_text))
+  (expression (primitive_expression (numeric_literal (natural_literal)))))
+
+==================
+Unterminated block comment
+==================
+
+{- foo {- bar -}
+
+1
+
+---
+
+(ERROR
+  (block_comment (block_comment_content)))
