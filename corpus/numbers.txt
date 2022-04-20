@@ -6,15 +6,14 @@ Natural literals
 
 ---
 
-(complete_expression
-  (expression (primitive_expression
-    (non_empty_list_literal
-      (expression (primitive_expression
-        (numeric_literal (natural_literal))))
-      (expression (primitive_expression
-        (numeric_literal (natural_literal))))
-      (expression (primitive_expression
-        (numeric_literal (natural_literal))))))))
+(expression (primitive_expression
+  (non_empty_list_literal
+    (expression (primitive_expression
+      (numeric_literal (natural_literal))))
+    (expression (primitive_expression
+      (numeric_literal (natural_literal))))
+    (expression (primitive_expression
+      (numeric_literal (natural_literal)))))))
 
 ==================
 Integer literals
@@ -24,15 +23,14 @@ Integer literals
 
 ---
 
-(complete_expression
-  (expression (primitive_expression
-    (non_empty_list_literal
-      (expression (primitive_expression
-        (numeric_literal (integer_literal))))
-      (expression (primitive_expression
-        (numeric_literal (integer_literal))))
-      (expression (primitive_expression
-        (numeric_literal (integer_literal))))))))
+(expression (primitive_expression
+  (non_empty_list_literal
+    (expression (primitive_expression
+      (numeric_literal (integer_literal))))
+    (expression (primitive_expression
+      (numeric_literal (integer_literal))))
+    (expression (primitive_expression
+      (numeric_literal (integer_literal)))))))
 
 ==================
 Double literals
@@ -42,15 +40,14 @@ Double literals
 
 ---
 
-(complete_expression
-  (expression (primitive_expression
-    (non_empty_list_literal
-      (expression (primitive_expression
-        (numeric_literal (double_literal))))
-      (expression (primitive_expression
-        (numeric_literal (double_literal))))
-      (expression (primitive_expression
-        (numeric_literal (double_literal))))))))
+(expression (primitive_expression
+  (non_empty_list_literal
+    (expression (primitive_expression
+      (numeric_literal (double_literal))))
+    (expression (primitive_expression
+      (numeric_literal (double_literal))))
+    (expression (primitive_expression
+      (numeric_literal (double_literal)))))))
 
 ==================
 Hexadecimal natural and integer literals
@@ -60,15 +57,14 @@ Hexadecimal natural and integer literals
 
 ---
 
-(complete_expression
-  (expression (primitive_expression
-    (non_empty_list_literal
-      (expression (primitive_expression
-        (numeric_literal (natural_literal))))
-      (expression (primitive_expression
-        (numeric_literal (integer_literal))))
-      (expression (primitive_expression
-        (numeric_literal (integer_literal))))))))
+(expression (primitive_expression
+  (non_empty_list_literal
+    (expression (primitive_expression
+      (numeric_literal (natural_literal))))
+    (expression (primitive_expression
+      (numeric_literal (integer_literal))))
+    (expression (primitive_expression
+      (numeric_literal (integer_literal)))))))
 
 ==================
 Naturals and integers can not have leading zeros
@@ -77,12 +73,11 @@ Naturals and integers can not have leading zeros
 [ 01, +01 ]
 ---
 
-(complete_expression
-  (expression (primitive_expression
-    (non_empty_list_literal
-      (expression (primitive_expression
-        (numeric_literal (natural_literal))))
-      (ERROR)
-      (expression (primitive_expression
-        (numeric_literal (integer_literal))))
-      (ERROR)))))
+(expression (primitive_expression
+  (non_empty_list_literal
+    (expression (primitive_expression
+      (numeric_literal (natural_literal))))
+    (ERROR)
+    (expression (primitive_expression
+      (numeric_literal (integer_literal))))
+    (ERROR))))

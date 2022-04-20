@@ -6,8 +6,7 @@ Basic double-quoted strings
 
 ---
 
-(complete_expression
-  (expression (primitive_expression (text_literal (double_quote_literal)))))
+(expression (primitive_expression (text_literal (double_quote_literal))))
 
 ==================
 Double-quoted strings with escape sequences
@@ -17,17 +16,16 @@ Double-quoted strings with escape sequences
 
 ---
 
-(complete_expression
-  (expression (primitive_expression (text_literal (double_quote_literal
-    (double_quote_escaped)
-    (double_quote_escaped)
-    (double_quote_escaped)
-    (double_quote_escaped)
-    (double_quote_escaped)
-    (double_quote_escaped)
-    (double_quote_escaped)
-    (double_quote_escaped)
-    (double_quote_escaped))))))
+(expression (primitive_expression (text_literal (double_quote_literal
+  (double_quote_escaped)
+  (double_quote_escaped)
+  (double_quote_escaped)
+  (double_quote_escaped)
+  (double_quote_escaped)
+  (double_quote_escaped)
+  (double_quote_escaped)
+  (double_quote_escaped)
+  (double_quote_escaped)))))
 
 ==================
 Double-quoted strings with unicode escape sequences
@@ -37,9 +35,8 @@ Double-quoted strings with unicode escape sequences
 
 ---
 
-(complete_expression
-  (expression (primitive_expression (text_literal (double_quote_literal
-    (double_quote_escaped)
-    (double_quote_escaped)
-    (double_quote_escaped)
-    (double_quote_escaped))))))
+(expression (primitive_expression (text_literal (double_quote_literal
+  (double_quote_escaped)
+  (double_quote_escaped)
+  (double_quote_escaped)
+  (double_quote_escaped)))))

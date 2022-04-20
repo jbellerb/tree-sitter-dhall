@@ -7,9 +7,9 @@ Line comment
 
 ---
 
-(complete_expression
-  (line_comment (line_comment_prefix) (free_text))
-  (expression (primitive_expression (numeric_literal (natural_literal)))))
+(expression
+  (line_comment (line_comment_prefix) (line_comment_content))
+  (primitive_expression (numeric_literal (natural_literal))))
 
 ==================
 Block comment
@@ -20,12 +20,12 @@ Block comment
 
 ---
 
-(complete_expression
+(expression
   (block_comment
     (block_comment_open)
     (block_comment_content)
     (block_comment_close))
-  (expression (primitive_expression (numeric_literal (natural_literal)))))
+  (primitive_expression (numeric_literal (natural_literal))))
 
 ==================
 Nested block comments
@@ -37,12 +37,12 @@ Nested block comments
 
 ---
 
-(complete_expression
+(expression
   (block_comment
     (block_comment_open)
     (block_comment_content)
     (block_comment_close))
-  (expression (primitive_expression (numeric_literal (natural_literal)))))
+  (primitive_expression (numeric_literal (natural_literal))))
 
 ==================
 Mixed comments
@@ -56,17 +56,17 @@ Mixed comments
 
 ---
 
-(complete_expression
+(expression
   (block_comment
     (block_comment_open)
     (block_comment_content)
     (block_comment_close))
-  (line_comment (line_comment_prefix) (free_text))
+  (line_comment (line_comment_prefix) (line_comment_content))
   (block_comment
     (block_comment_open)
     (block_comment_content)
     (block_comment_close))
-  (expression (primitive_expression (numeric_literal (natural_literal)))))
+  (primitive_expression (numeric_literal (natural_literal))))
 
 ==================
 Unicode comment
@@ -78,9 +78,9 @@ Unicode comment
 
 ---
 
-(complete_expression
-  (line_comment (line_comment_prefix) (free_text))
-  (expression (primitive_expression (numeric_literal (natural_literal)))))
+(expression
+  (line_comment (line_comment_prefix) (line_comment_content))
+  (primitive_expression (numeric_literal (natural_literal))))
 
 ==================
 Unterminated block comment
@@ -92,10 +92,10 @@ Unterminated block comment
 
 ---
 
-(complete_expression
-  (ERROR (block_comment_open))
+(expression
+  (ERROR (block_comment_open) (UNEXPECTED 'f'))
   (block_comment
     (block_comment_open)
     (block_comment_content)
     (block_comment_close))
-  (expression (primitive_expression (numeric_literal (natural_literal)))))
+  (primitive_expression (numeric_literal (natural_literal))))

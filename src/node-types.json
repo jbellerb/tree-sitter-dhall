@@ -23,37 +23,6 @@
     }
   },
   {
-    "type": "complete_expression",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "block_comment",
-          "named": true
-        },
-        {
-          "type": "expression",
-          "named": true
-        },
-        {
-          "type": "line_comment",
-          "named": true
-        },
-        {
-          "type": "line_comment_prefix",
-          "named": true
-        },
-        {
-          "type": "shebang",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "double_literal",
     "named": true,
     "fields": {}
@@ -111,7 +80,7 @@
       "required": true,
       "types": [
         {
-          "type": "complete_expression",
+          "type": "expression",
           "named": true
         }
       ]
@@ -126,7 +95,7 @@
       "required": true,
       "types": [
         {
-          "type": "free_text",
+          "type": "line_comment_content",
           "named": true
         },
         {
@@ -150,15 +119,7 @@
       "required": true,
       "types": [
         {
-          "type": "block_comment",
-          "named": true
-        },
-        {
           "type": "expression",
-          "named": true
-        },
-        {
-          "type": "line_comment",
           "named": true
         }
       ]
@@ -211,21 +172,6 @@
     }
   },
   {
-    "type": "shebang",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "free_text",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "text_literal",
     "named": true,
     "fields": {},
@@ -249,15 +195,7 @@
     "named": false
   },
   {
-    "type": " ",
-    "named": false
-  },
-  {
     "type": "\"",
-    "named": false
-  },
-  {
-    "type": "#!",
     "named": false
   },
   {
@@ -309,7 +247,7 @@
     "named": true
   },
   {
-    "type": "free_text",
+    "type": "line_comment_content",
     "named": true
   },
   {

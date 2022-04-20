@@ -11,16 +11,13 @@ module.exports = grammar({
     $.block_comment_end,
   ],
 
-  extras: $ => [],
+  extras: $ => [
+    $.line_comment,
+    $.block_comment,
+    /\s/
+  ],
 
   rules: {
-    complete_expression: $ => seq(
-      repeat($.shebang),
-      repeat($._whitespace_chunk),
-      $.expression,
-      repeat($._whitespace_chunk),
-      optional($.line_comment_prefix),
-    ),
     expression: $ => $.primitive_expression,
     primitive_expression: $ => choice(
       $.numeric_literal,
@@ -28,37 +25,18 @@ module.exports = grammar({
       $.non_empty_list_literal,
     ),
 
-    free_text: $ => /.*/,
     _tab: $ => '\t',
     _end_of_line: $ => choice('\n', '\r\n'),
 
-    _whitespace: $ => repeat($._whitespace_chunk),
-    _whitespace_chunk: $ => choice(
-      ' ',
-      $._tab,
-      $._end_of_line,
-      $.line_comment,
-      $.block_comment,
-    ),
-
-    shebang: $ => seq(
-      '#!',
-      $.free_text,
-      $._end_of_line,
-    ),
-
-    line_comment: $ => seq($.line_comment_prefix, $.free_text, $._end_of_line),
+    line_comment: $ => seq($.line_comment_prefix, $.line_comment_content),
     line_comment_prefix: $ => '--',
+    line_comment_content: $ => /.*/,
 
     block_comment: $ => choice(
       seq(
         $.block_comment_open,
         $.block_comment_content,
         $.block_comment_close,
-      ),
-      seq(
-        $.block_comment_open,
-        $.block_comment_content,
       ),
     ),
     block_comment_open: $ => '{-',
@@ -97,7 +75,7 @@ module.exports = grammar({
       $.double_quote_escaped,
       /[^\"\\]/,
     ),
-    interpolation: $ => seq('${', $.complete_expression, '}'),
+    interpolation: $ => seq('${', $.expression, '}'),
     double_quote_escaped: $ => choice(
       /\\["\$\\/bfnrt]/,
       /\\u[0-9A-F]{4}|\\u\{0*[0-9A-F]{1,6}\}/,
@@ -106,19 +84,10 @@ module.exports = grammar({
 
     non_empty_list_literal: $ => seq(
       '[',
-      repeat($._whitespace_chunk),
-      optional(seq(',', repeat($._whitespace_chunk))),
+      optional(','),
       $.expression,
-      repeat($._whitespace_chunk),
-      repeat(
-        seq(
-          ',',
-          repeat($._whitespace_chunk),
-          $.expression,
-          repeat($._whitespace_chunk),
-        ),
-      ),
-      optional(seq(',', repeat($._whitespace_chunk))),
+      repeat(seq(',', $.expression)),
+      optional(','),
       ']',
     ),
   }

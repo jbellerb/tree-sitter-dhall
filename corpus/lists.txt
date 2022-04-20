@@ -6,18 +6,17 @@ List of lists
 
 ---
 
-(complete_expression
-  (expression (primitive_expression
-    (non_empty_list_literal
-      (expression (primitive_expression
-        (non_empty_list_literal (expression (primitive_expression
-          (numeric_literal (natural_literal)))))))
-      (expression (primitive_expression
-        (non_empty_list_literal (expression (primitive_expression
-          (numeric_literal (natural_literal)))))))
-      (expression (primitive_expression
-        (non_empty_list_literal (expression (primitive_expression
-          (numeric_literal (natural_literal)))))))))))
+(expression (primitive_expression
+  (non_empty_list_literal
+    (expression (primitive_expression
+      (non_empty_list_literal (expression (primitive_expression
+        (numeric_literal (natural_literal)))))))
+    (expression (primitive_expression
+      (non_empty_list_literal (expression (primitive_expression
+        (numeric_literal (natural_literal)))))))
+    (expression (primitive_expression
+      (non_empty_list_literal (expression (primitive_expression
+        (numeric_literal (natural_literal))))))))))
 
 ==================
 Multi-line lists
@@ -37,25 +36,24 @@ Multi-line lists
 
 ---
 
-(complete_expression
-  (expression (primitive_expression
-    (non_empty_list_literal
-      (expression (primitive_expression
-        (non_empty_list_literal
-          (expression (primitive_expression
-            (numeric_literal (natural_literal))))
-          (expression (primitive_expression
-            (numeric_literal (natural_literal))))
-          (expression (primitive_expression
-            (numeric_literal (natural_literal)))))))
-      (expression (primitive_expression
-        (non_empty_list_literal
-          (expression (primitive_expression
-            (numeric_literal (natural_literal))))
-          (expression (primitive_expression
-            (numeric_literal (natural_literal))))
-          (expression (primitive_expression
-            (numeric_literal (natural_literal)))))))))))
+(expression (primitive_expression
+  (non_empty_list_literal
+    (expression (primitive_expression
+      (non_empty_list_literal
+        (expression (primitive_expression
+          (numeric_literal (natural_literal))))
+        (expression (primitive_expression
+          (numeric_literal (natural_literal))))
+        (expression (primitive_expression
+          (numeric_literal (natural_literal)))))))
+    (expression (primitive_expression
+      (non_empty_list_literal
+        (expression (primitive_expression
+          (numeric_literal (natural_literal))))
+        (expression (primitive_expression
+          (numeric_literal (natural_literal))))
+        (expression (primitive_expression
+          (numeric_literal (natural_literal))))))))))
 
 ==================
 Comments in lists
@@ -67,17 +65,16 @@ Comments in lists
 
 ---
 
-(complete_expression
-  (expression (primitive_expression
-    (non_empty_list_literal
-      (expression (primitive_expression
-        (numeric_literal (natural_literal))))
-      (line_comment (line_comment_prefix) (free_text))
-      (block_comment
-        (block_comment_open)
-        (block_comment_content)
-        (block_comment_close))
-      (expression (primitive_expression
-        (numeric_literal (natural_literal))))
-      (expression (primitive_expression
-        (numeric_literal (natural_literal))))))))
+(expression (primitive_expression
+  (non_empty_list_literal
+    (expression (primitive_expression
+      (numeric_literal (natural_literal))))
+    (line_comment (line_comment_prefix) (line_comment_content))
+    (block_comment
+      (block_comment_open)
+      (block_comment_content)
+      (block_comment_close))
+    (expression (primitive_expression
+      (numeric_literal (natural_literal))))
+    (expression (primitive_expression
+      (numeric_literal (natural_literal)))))))
