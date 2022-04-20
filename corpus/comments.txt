@@ -93,7 +93,7 @@ Unterminated block comment
 ---
 
 (complete_expression
-  (ERROR (block_comment_open) (UNEXPECTED 'f'))
+  (ERROR (block_comment_open))
   (block_comment
     (block_comment_open)
     (block_comment_content)

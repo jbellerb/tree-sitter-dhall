@@ -3,9 +3,7 @@ Basic shebang
 ==================
 #!/usr/bin/env -S dhall text --file
 
-'''
-test
-'''
+0
 
 ---
 
@@ -21,9 +19,7 @@ Multi-line shebangs
 #! /usr/bin/env nix-shell
 #! nix-shell -i "dhall text --file" -p
 
-'''
-test
-'''
+0
 
 ---
 

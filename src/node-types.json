@@ -59,6 +59,30 @@
     "fields": {}
   },
   {
+    "type": "double_quote_escaped",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "double_quote_literal",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "double_quote_escaped",
+          "named": true
+        },
+        {
+          "type": "interpolation",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "expression",
     "named": true,
     "fields": {},
@@ -77,6 +101,21 @@
     "type": "integer_literal",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "interpolation",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "complete_expression",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "line_comment",
@@ -163,6 +202,10 @@
         {
           "type": "numeric_literal",
           "named": true
+        },
+        {
+          "type": "text_literal",
+          "named": true
         }
       ]
     }
@@ -183,6 +226,21 @@
     }
   },
   {
+    "type": "text_literal",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "double_quote_literal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "\n",
     "named": false
   },
@@ -195,7 +253,15 @@
     "named": false
   },
   {
+    "type": "\"",
+    "named": false
+  },
+  {
     "type": "#!",
+    "named": false
+  },
+  {
+    "type": "${",
     "named": false
   },
   {
@@ -249,5 +315,9 @@
   {
     "type": "line_comment_prefix",
     "named": true
+  },
+  {
+    "type": "}",
+    "named": false
   }
 ]

@@ -82,5 +82,7 @@ Naturals and integers can not have leading zeros
     (non_empty_list_literal
       (expression (primitive_expression
         (numeric_literal (natural_literal))))
+      (ERROR)
       (expression (primitive_expression
-        (numeric_literal (integer_literal))))))))
+        (numeric_literal (integer_literal))))
+      (ERROR)))))

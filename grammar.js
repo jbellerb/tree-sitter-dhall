@@ -24,6 +24,7 @@ module.exports = grammar({
     expression: $ => $.primitive_expression,
     primitive_expression: $ => choice(
       $.numeric_literal,
+      $.text_literal,
       $.non_empty_list_literal,
     ),
 
@@ -63,24 +64,6 @@ module.exports = grammar({
     block_comment_open: $ => '{-',
     block_comment_close: $ => '-}',
 
-    non_empty_list_literal: $ => seq(
-      '[',
-      repeat($._whitespace_chunk),
-      optional(seq(',', repeat($._whitespace_chunk))),
-      $.expression,
-      repeat($._whitespace_chunk),
-      repeat(
-        seq(
-          ',',
-          repeat($._whitespace_chunk),
-          $.expression,
-          repeat($._whitespace_chunk),
-        ),
-      ),
-      optional(seq(',', repeat($._whitespace_chunk))),
-      ']',
-    ),
-
     numeric_literal: $ => choice(
       $.double_literal,
       $.natural_literal,
@@ -105,6 +88,38 @@ module.exports = grammar({
     integer_literal: $ => seq(
       choice('+', '-'),
       choice(hexadecimal_natural, decimal_natural),
+    ),
+
+    text_literal: $ => choice($.double_quote_literal), //, $.single_quote_literal),
+    double_quote_literal: $ => seq('"', repeat1($._double_quote_chunk), '"'),
+    _double_quote_chunk: $ => choice(
+      $.interpolation,
+      $.double_quote_escaped,
+      /[^\"\\]/,
+    ),
+    interpolation: $ => seq('${', $.complete_expression, '}'),
+    double_quote_escaped: $ => choice(
+      /\\["\$\\/bfnrt]/,
+      /\\u[0-9A-F]{4}|\\u\{0*[0-9A-F]{1,6}\}/,
+    ),
+    // single_quote_literal: $ => ,
+
+    non_empty_list_literal: $ => seq(
+      '[',
+      repeat($._whitespace_chunk),
+      optional(seq(',', repeat($._whitespace_chunk))),
+      $.expression,
+      repeat($._whitespace_chunk),
+      repeat(
+        seq(
+          ',',
+          repeat($._whitespace_chunk),
+          $.expression,
+          repeat($._whitespace_chunk),
+        ),
+      ),
+      optional(seq(',', repeat($._whitespace_chunk))),
+      ']',
     ),
   }
 });
