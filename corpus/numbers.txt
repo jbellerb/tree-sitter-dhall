@@ -65,19 +65,3 @@ Hexadecimal natural and integer literals
       (numeric_literal (integer_literal))))
     (expression (primitive_expression
       (numeric_literal (integer_literal)))))))
-
-==================
-Naturals and integers can not have leading zeros
-==================
-
-[ 01, +01 ]
----
-
-(expression (primitive_expression
-  (non_empty_list_literal
-    (expression (primitive_expression
-      (numeric_literal (natural_literal))))
-    (ERROR)
-    (expression (primitive_expression
-      (numeric_literal (integer_literal))))
-    (ERROR))))

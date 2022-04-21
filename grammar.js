@@ -1,5 +1,4 @@
 const digits = /[0-9]+/;
-const decimal_natural = /0|[1-9][0-9]*/;
 const hexadecimal_natural = /0x[0-9A-F]+/;
 const decimal_double_exponent = /e[+-]?[0-9]+/;
 
@@ -17,16 +16,51 @@ module.exports = grammar({
     /\s/
   ],
 
+  inline: $ => [
+    $.annotated_expression,
+  ],
+
   rules: {
-    expression: $ => $.primitive_expression,
+    expression: $ => choice(
+      // TODO: the others
+      $.annotated_expression,
+    ),
+
+    annotated_expression: $ => seq(
+      $._operator_expression,
+      optional(seq(':', $.expression))
+    ),
+
+    _operator_expression: $ => choice(
+      // TODO: the rest of the operators
+      $._application_expression,
+    ),
+
+    _application_expression: $ => seq(
+      choice(
+        seq('merge', $._import_expression, $._import_expression),
+        seq('Some', $._import_expression),
+        seq('toMap', $._import_expression),
+        seq('showConstructor', $._import_expression),
+        $._import_expression,
+      ),
+    ),
+
+    _import_expression: $ => choice(
+      // TODO: $.import,
+      seq($._selector_expression, optional(seq('::', $._selector_expression))),
+    ),
+    _selector_expression: $ => seq(
+      $.primitive_expression,
+      // repeat(seq('.', $.selector)),
+    ),
+
     primitive_expression: $ => choice(
       $.numeric_literal,
       $.text_literal,
       $.non_empty_list_literal,
+      seq('(', $.expression, ')'),
     ),
-
-    _tab: $ => '\t',
-    _end_of_line: $ => choice('\n', '\r\n'),
 
     line_comment: $ => seq($.line_comment_prefix, $.line_comment_content),
     line_comment_prefix: $ => '--',
@@ -47,11 +81,11 @@ module.exports = grammar({
       $.natural_literal,
       $.integer_literal,
     ),
-    double_literal: $ => choice(
-      '-Infinity',
-      'Infinity',
-      'NaN',
-      token(
+    double_literal: $ => token(
+      choice(
+        '-Infinity',
+        'Infinity',
+        'NaN',
         seq(
           optional(choice('+', '-')),
           digits,
@@ -62,10 +96,9 @@ module.exports = grammar({
         ),
       ),
     ),
-    natural_literal: $ => choice(hexadecimal_natural, decimal_natural),
-    integer_literal: $ => seq(
-      choice('+', '-'),
-      choice(hexadecimal_natural, decimal_natural),
+    natural_literal: $ => token(choice(hexadecimal_natural, digits)),
+    integer_literal: $ => token(
+      seq(choice('+', '-'), choice(hexadecimal_natural, digits)),
     ),
 
     text_literal: $ => choice($.double_quote_literal), //, $.single_quote_literal),
@@ -76,11 +109,14 @@ module.exports = grammar({
       /[^\"\\]/,
     ),
     interpolation: $ => seq('${', $.expression, '}'),
-    double_quote_escaped: $ => choice(
-      /\\["\$\\/bfnrt]/,
-      /\\u[0-9A-F]{4}|\\u\{0*[0-9A-F]{1,6}\}/,
+    double_quote_escaped: $ => token(
+      choice(
+        /\\["\$\\/bfnrt]/,
+        /\\u[0-9A-F]{4}/,
+        /\\u\{0*[0-9A-F]{1,6}\}/,
+      ),
     ),
-    // single_quote_literal: $ => ,
+    // TODO: single_quote_literal: $ => ,
 
     non_empty_list_literal: $ => seq(
       '[',
