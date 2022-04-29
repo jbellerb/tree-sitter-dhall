@@ -1,0 +1,294 @@
+# Implemented tests
+## Custom tests
+- [x] mixed block and line comments
+- [x] unterminated block comment
+- [x] list of lists
+- [x] list whitespace
+- [x] de Bruijn indices
+
+## dhall-lang tests
+
+- [ ] annotations
+- [x] blockComment
+- [ ] builtinNameAsField
+- [x] builtins
+- [ ] collectionImportType
+- [ ] fields
+- [ ] forall
+- [ ] functionType
+- [ ] hexadecimal
+- [ ] identifier
+- [ ] label
+- [ ] lambda
+- [ ] largeExpression
+- [ ] leadingSeparators
+- [ ] leadingTabs
+- [x] lineComment
+- [ ] lineCommentCRLF
+- [ ] list
+- [ ] merge
+- [ ] missingFoo
+- [ ] missingInParentheses
+- [ ] missingSlash
+- [x] natural
+- [x] nestedBlockComment
+- [ ] operators
+- [ ] preferMissingNoSpaces
+- [ ] quotedBoundVariable
+- [ ] quotedLabel
+- [ ] quotedRecordLabel
+- [ ] quotedUnionLabel
+- [ ] record
+- [ ] recordProjectionByExpression
+- [ ] reservedPrefix
+- [ ] text/dollarSign
+- [x] text/doubleQuotedString
+- [ ] text/escape
+- [x] text/escapedDoubleQuotedString
+- [ ] text/escapedSingleQuotedString
+- [ ] text/interesting
+- [ ] text/interiorIndent
+- [ ] text/interpolatedDoubleQuotedString
+- [ ] text/interpolatedSingleQuotedString
+- [ ] text/interpolation
+- [ ] text/multilineBlankLine
+- [ ] text/multilineBlankLineCrlf
+- [ ] text/multilineCorruptedLeadingWhitespace
+- [ ] text/multilineIndentedAndAligned
+- [ ] text/multilineMismatchedLeadingWhitespace
+- [ ] text/multilineTabs
+- [ ] text/nonAssignedUnicode
+- [ ] text/preserveComment
+- [ ] text/singleLine
+- [ ] text/singleQuoteConcat
+- [ ] text/singleQuotedString
+- [ ] text/template
+- [ ] text/twoLines
+- [ ] text/unicodeDoubleQuotedString
+- [ ] time/DateTime
+- [ ] time/DateTimeTimeZone
+- [ ] time/LowercaseT
+- [ ] time/TimeTimeZone
+- [ ] time/TimeTimeZoneZ
+- [ ] toMap
+- [x] unicodeComment
+- [ ] unit/Annotation
+- [ ] unit/Assert
+- [ ] unit/AssertEquivalence
+- [ ] unit/AssertEquivalenceUnicode
+- [ ] unit/AssertPrecedence
+- [ ] unit/Bool
+- [ ] unit/BoolLitTrue
+- [ ] unit/BuiltinListBuild
+- [ ] unit/Completion
+- [ ] unit/Date
+- [ ] unit/DateLiteral
+- [x] unit/DoubleLit16bit
+- [x] unit/DoubleLit32bit
+- [x] unit/DoubleLit64bit
+- [x] unit/DoubleLitExponent
+- [x] unit/DoubleLitExponentNegative
+- [x] unit/DoubleLitExponentNoDot
+- [x] unit/DoubleLitInfinity
+- [x] unit/DoubleLitNaN
+- [x] unit/DoubleLitNegInfinity
+- [x] unit/DoubleLitNegZero
+- [x] unit/DoubleLitNegative
+- [x] unit/DoubleLitPositive
+- [x] unit/DoubleLitSecretelyInt
+- [x] unit/DoubleLitZero
+- [ ] unit/EmptyRecordLiteral
+- [ ] unit/Field
+- [ ] unit/FieldBuiltinName
+- [ ] unit/FieldQuoted
+- [ ] unit/Forall
+- [ ] unit/ForallNested
+- [ ] unit/ForallUnderscore
+- [ ] unit/FunctionApplicationMultipleArgs
+- [ ] unit/FunctionApplicationOneArg
+- [ ] unit/FunctionTypeArrow
+- [ ] unit/FunctionTypePi
+- [ ] unit/FunctionTypePiNested
+- [ ] unit/FunctionTypePiUnderscore
+- [ ] unit/FunctionTypePiUnicode
+- [x] unit/IntegerLitNegative
+- [x] unit/IntegerLitPositive
+- [ ] unit/Kind
+- [ ] unit/Lambda
+- [ ] unit/LambdaNested
+- [ ] unit/LambdaUnderscore
+- [ ] unit/LambdaUnicode
+- [ ] unit/Let
+- [ ] unit/LetAnnot
+- [ ] unit/LetMulti
+- [ ] unit/LetNested
+- [ ] unit/LetNoAnnot
+- [ ] unit/ListLitEmpty1
+- [ ] unit/ListLitEmpty2
+- [ ] unit/ListLitEmptyComma
+- [ ] unit/ListLitEmptyPrecedence
+- [x] unit/ListLitLeadingComma
+- [x] unit/ListLitNonEmpty
+- [ ] unit/ListLitNonEmptyAnnotated
+- [x] unit/ListLitTrailingAndLeadingCommas
+- [x] unit/ListLitTrailingComma
+- [ ] unit/Merge
+- [ ] unit/MergeAnnotation
+- [ ] unit/MergeAnnotationPrecedence
+- [ ] unit/MergeParenAnnotation
+- [ ] unit/MergeXYZ
+- [ ] unit/NaturalLit
+- [ ] unit/Projection
+- [ ] unit/ProjectionLeadingComma
+- [ ] unit/ProjectionTrailingAndLeadingCommas
+- [ ] unit/ProjectionTrailingComma
+- [ ] unit/QuotedBool
+- [ ] unit/QuotedTrue
+- [ ] unit/QuotedType
+- [ ] unit/QuotedVariable
+- [ ] unit/RecordFieldAccess
+- [ ] unit/RecordLit
+- [ ] unit/RecordLitDotted
+- [ ] unit/RecordLitDottedEscape
+- [ ] unit/RecordLitDuplicates
+- [ ] unit/RecordLitEmptyLeadingComma
+- [ ] unit/RecordLitEmptyTrailingComma
+- [ ] unit/RecordLitLeadingComma
+- [ ] unit/RecordLitNixLike
+- [ ] unit/RecordLitPun
+- [ ] unit/RecordLitPunDuplicate
+- [ ] unit/RecordLitPunMixed
+- [ ] unit/RecordLitPunSome
+- [ ] unit/RecordLitSome
+- [ ] unit/RecordLitTrailingAndLeadingCommas
+- [ ] unit/RecordLitTrailingComma
+- [ ] unit/RecordProjectFields
+- [ ] unit/RecordProjectionByType
+- [ ] unit/RecordProjectionByTypeEmpty
+- [ ] unit/RecordType
+- [ ] unit/RecordTypeEmptyComma
+- [ ] unit/RecordTypeLeadingComma
+- [ ] unit/RecordTypeTrailingAndLeadingCommas
+- [ ] unit/RecordTypeTrailingComma
+- [ ] unit/SelectionSome
+- [ ] ~~unit/Shebang~~
+- [ ] ~~unit/ShebangNix~~
+- [ ] unit/SomeX
+- [ ] unit/SomeXYZ
+- [ ] unit/Sort
+- [ ] unit/Time
+- [ ] unit/TimeLiteral
+- [ ] unit/TimeZone
+- [ ] unit/TimeZoneLiteral
+- [ ] unit/ToMap
+- [ ] unit/ToMapAnnot
+- [ ] unit/TrailingLineCommentWithoutNewline
+- [ ] unit/Type
+- [ ] unit/UnionTypeEmpty
+- [ ] unit/UnionTypeEmptyDelim
+- [ ] unit/UnionTypeLeadingDelim
+- [ ] unit/UnionTypeSome
+- [ ] unit/UnionTypeTrailingAndLeadingDelims
+- [ ] unit/UnionTypeTrailingDelim
+- [ ] unit/UnionTypeX
+- [ ] unit/UnionTypeXTY
+- [ ] unit/UnionTypeXTYU
+- [ ] unit/UnionTypeXY
+- [ ] unit/UnionTypeXYT
+- [ ] unit/Variable
+- [ ] unit/VariableQuotedWithSpace
+- [ ] unit/VariableUnderscore
+- [ ] unit/With
+- [ ] unit/WithMultiple
+- [ ] unit/WithPrecedence1
+- [ ] unit/WithPrecedence2
+- [ ] unit/WithPrecedence3
+- [ ] unit/WithSome
+- [ ] unit/ifThenElse
+- [ ] unit/import/AsLocationAbsolute
+- [ ] unit/import/AsLocationEnv
+- [ ] unit/import/AsLocationHash
+- [ ] unit/import/AsLocationLocal
+- [ ] unit/import/AsLocationMissing
+- [ ] unit/import/AsLocationRemote
+- [ ] unit/import/Headers
+- [ ] unit/import/HeadersDoubleHash
+- [ ] unit/import/HeadersDoubleHashPrecedence
+- [ ] unit/import/HeadersHashPrecedence
+- [ ] unit/import/HeadersInteriorHash
+- [ ] unit/import/ImportAsNoSpace
+- [ ] unit/import/Missing
+- [ ] unit/import/asText
+- [ ] unit/import/environmentVariableBash
+- [ ] unit/import/environmentVariablePosix
+- [ ] unit/import/hash
+- [ ] unit/import/importAlt
+- [ ] unit/import/inlineUsing
+- [ ] unit/import/pathAbsolute
+- [ ] unit/import/pathHere
+- [ ] unit/import/pathHome
+- [ ] unit/import/pathParent
+- [ ] unit/import/pathTerminationLambda
+- [ ] unit/import/pathTerminationList
+- [ ] unit/import/pathTerminationRecord
+- [ ] unit/import/pathTerminationUnion
+- [ ] unit/import/quotedPaths
+- [ ] unit/import/unicodePaths
+- [ ] unit/import/urls/basicHttp
+- [ ] unit/import/urls/basicHttps
+- [ ] unit/import/urls/emptyPath0
+- [ ] unit/import/urls/emptyPath1
+- [ ] unit/import/urls/emptyPathSegment
+- [ ] unit/import/urls/emptyQuery
+- [ ] unit/import/urls/escapedPath
+- [ ] unit/import/urls/escapedQuery
+- [ ] unit/import/urls/fragmentParsesAsListAppend
+- [ ] unit/import/urls/ipv4
+- [ ] unit/import/urls/ipv4upperoctets
+- [ ] unit/import/urls/ipv6long
+- [ ] unit/import/urls/ipv6medium
+- [ ] unit/import/urls/ipv6short
+- [ ] unit/import/urls/ipv6verylong
+- [ ] unit/import/urls/ipv6withipv4
+- [ ] unit/import/urls/port
+- [ ] unit/import/urls/potPourri
+- [ ] unit/import/urls/userinfo
+- [ ] unit/operators/BoolAnd
+- [ ] unit/operators/BoolAndAssoc
+- [ ] unit/operators/BoolEQ
+- [ ] unit/operators/BoolEQAssoc
+- [ ] unit/operators/BoolNE
+- [ ] unit/operators/BoolNEAssoc
+- [ ] unit/operators/BoolOr
+- [ ] unit/operators/BoolOrAssoc
+- [ ] unit/operators/Equivalence
+- [ ] unit/operators/ImportAlt
+- [ ] unit/operators/ImportAltAssoc
+- [ ] unit/operators/ListAppend
+- [ ] unit/operators/ListAppendAssoc
+- [ ] unit/operators/NaturalPlus
+- [ ] unit/operators/NaturalPlusAssoc
+- [ ] unit/operators/NaturalTimes
+- [ ] unit/operators/NaturalTimesAssoc
+- [ ] unit/operators/PrecedenceBool
+- [ ] unit/operators/PrecedenceEquivalence
+- [ ] unit/operators/PrecedenceNat
+- [ ] unit/operators/PrecedenceRecord
+- [ ] unit/operators/RecursiveRecordMerge
+- [ ] unit/operators/RecursiveRecordMergeAssoc
+- [ ] unit/operators/RecursiveRecordMergeUnicode
+- [ ] unit/operators/RecursiveRecordMergeUnicodeAssoc
+- [ ] unit/operators/RecursiveRecordTypeMerge
+- [ ] unit/operators/RecursiveRecordTypeMergeAssoc
+- [ ] unit/operators/RecursiveRecordTypeMergeUnicode
+- [ ] unit/operators/RecursiveRecordTypeMergeUnicodeAssoc
+- [ ] unit/operators/RightBiasedRecordMerge
+- [ ] unit/operators/RightBiasedRecordMergeAssoc
+- [ ] unit/operators/RightBiasedRecordMergeUnicode
+- [ ] unit/operators/RightBiasedRecordMergeUnicodeAssoc
+- [ ] unit/operators/TextAppend
+- [ ] unit/operators/TextAppendAssoc
+- [ ] usingToMap
+- [ ] whitespace
+- [ ] whitespaceBuffet
+- [ ] withQuestionMark

@@ -1,6 +1,7 @@
 ==================
 Line comment
 ==================
+
 -- foo
 
 1
@@ -14,6 +15,7 @@ Line comment
 ==================
 Block comment
 ==================
+
 {- foo -}
 
 1
@@ -93,7 +95,7 @@ Unterminated block comment
 ---
 
 (expression
-  (ERROR (block_comment_open) (UNEXPECTED 'f'))
+  (ERROR (block_comment_open) (label))
   (block_comment
     (block_comment_open)
     (block_comment_content)

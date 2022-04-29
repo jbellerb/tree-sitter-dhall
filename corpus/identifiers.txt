@@ -1,0 +1,112 @@
+==================
+Builtins
+==================
+
+[ Natural/fold
+, Natural/build
+, Natural/isZero
+, Natural/even
+, Natural/odd
+, Natural/toInteger
+, Natural/show
+, Integer/toDouble
+, Integer/show
+, Integer/negate
+, Integer/clamp
+, Natural/subtract
+, Double/show
+, List/build
+, List/fold
+, List/length
+, List/head
+, List/last
+, List/indexed
+, List/reverse
+, Text/show
+, Text/replace
+, Bool
+, True
+, False
+, Optional
+, None
+, Natural
+, Integer
+, Double
+, Text
+, Date
+, Time
+, TimeZone
+, List
+, Type
+, Kind
+, Sort
+]
+
+---
+
+(expression
+  (primitive_expression (non_empty_list_literal
+    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin)))))))
+
+==================
+de Bruijn indices
+==================
+
+x == x@0
+
+---
+
+(expression
+  (equal_expression
+    (primitive_expression (identifier (label)))
+    (primitive_expression (identifier
+      (label) (de_bruijn_index (natural_literal))))))
+
+==================
+de Bruijn indices don't apply to builtins
+==================
+
+Bool@0
+
+---
+
+(expression
+  (ERROR)
+  (primitive_expression (numeric_literal (natural_literal))))

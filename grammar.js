@@ -2,6 +2,9 @@ const digits = /[0-9]+/;
 const hexadecimal_natural = /0x[0-9A-F]+/;
 const decimal_double_exponent = /e[+-]?[0-9]+/;
 
+const infix_operator = (expression, operator) =>
+  prec.left(seq(expression, operator, expression));
+
 module.exports = grammar({
   name: 'dhall',
 
@@ -20,10 +23,54 @@ module.exports = grammar({
     $.annotated_expression,
   ],
 
+  word: $ => $.label,
+
   rules: {
     expression: $ => choice(
       // TODO: the others
       $.annotated_expression,
+    ),
+    label: $ => /`[ -_a-~]+`|[A-Z_a-z][0-9\-/A-Z_a-z]*/,
+
+    builtin: $ => choice(
+      'Natural/fold',
+      'Natural/build',
+      'Natural/isZero',
+      'Natural/even',
+      'Natural/odd',
+      'Natural/toInteger',
+      'Natural/show',
+      'Integer/toDouble',
+      'Integer/show',
+      'Integer/negate',
+      'Integer/clamp',
+      'Natural/subtract',
+      'Double/show',
+      'List/build',
+      'List/fold',
+      'List/length',
+      'List/head',
+      'List/last',
+      'List/indexed',
+      'List/reverse',
+      'Text/show',
+      'Text/replace',
+      'Bool',
+      'True',
+      'False',
+      'Optional',
+      'None',
+      'Natural',
+      'Integer',
+      'Double',
+      'Text',
+      'Date',
+      'Time',
+      'TimeZone',
+      'List',
+      'Type',
+      'Kind',
+      'Sort',
     ),
 
     annotated_expression: $ => seq(
@@ -33,8 +80,10 @@ module.exports = grammar({
 
     _operator_expression: $ => choice(
       // TODO: the rest of the operators
+      $.equal_expression,
       $._application_expression,
     ),
+    equal_expression: $ => infix_operator($._operator_expression, '=='),
 
     _application_expression: $ => seq(
       choice(
@@ -59,6 +108,7 @@ module.exports = grammar({
       $.numeric_literal,
       $.text_literal,
       $.non_empty_list_literal,
+      $.identifier,
       seq('(', $.expression, ')'),
     ),
 
@@ -81,20 +131,18 @@ module.exports = grammar({
       $.natural_literal,
       $.integer_literal,
     ),
-    double_literal: $ => token(
-      choice(
-        '-Infinity',
-        'Infinity',
-        'NaN',
-        seq(
-          optional(choice('+', '-')),
-          digits,
-          choice(
-            seq('.', digits, optional(decimal_double_exponent)),
-            decimal_double_exponent,
-          ),
+    double_literal: $ => choice(
+      '-Infinity',
+      'Infinity',
+      'NaN',
+      token(seq(
+        optional(choice('+', '-')),
+        digits,
+        choice(
+          seq('.', digits, optional(decimal_double_exponent)),
+          decimal_double_exponent,
         ),
-      ),
+      )),
     ),
     natural_literal: $ => token(choice(hexadecimal_natural, digits)),
     integer_literal: $ => token(
@@ -126,5 +174,12 @@ module.exports = grammar({
       optional(','),
       ']',
     ),
+
+    identifier: $ => choice(
+      // TODO: exclude reserved labels (implicit?)
+      seq($.label, optional($.de_bruijn_index)),
+      $.builtin,
+    ),
+    de_bruijn_index: $ => seq('@', $.natural_literal),
   }
 });

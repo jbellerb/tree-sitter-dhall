@@ -36,12 +36,39 @@ Integer literals
 Double literals
 ==================
 
-[ 10.0, 11e1, 11.1e1 ]
+[ 10.0, -10000.0, 100000000000.0, 11e1, 11.1e1, 11.1e-1 ]
 
 ---
 
 (expression (primitive_expression
   (non_empty_list_literal
+    (expression (primitive_expression
+      (numeric_literal (double_literal))))
+    (expression (primitive_expression
+      (numeric_literal (double_literal))))
+    (expression (primitive_expression
+      (numeric_literal (double_literal))))
+    (expression (primitive_expression
+      (numeric_literal (double_literal))))
+    (expression (primitive_expression
+      (numeric_literal (double_literal))))
+    (expression (primitive_expression
+      (numeric_literal (double_literal)))))))
+
+==================
+Special double literals
+==================
+
+[ Infinity, NaN, -Infinity, -0.0, 0.0 ]
+
+---
+
+(expression (primitive_expression
+  (non_empty_list_literal
+    (expression (primitive_expression
+      (numeric_literal (double_literal))))
+    (expression (primitive_expression
+      (numeric_literal (double_literal))))
     (expression (primitive_expression
       (numeric_literal (double_literal))))
     (expression (primitive_expression

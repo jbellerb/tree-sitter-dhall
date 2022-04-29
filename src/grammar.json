@@ -1,5 +1,6 @@
 {
   "name": "dhall",
+  "word": "label",
   "rules": {
     "expression": {
       "type": "CHOICE",
@@ -7,6 +8,167 @@
         {
           "type": "SYMBOL",
           "name": "annotated_expression"
+        }
+      ]
+    },
+    "label": {
+      "type": "PATTERN",
+      "value": "`[ -_a-~]+`|[A-Z_a-z][0-9\\-/A-Z_a-z]*"
+    },
+    "builtin": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "Natural/fold"
+        },
+        {
+          "type": "STRING",
+          "value": "Natural/build"
+        },
+        {
+          "type": "STRING",
+          "value": "Natural/isZero"
+        },
+        {
+          "type": "STRING",
+          "value": "Natural/even"
+        },
+        {
+          "type": "STRING",
+          "value": "Natural/odd"
+        },
+        {
+          "type": "STRING",
+          "value": "Natural/toInteger"
+        },
+        {
+          "type": "STRING",
+          "value": "Natural/show"
+        },
+        {
+          "type": "STRING",
+          "value": "Integer/toDouble"
+        },
+        {
+          "type": "STRING",
+          "value": "Integer/show"
+        },
+        {
+          "type": "STRING",
+          "value": "Integer/negate"
+        },
+        {
+          "type": "STRING",
+          "value": "Integer/clamp"
+        },
+        {
+          "type": "STRING",
+          "value": "Natural/subtract"
+        },
+        {
+          "type": "STRING",
+          "value": "Double/show"
+        },
+        {
+          "type": "STRING",
+          "value": "List/build"
+        },
+        {
+          "type": "STRING",
+          "value": "List/fold"
+        },
+        {
+          "type": "STRING",
+          "value": "List/length"
+        },
+        {
+          "type": "STRING",
+          "value": "List/head"
+        },
+        {
+          "type": "STRING",
+          "value": "List/last"
+        },
+        {
+          "type": "STRING",
+          "value": "List/indexed"
+        },
+        {
+          "type": "STRING",
+          "value": "List/reverse"
+        },
+        {
+          "type": "STRING",
+          "value": "Text/show"
+        },
+        {
+          "type": "STRING",
+          "value": "Text/replace"
+        },
+        {
+          "type": "STRING",
+          "value": "Bool"
+        },
+        {
+          "type": "STRING",
+          "value": "True"
+        },
+        {
+          "type": "STRING",
+          "value": "False"
+        },
+        {
+          "type": "STRING",
+          "value": "Optional"
+        },
+        {
+          "type": "STRING",
+          "value": "None"
+        },
+        {
+          "type": "STRING",
+          "value": "Natural"
+        },
+        {
+          "type": "STRING",
+          "value": "Integer"
+        },
+        {
+          "type": "STRING",
+          "value": "Double"
+        },
+        {
+          "type": "STRING",
+          "value": "Text"
+        },
+        {
+          "type": "STRING",
+          "value": "Date"
+        },
+        {
+          "type": "STRING",
+          "value": "Time"
+        },
+        {
+          "type": "STRING",
+          "value": "TimeZone"
+        },
+        {
+          "type": "STRING",
+          "value": "List"
+        },
+        {
+          "type": "STRING",
+          "value": "Type"
+        },
+        {
+          "type": "STRING",
+          "value": "Kind"
+        },
+        {
+          "type": "STRING",
+          "value": "Sort"
         }
       ]
     },
@@ -45,9 +207,34 @@
       "members": [
         {
           "type": "SYMBOL",
+          "name": "equal_expression"
+        },
+        {
+          "type": "SYMBOL",
           "name": "_application_expression"
         }
       ]
+    },
+    "equal_expression": {
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_operator_expression"
+          },
+          {
+            "type": "STRING",
+            "value": "=="
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_operator_expression"
+          }
+        ]
+      }
     },
     "_application_expression": {
       "type": "SEQ",
@@ -179,6 +366,10 @@
           "name": "non_empty_list_literal"
         },
         {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
           "type": "SEQ",
           "members": [
             {
@@ -266,23 +457,23 @@
       ]
     },
     "double_literal": {
-      "type": "TOKEN",
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "STRING",
-            "value": "-Infinity"
-          },
-          {
-            "type": "STRING",
-            "value": "Infinity"
-          },
-          {
-            "type": "STRING",
-            "value": "NaN"
-          },
-          {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "-Infinity"
+        },
+        {
+          "type": "STRING",
+          "value": "Infinity"
+        },
+        {
+          "type": "STRING",
+          "value": "NaN"
+        },
+        {
+          "type": "TOKEN",
+          "content": {
             "type": "SEQ",
             "members": [
               {
@@ -346,8 +537,8 @@
               }
             ]
           }
-        ]
-      }
+        }
+      ]
     },
     "natural_literal": {
       "type": "TOKEN",
@@ -536,6 +727,49 @@
         {
           "type": "STRING",
           "value": "]"
+        }
+      ]
+    },
+    "identifier": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "label"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "de_bruijn_index"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "builtin"
+        }
+      ]
+    },
+    "de_bruijn_index": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "@"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "natural_literal"
         }
       ]
     }
