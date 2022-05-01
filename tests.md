@@ -25,7 +25,7 @@
 - [ ] leadingTabs
 - [x] lineComment
 - [ ] lineCommentCRLF
-- [ ] list
+- [x] list
 - [ ] merge
 - [ ] missingFoo
 - [ ] missingInParentheses
@@ -123,13 +123,13 @@
 - [ ] unit/LetMulti
 - [ ] unit/LetNested
 - [ ] unit/LetNoAnnot
-- [ ] unit/ListLitEmpty1
-- [ ] unit/ListLitEmpty2
-- [ ] unit/ListLitEmptyComma
-- [ ] unit/ListLitEmptyPrecedence
+- [x] unit/ListLitEmpty1
+- [x] unit/ListLitEmpty2
+- [x] unit/ListLitEmptyComma
+- [x] unit/ListLitEmptyPrecedence
 - [x] unit/ListLitLeadingComma
 - [x] unit/ListLitNonEmpty
-- [ ] unit/ListLitNonEmptyAnnotated
+- [x] unit/ListLitNonEmptyAnnotated
 - [x] unit/ListLitTrailingAndLeadingCommas
 - [x] unit/ListLitTrailingComma
 - [ ] unit/Merge

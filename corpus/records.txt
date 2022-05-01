@@ -10,36 +10,36 @@ Record literals
 ---
 
 (expression
-  (primitive_expression (non_empty_record_literal
+  (primitive_expression (record_literal
     (record_literal_entry
       (label)
-      (infix_operator)
+      (assign_operator)
       (expression (primitive_expression
         (numeric_literal (integer_literal)))))
     (record_literal_entry
       (label)
-      (infix_operator)
+      (assign_operator)
       (expression (primitive_expression
         (numeric_literal (natural_literal)))))
     (record_literal_entry
       (label)
-      (infix_operator)
+      (assign_operator)
       (expression (primitive_expression
         (identifier (builtin)))))))
-    (infix_operator)
-    type: (expression (primitive_expression (non_empty_record_literal
-      (record_type_entry
-        (label)
-        (infix_operator)
-        type: (expression (primitive_expression (identifier (builtin)))))
-      (record_type_entry
-        (label)
-        (infix_operator)
-        type: (expression (primitive_expression (identifier (builtin)))))
-      (record_type_entry
-        (label)
-        (infix_operator)
-        type: (expression (primitive_expression (identifier (builtin)))))))))
+  (type_operator)
+  type: (expression (primitive_expression (record_type
+    (record_type_entry
+      (label)
+      (type_operator)
+      type: (expression (primitive_expression (identifier (builtin)))))
+    (record_type_entry
+      (label)
+      (type_operator)
+      type: (expression (primitive_expression (identifier (builtin)))))
+    (record_type_entry
+      (label)
+      (type_operator)
+      type: (expression (primitive_expression (identifier (builtin)))))))))
 
 ==================
 Quoted record labels
@@ -50,20 +50,20 @@ Quoted record labels
 ---
 
 (expression
-  (primitive_expression (non_empty_record_literal
+  (primitive_expression (record_literal
     (record_literal_entry
       (label)
-      (infix_operator)
+      (assign_operator)
       (expression (primitive_expression
         (numeric_literal (natural_literal)))))
     (record_literal_entry
       (label)
-      (infix_operator)
+      (assign_operator)
       (expression (primitive_expression
         (numeric_literal (natural_literal)))))
     (record_literal_entry
       (label)
-      (infix_operator)
+      (assign_operator)
       (expression (primitive_expression
         (numeric_literal (natural_literal))))))))
 
@@ -76,11 +76,11 @@ Dotted record labels
 ---
 
 (expression
-  (primitive_expression (non_empty_record_literal
+  (primitive_expression (record_literal
     (record_literal_entry
       (label)
       (selector (selector_dot) (label) (selector_dot) (label))
-      (infix_operator)
+      (assign_operator)
       (expression (primitive_expression
         (numeric_literal (natural_literal))))))))
 
@@ -93,11 +93,11 @@ Quoted dotted record labels
 ---
 
 (expression
-  (primitive_expression (non_empty_record_literal
+  (primitive_expression (record_literal
     (record_literal_entry
       (label)
       (selector (selector_dot) (label))
-      (infix_operator)
+      (assign_operator)
       (expression (primitive_expression
         (numeric_literal (natural_literal))))))))
 
@@ -113,26 +113,26 @@ Commas in record literals
 ---
 
 (expression
-  (primitive_expression (non_empty_list_literal
-    (expression (primitive_expression (non_empty_record_literal
-      (record_literal_entry (label) (infix_operator)
+  (primitive_expression (list_literal
+    (expression (primitive_expression (record_literal
+      (record_literal_entry (label) (assign_operator)
         (expression (primitive_expression
           (numeric_literal (natural_literal)))))
-      (record_literal_entry (label) (infix_operator)
+      (record_literal_entry (label) (assign_operator)
         (expression (primitive_expression
           (numeric_literal (natural_literal))))))))
-    (expression (primitive_expression (non_empty_record_literal
-      (record_literal_entry (label) (infix_operator)
+    (expression (primitive_expression (record_literal
+      (record_literal_entry (label) (assign_operator)
         (expression (primitive_expression
           (numeric_literal (natural_literal)))))
-      (record_literal_entry (label) (infix_operator)
+      (record_literal_entry (label) (assign_operator)
         (expression (primitive_expression
           (numeric_literal (natural_literal))))))))
-    (expression (primitive_expression (non_empty_record_literal
-      (record_literal_entry (label) (infix_operator)
+    (expression (primitive_expression (record_literal
+      (record_literal_entry (label) (assign_operator)
         (expression (primitive_expression
           (numeric_literal (natural_literal)))))
-      (record_literal_entry (label) (infix_operator)
+      (record_literal_entry (label) (assign_operator)
         (expression (primitive_expression
           (numeric_literal (natural_literal)))))))))))
 
@@ -148,21 +148,21 @@ Commas in record types
 ---
 
 (expression
-  (primitive_expression (non_empty_list_literal
-    (expression (primitive_expression (non_empty_record_literal
-      (record_type_entry (label) (infix_operator)
+  (primitive_expression (list_literal
+    (expression (primitive_expression (record_type
+      (record_type_entry (label) (type_operator)
         (expression (primitive_expression (identifier (label)))))
-      (record_type_entry (label) (infix_operator)
+      (record_type_entry (label) (type_operator)
         (expression (primitive_expression (identifier (label))))))))
-    (expression (primitive_expression (non_empty_record_literal
-      (record_type_entry (label) (infix_operator)
+    (expression (primitive_expression (record_type
+      (record_type_entry (label) (type_operator)
         (expression (primitive_expression (identifier (label)))))
-      (record_type_entry (label) (infix_operator)
+      (record_type_entry (label) (type_operator)
         (expression (primitive_expression (identifier (label))))))))
-    (expression (primitive_expression (non_empty_record_literal
-      (record_type_entry (label) (infix_operator)
+    (expression (primitive_expression (record_type
+      (record_type_entry (label) (type_operator)
         (expression (primitive_expression (identifier (label)))))
-      (record_type_entry (label) (infix_operator)
+      (record_type_entry (label) (type_operator)
         (expression (primitive_expression (identifier (label)))))))))))
 
 ==================
@@ -177,25 +177,25 @@ Record literal puns
 ---
 
 (expression
-  (primitive_expression (non_empty_list_literal
-    (expression (primitive_expression (non_empty_record_literal
+  (primitive_expression (list_literal
+    (expression (primitive_expression (record_literal
       (record_literal_entry (label))
       (record_literal_entry (label))
       (record_literal_entry (label)))))
-    (expression (primitive_expression (non_empty_record_literal
+    (expression (primitive_expression (record_literal
       (record_literal_entry (label))
-      (record_literal_entry (label) (infix_operator)
+      (record_literal_entry (label) (assign_operator)
         (expression (primitive_expression
           (numeric_literal (natural_literal)))))
       (record_literal_entry (label))
       (record_literal_entry
         (label) (selector (selector_dot) (label) (selector_dot) (label))
-        (infix_operator)
+        (assign_operator)
         (expression (primitive_expression
           (numeric_literal (natural_literal))))))))
-    (expression (primitive_expression (non_empty_record_literal
+    (expression (primitive_expression (record_literal
       (record_literal_entry (label))
-      (record_literal_entry (label) (infix_operator)
+      (record_literal_entry (label) (assign_operator)
         (expression (primitive_expression
           (numeric_literal (natural_literal)))))))))))
 
@@ -211,10 +211,13 @@ Empty record literal
 ---
 
 (expression
-  (primitive_expression (non_empty_list_literal
-    (expression (primitive_expression (empty_record_literal)))
-    (expression (primitive_expression (empty_record_literal)))
-    (expression (primitive_expression (empty_record_literal))))))
+  (primitive_expression (list_literal
+    (expression (primitive_expression
+      (record_literal (empty_record_literal))))
+    (expression (primitive_expression
+      (record_literal (empty_record_literal))))
+    (expression (primitive_expression
+      (record_literal (empty_record_literal)))))))
 
 ==================
 Empty record type
@@ -227,6 +230,6 @@ Empty record type
 ---
 
 (expression
-  (primitive_expression (non_empty_list_literal
-    (expression (primitive_expression (non_empty_record_literal)))
-    (expression (primitive_expression (non_empty_record_literal))))))
+  (primitive_expression (list_literal
+    (expression (primitive_expression (record_type)))
+    (expression (primitive_expression (record_type))))))

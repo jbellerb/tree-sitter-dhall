@@ -28,6 +28,7 @@ module.exports = grammar({
   inline: $ => [
     $.type,
     $.annotated_expression,
+    $.empty_list_literal,
   ],
 
   word: $ => $.label,
@@ -39,7 +40,7 @@ module.exports = grammar({
       $.empty_list_literal,
     ),
     label: $ => /`[ -_a-~]*`|[A-Z_a-z][0-9\-/A-Z_a-z]*/,
-    type: $ => seq(alias(':', $.infix_operator), field('type', $.expression)),
+    type: $ => seq(alias(':', $.type_operator), field('type', $.expression)),
 
     _label_or_some: $ => choice($.label, alias('Some', $.label)),
 
@@ -110,11 +111,14 @@ module.exports = grammar({
     ),
 
     empty_list_literal: $ => seq(
-      '[',
-      optional(','),
-      ']',
+      alias($._empty_list_literal_primitive, $.primitive_expression),
       $.type,
     ),
+    _empty_list_literal_primitive: $ => alias(
+      $._empty_list_literal_text,
+      $.list_literal,
+    ),
+    _empty_list_literal_text: $ => seq('[', optional(','), ']'),
 
     _operator_expression: $ => choice(
       $.equivalent_expression,
@@ -166,9 +170,9 @@ module.exports = grammar({
       choice(
         $.numeric_literal,
         $.text_literal,
-        $.non_empty_list_literal,
-        $.empty_record_literal,
-        $.non_empty_record_literal,
+        alias($.non_empty_list_literal, $.list_literal),
+        $.record_literal,
+        $.record_type,
         $.identifier,
         seq('(', $.expression, ')'),
       ),
@@ -254,29 +258,19 @@ module.exports = grammar({
       ']',
     ),
 
-    empty_record_literal: $ => seq(
+    record_literal: $ => seq(
       '{',
       optional(','),
-      '=',
-      optional(','),
-      '}',
-    ),
-    non_empty_record_literal: $ => seq(
-      '{',
-      optional(','),
-      optional(seq(
-        choice(
-          seq($.record_type_entry, repeat(seq(',', $.record_type_entry))),
-          seq(
-            $.record_literal_entry,
-            repeat(seq(',', $.record_literal_entry)),
-          ),
+      choice(
+        alias('=', $.empty_record_literal),
+        seq(
+          $.record_literal_entry,
+          repeat(seq(',', $.record_literal_entry)),
         ),
-        optional(','),
-      )),
+      ),
+      optional(','),
       '}',
     ),
-    record_type_entry: $ => seq($._label_or_some, $.type),
     record_literal_entry: $ => seq(
       $._label_or_some,
       optional(seq(
@@ -284,10 +278,22 @@ module.exports = grammar({
           repeat(seq(alias('.', $.selector_dot), $._label_or_some)),
           $.selector,
         ),
-        alias('=', $.infix_operator),
+        alias('=', $.assign_operator),
         $.expression,
       )),
     ),
+
+    record_type: $ => seq(
+      '{',
+      optional(','),
+      optional(seq(
+        $.record_type_entry,
+        repeat(seq(',', $.record_type_entry)),
+        optional(','),
+      )),
+      '}',
+    ),
+    record_type_entry: $ => seq($._label_or_some, $.type),
 
     identifier: $ => choice(
       // TODO: exclude reserved labels (implicit?)

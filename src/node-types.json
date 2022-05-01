@@ -307,37 +307,6 @@
     }
   },
   {
-    "type": "empty_list_literal",
-    "named": true,
-    "fields": {
-      "type": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "expression",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "infix_operator",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "empty_record_literal",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "equal_expression",
     "named": true,
     "fields": {},
@@ -523,10 +492,6 @@
           "named": true
         },
         {
-          "type": "empty_list_literal",
-          "named": true
-        },
-        {
           "type": "equal_expression",
           "named": true
         },
@@ -536,10 +501,6 @@
         },
         {
           "type": "import_alt_expression",
-          "named": true
-        },
-        {
-          "type": "infix_operator",
           "named": true
         },
         {
@@ -572,6 +533,10 @@
         },
         {
           "type": "times_expression",
+          "named": true
+        },
+        {
+          "type": "type_operator",
           "named": true
         }
       ]
@@ -800,22 +765,7 @@
     }
   },
   {
-    "type": "non_empty_list_literal",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "expression",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "non_empty_record_literal",
+    "type": "list_literal",
     "named": true,
     "fields": {},
     "children": {
@@ -823,11 +773,7 @@
       "required": false,
       "types": [
         {
-          "type": "record_literal_entry",
-          "named": true
-        },
-        {
-          "type": "record_type_entry",
+          "type": "expression",
           "named": true
         }
       ]
@@ -1176,10 +1122,6 @@
       "required": true,
       "types": [
         {
-          "type": "empty_record_literal",
-          "named": true
-        },
-        {
           "type": "expression",
           "named": true
         },
@@ -1188,11 +1130,7 @@
           "named": true
         },
         {
-          "type": "non_empty_list_literal",
-          "named": true
-        },
-        {
-          "type": "non_empty_record_literal",
+          "type": "list_literal",
           "named": true
         },
         {
@@ -1200,7 +1138,34 @@
           "named": true
         },
         {
+          "type": "record_literal",
+          "named": true
+        },
+        {
+          "type": "record_type",
+          "named": true
+        },
+        {
           "type": "text_literal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "record_literal",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "empty_record_literal",
+          "named": true
+        },
+        {
+          "type": "record_literal_entry",
           "named": true
         }
       ]
@@ -1215,11 +1180,11 @@
       "required": true,
       "types": [
         {
-          "type": "expression",
+          "type": "assign_operator",
           "named": true
         },
         {
-          "type": "infix_operator",
+          "type": "expression",
           "named": true
         },
         {
@@ -1228,6 +1193,21 @@
         },
         {
           "type": "selector",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "record_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "record_type_entry",
           "named": true
         }
       ]
@@ -1253,11 +1233,11 @@
       "required": true,
       "types": [
         {
-          "type": "infix_operator",
+          "type": "label",
           "named": true
         },
         {
-          "type": "label",
+          "type": "type_operator",
           "named": true
         }
       ]
@@ -1499,10 +1479,6 @@
     "named": false
   },
   {
-    "type": "=",
-    "named": false
-  },
-  {
     "type": "@",
     "named": false
   },
@@ -1687,6 +1663,10 @@
     "named": false
   },
   {
+    "type": "assign_operator",
+    "named": true
+  },
+  {
     "type": "block_comment_close",
     "named": true
   },
@@ -1705,6 +1685,10 @@
   {
     "type": "else",
     "named": false
+  },
+  {
+    "type": "empty_record_literal",
+    "named": true
   },
   {
     "type": "forall",
@@ -1769,6 +1753,10 @@
   {
     "type": "toMap",
     "named": false
+  },
+  {
+    "type": "type_operator",
+    "named": true
   },
   {
     "type": "using",

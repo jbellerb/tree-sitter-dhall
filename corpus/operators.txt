@@ -15,7 +15,7 @@ Boolean operators
 ---
 
 (expression
-  (primitive_expression (non_empty_list_literal
+  (primitive_expression (list_literal
     (expression (and_expression
       (primitive_expression (identifier (label)))
       (infix_operator)
@@ -86,7 +86,7 @@ Arithmetic operators
 ---
 
 (expression
-  (primitive_expression (non_empty_list_literal
+  (primitive_expression (list_literal
     (expression (plus_expression
       (primitive_expression (identifier (label)))
       (infix_operator)
@@ -131,7 +131,7 @@ Record merge operators
 ---
 
 (expression
-  (primitive_expression (non_empty_list_literal
+  (primitive_expression (list_literal
     (expression (combine_types_expression
       (primitive_expression (identifier (label)))
       (infix_operator)
@@ -190,7 +190,7 @@ Record merge unicode operators
 ---
 
 (expression
-  (primitive_expression (non_empty_list_literal
+  (primitive_expression (list_literal
     (expression (combine_types_expression
       (primitive_expression (identifier (label)))
       (infix_operator)
@@ -247,7 +247,7 @@ Append operators
 ---
 
 (expression
-  (primitive_expression (non_empty_list_literal
+  (primitive_expression (list_literal
     (expression (list_append_expression
       (primitive_expression (identifier (label)))
       (infix_operator)
@@ -290,7 +290,7 @@ Alternative and equivalence operators
 ---
 
 (expression
-  (primitive_expression (non_empty_list_literal
+  (primitive_expression (list_literal
     (expression (import_alt_expression
       (primitive_expression (identifier (label)))
       (infix_operator)

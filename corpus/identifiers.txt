@@ -45,7 +45,7 @@ Builtins
 ---
 
 (expression
-  (primitive_expression (non_empty_list_literal
+  (primitive_expression (list_literal
     (expression (primitive_expression (identifier (builtin))))
     (expression (primitive_expression (identifier (builtin))))
     (expression (primitive_expression (identifier (builtin))))

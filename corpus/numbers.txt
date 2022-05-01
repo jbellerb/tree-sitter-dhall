@@ -7,7 +7,7 @@ Natural literals
 ---
 
 (expression (primitive_expression
-  (non_empty_list_literal
+  (list_literal
     (expression (primitive_expression
       (numeric_literal (natural_literal))))
     (expression (primitive_expression
@@ -24,7 +24,7 @@ Integer literals
 ---
 
 (expression (primitive_expression
-  (non_empty_list_literal
+  (list_literal
     (expression (primitive_expression
       (numeric_literal (integer_literal))))
     (expression (primitive_expression
@@ -41,7 +41,7 @@ Double literals
 ---
 
 (expression (primitive_expression
-  (non_empty_list_literal
+  (list_literal
     (expression (primitive_expression
       (numeric_literal (double_literal))))
     (expression (primitive_expression
@@ -64,7 +64,7 @@ Special double literals
 ---
 
 (expression (primitive_expression
-  (non_empty_list_literal
+  (list_literal
     (expression (primitive_expression
       (numeric_literal (double_literal))))
     (expression (primitive_expression
@@ -85,7 +85,7 @@ Hexadecimal natural and integer literals
 ---
 
 (expression (primitive_expression
-  (non_empty_list_literal
+  (list_literal
     (expression (primitive_expression
       (numeric_literal (natural_literal))))
     (expression (primitive_expression
