@@ -4,6 +4,8 @@
 - [x] unterminated block comment
 - [x] list of lists
 - [x] list whitespace
+- [x] basic selectors
+- [ ] type selectors
 - [x] de Bruijn indices
 
 ## dhall-lang tests
@@ -253,41 +255,41 @@
 - [ ] unit/import/urls/port
 - [ ] unit/import/urls/potPourri
 - [ ] unit/import/urls/userinfo
-- [ ] unit/operators/BoolAnd
-- [ ] unit/operators/BoolAndAssoc
-- [ ] unit/operators/BoolEQ
-- [ ] unit/operators/BoolEQAssoc
-- [ ] unit/operators/BoolNE
-- [ ] unit/operators/BoolNEAssoc
-- [ ] unit/operators/BoolOr
-- [ ] unit/operators/BoolOrAssoc
-- [ ] unit/operators/Equivalence
-- [ ] unit/operators/ImportAlt
-- [ ] unit/operators/ImportAltAssoc
-- [ ] unit/operators/ListAppend
-- [ ] unit/operators/ListAppendAssoc
-- [ ] unit/operators/NaturalPlus
-- [ ] unit/operators/NaturalPlusAssoc
-- [ ] unit/operators/NaturalTimes
-- [ ] unit/operators/NaturalTimesAssoc
-- [ ] unit/operators/PrecedenceBool
-- [ ] unit/operators/PrecedenceEquivalence
-- [ ] unit/operators/PrecedenceNat
-- [ ] unit/operators/PrecedenceRecord
-- [ ] unit/operators/RecursiveRecordMerge
-- [ ] unit/operators/RecursiveRecordMergeAssoc
-- [ ] unit/operators/RecursiveRecordMergeUnicode
-- [ ] unit/operators/RecursiveRecordMergeUnicodeAssoc
-- [ ] unit/operators/RecursiveRecordTypeMerge
-- [ ] unit/operators/RecursiveRecordTypeMergeAssoc
-- [ ] unit/operators/RecursiveRecordTypeMergeUnicode
-- [ ] unit/operators/RecursiveRecordTypeMergeUnicodeAssoc
-- [ ] unit/operators/RightBiasedRecordMerge
-- [ ] unit/operators/RightBiasedRecordMergeAssoc
-- [ ] unit/operators/RightBiasedRecordMergeUnicode
-- [ ] unit/operators/RightBiasedRecordMergeUnicodeAssoc
-- [ ] unit/operators/TextAppend
-- [ ] unit/operators/TextAppendAssoc
+- [x] unit/operators/BoolAnd
+- [x] unit/operators/BoolAndAssoc
+- [x] unit/operators/BoolEQ
+- [x] unit/operators/BoolEQAssoc
+- [x] unit/operators/BoolNE
+- [x] unit/operators/BoolNEAssoc
+- [x] unit/operators/BoolOr
+- [x] unit/operators/BoolOrAssoc
+- [x] unit/operators/Equivalence
+- [x] unit/operators/ImportAlt
+- [x] unit/operators/ImportAltAssoc
+- [x] unit/operators/ListAppend
+- [x] unit/operators/ListAppendAssoc
+- [x] unit/operators/NaturalPlus
+- [x] unit/operators/NaturalPlusAssoc
+- [x] unit/operators/NaturalTimes
+- [x] unit/operators/NaturalTimesAssoc
+- [x] unit/operators/PrecedenceBool
+- [x] unit/operators/PrecedenceEquivalence
+- [x] unit/operators/PrecedenceNat
+- [x] unit/operators/PrecedenceRecord
+- [x] unit/operators/RecursiveRecordMerge
+- [x] unit/operators/RecursiveRecordMergeAssoc
+- [x] unit/operators/RecursiveRecordMergeUnicode
+- [x] unit/operators/RecursiveRecordMergeUnicodeAssoc
+- [x] unit/operators/RecursiveRecordTypeMerge
+- [x] unit/operators/RecursiveRecordTypeMergeAssoc
+- [x] unit/operators/RecursiveRecordTypeMergeUnicode
+- [x] unit/operators/RecursiveRecordTypeMergeUnicodeAssoc
+- [x] unit/operators/RightBiasedRecordMerge
+- [x] unit/operators/RightBiasedRecordMergeAssoc
+- [x] unit/operators/RightBiasedRecordMergeUnicode
+- [x] unit/operators/RightBiasedRecordMergeUnicodeAssoc
+- [x] unit/operators/TextAppend
+- [x] unit/operators/TextAppendAssoc
 - [ ] usingToMap
 - [ ] whitespace
 - [ ] whitespaceBuffet

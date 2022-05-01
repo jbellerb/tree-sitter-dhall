@@ -2,8 +2,8 @@ const digits = /[0-9]+/;
 const hexadecimal_natural = /0x[0-9A-F]+/;
 const decimal_double_exponent = /e[+-]?[0-9]+/;
 
-const infix_operator = (expression, operator) =>
-  prec.left(seq(expression, operator, expression));
+const operator = (precedence, expression, symbol) =>
+  prec.left(precedence, seq(expression, symbol, expression));
 
 module.exports = grammar({
   name: 'dhall',
@@ -79,30 +79,83 @@ module.exports = grammar({
     ),
 
     _operator_expression: $ => choice(
-      // TODO: the rest of the operators
+      $.equivalent_expression,
+      $.import_alt_expression,
+      $.or_expression,
+      $.plus_expression,
+      $.text_append_expression,
+      $.list_append_expression,
+      $.and_expression,
+      $.combine_expression,
+      $.prefer_expression,
+      $.combine_types_expression,
+      $.times_expression,
       $.equal_expression,
-      $._application_expression,
+      $.not_equal_expression,
+      $.application_expression,
+      $._import_expression,
     ),
-    equal_expression: $ => infix_operator($._operator_expression, '=='),
+    equivalent_expression: $ => operator(
+      0,
+      $._operator_expression,
+      choice('\u2261', '==='),
+    ),
+    import_alt_expression: $ => operator(1, $._operator_expression, '?'),
+    or_expression: $ => operator(2, $._operator_expression, '||'),
+    plus_expression: $ => operator(3, $._operator_expression, '+'),
+    text_append_expression: $ => operator(4, $._operator_expression, '++'),
+    list_append_expression: $ => operator(5, $._operator_expression, '#'),
+    and_expression: $ => operator(6, $._operator_expression, '&&'),
+    combine_expression: $ => operator(
+      7,
+      $._operator_expression,
+      choice('\u2227', '/\\'),
+    ),
+    prefer_expression: $ => operator(
+      8,
+      $._operator_expression,
+      choice('\u2AFD', '//'),
+    ),
+    combine_types_expression: $ => operator(
+      9,
+      $._operator_expression,
+      choice('\u2A53', '//\\\\'),
+    ),
+    times_expression: $ => operator(10, $._operator_expression, '*'),
+    equal_expression: $ => operator(11, $._operator_expression, '=='),
+    not_equal_expression: $ => operator(12, $._operator_expression, '!='),
 
-    _application_expression: $ => seq(
+    application_expression: $ => seq(
       choice(
         seq('merge', $._import_expression, $._import_expression),
         seq('Some', $._import_expression),
         seq('toMap', $._import_expression),
         seq('showConstructor', $._import_expression),
-        $._import_expression,
+        seq($._import_expression, $._import_expression),
       ),
+      repeat($._import_expression),
     ),
 
     _import_expression: $ => choice(
       // TODO: $.import,
       seq($._selector_expression, optional(seq('::', $._selector_expression))),
     ),
-    _selector_expression: $ => seq(
-      $.primitive_expression,
-      // repeat(seq('.', $.selector)),
+    _selector_expression: $ => seq($.primitive_expression, repeat($.selector)),
+    selector: $ => seq(
+      '.',
+      choice($.label, $.label_set, $.type_selector),
     ),
+    label_set: $ => seq(
+      '{',
+      optional(','),
+      optional(seq(
+        choice($.label, 'Some'),
+        repeat(seq(',', choice($.label, 'Some'))),
+      )),
+      optional(','),
+      '}',
+    ),
+    type_selector: $ => seq('(', $.expression, ')'),
 
     primitive_expression: $ => choice(
       $.numeric_literal,

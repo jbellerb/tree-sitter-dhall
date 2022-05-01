@@ -108,5 +108,7 @@ Bool@0
 ---
 
 (expression
-  (ERROR)
-  (primitive_expression (numeric_literal (natural_literal))))
+  (application_expression
+    (primitive_expression (identifier (builtin)))
+    (ERROR)
+    (primitive_expression (numeric_literal (natural_literal)))))

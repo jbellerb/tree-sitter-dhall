@@ -1,0 +1,350 @@
+==================
+Boolean operators
+==================
+
+[ a && b
+, a && b && c && d
+, a || b
+, a || b || c || d
+, a == b
+, a == b == c == d
+, a != b
+, a != b != c != d
+]
+
+---
+
+(expression
+  (primitive_expression (non_empty_list_literal
+    (expression (and_expression
+      (primitive_expression (identifier (label)))
+      (primitive_expression (identifier (label)))))
+    (expression (and_expression
+      (and_expression
+        (and_expression
+          (primitive_expression (identifier (label)))
+          (primitive_expression (identifier (label))))
+        (primitive_expression (identifier (label))))
+      (primitive_expression (identifier (label)))))
+    (expression (or_expression
+      (primitive_expression (identifier (label)))
+      (primitive_expression (identifier (label)))))
+    (expression (or_expression
+      (or_expression
+        (or_expression
+          (primitive_expression (identifier (label)))
+          (primitive_expression (identifier (label))))
+        (primitive_expression (identifier (label))))
+      (primitive_expression (identifier (label)))))
+    (expression (equal_expression
+      (primitive_expression (identifier (label)))
+      (primitive_expression (identifier (label)))))
+    (expression (equal_expression
+      (equal_expression
+        (equal_expression
+          (primitive_expression (identifier (label)))
+          (primitive_expression (identifier (label))))
+        (primitive_expression (identifier (label))))
+      (primitive_expression (identifier (label)))))
+    (expression (not_equal_expression
+      (primitive_expression (identifier (label)))
+      (primitive_expression (identifier (label)))))
+    (expression (not_equal_expression
+      (not_equal_expression
+        (not_equal_expression
+          (primitive_expression (identifier (label)))
+          (primitive_expression (identifier (label))))
+        (primitive_expression (identifier (label))))
+      (primitive_expression (identifier (label))))))))
+
+==================
+Arithmetic operators
+==================
+
+[ a + b
+, a + b + c + d
+, a * b
+, a * b * c * d
+]
+
+---
+
+(expression
+  (primitive_expression (non_empty_list_literal
+    (expression (plus_expression
+      (primitive_expression (identifier (label)))
+      (primitive_expression (identifier (label)))))
+    (expression (plus_expression
+      (plus_expression
+        (plus_expression
+          (primitive_expression (identifier (label)))
+          (primitive_expression (identifier (label))))
+        (primitive_expression (identifier (label))))
+      (primitive_expression (identifier (label)))))
+    (expression (times_expression
+      (primitive_expression (identifier (label)))
+      (primitive_expression (identifier (label)))))
+    (expression (times_expression
+      (times_expression
+        (times_expression
+          (primitive_expression (identifier (label)))
+          (primitive_expression (identifier (label))))
+        (primitive_expression (identifier (label))))
+      (primitive_expression (identifier (label))))))))
+
+==================
+Record merge operators
+==================
+
+[ a //\\ b
+, a //\\ b //\\ c //\\ d
+, a /\ b
+, a /\ b /\ c /\ d
+, a // b
+, a // b // c // d
+]
+
+---
+
+(expression
+  (primitive_expression (non_empty_list_literal
+    (expression (combine_types_expression
+      (primitive_expression (identifier (label)))
+      (primitive_expression (identifier (label)))))
+    (expression (combine_types_expression
+      (combine_types_expression
+        (combine_types_expression
+          (primitive_expression (identifier (label)))
+          (primitive_expression (identifier (label))))
+        (primitive_expression (identifier (label))))
+      (primitive_expression (identifier (label)))))
+    (expression (combine_expression
+      (primitive_expression (identifier (label)))
+      (primitive_expression (identifier (label)))))
+    (expression (combine_expression
+      (combine_expression
+        (combine_expression
+          (primitive_expression (identifier (label)))
+          (primitive_expression (identifier (label))))
+        (primitive_expression (identifier (label))))
+      (primitive_expression (identifier (label)))))
+    (expression (prefer_expression
+      (primitive_expression (identifier (label)))
+      (primitive_expression (identifier (label)))))
+    (expression (prefer_expression
+      (prefer_expression
+        (prefer_expression
+          (primitive_expression (identifier (label)))
+          (primitive_expression (identifier (label))))
+        (primitive_expression (identifier (label))))
+      (primitive_expression (identifier (label))))))))
+
+==================
+Record merge unicode operators
+==================
+
+[ a ⩓ b
+, a ⩓ b ⩓ c ⩓ d
+, a ∧ b
+, a ∧ b ∧ c ∧ d
+, a ⫽ b
+, a ⫽ b ⫽ c ⫽ d
+]
+
+---
+
+(expression
+  (primitive_expression (non_empty_list_literal
+    (expression (combine_types_expression
+      (primitive_expression (identifier (label)))
+      (primitive_expression (identifier (label)))))
+    (expression (combine_types_expression
+      (combine_types_expression
+        (combine_types_expression
+          (primitive_expression (identifier (label)))
+          (primitive_expression (identifier (label))))
+        (primitive_expression (identifier (label))))
+      (primitive_expression (identifier (label)))))
+    (expression (combine_expression
+      (primitive_expression (identifier (label)))
+      (primitive_expression (identifier (label)))))
+    (expression (combine_expression
+      (combine_expression
+        (combine_expression
+          (primitive_expression (identifier (label)))
+          (primitive_expression (identifier (label))))
+        (primitive_expression (identifier (label))))
+      (primitive_expression (identifier (label)))))
+    (expression (prefer_expression
+      (primitive_expression (identifier (label)))
+      (primitive_expression (identifier (label)))))
+    (expression (prefer_expression
+      (prefer_expression
+        (prefer_expression
+          (primitive_expression (identifier (label)))
+          (primitive_expression (identifier (label))))
+        (primitive_expression (identifier (label))))
+      (primitive_expression (identifier (label))))))))
+
+==================
+Append operators
+==================
+
+[ a # b
+, a # b # c # d
+, a ++ b
+, a ++ b ++ c ++ d
+]
+
+---
+
+(expression
+  (primitive_expression (non_empty_list_literal
+    (expression (list_append_expression
+      (primitive_expression (identifier (label)))
+      (primitive_expression (identifier (label)))))
+    (expression (list_append_expression
+      (list_append_expression
+        (list_append_expression
+          (primitive_expression (identifier (label)))
+          (primitive_expression (identifier (label))))
+        (primitive_expression (identifier (label))))
+      (primitive_expression (identifier (label)))))
+    (expression (text_append_expression
+      (primitive_expression (identifier (label)))
+      (primitive_expression (identifier (label)))))
+    (expression (text_append_expression
+      (text_append_expression
+        (text_append_expression
+          (primitive_expression (identifier (label)))
+          (primitive_expression (identifier (label))))
+        (primitive_expression (identifier (label))))
+      (primitive_expression (identifier (label))))))))
+
+==================
+Alternative and equivalence operators
+==================
+
+[ a ? b
+, a ? b ? c ? d
+, a === b
+, a === b === c === d
+]
+
+---
+
+(expression
+  (primitive_expression (non_empty_list_literal
+    (expression (import_alt_expression
+      (primitive_expression (identifier (label)))
+      (primitive_expression (identifier (label)))))
+    (expression (import_alt_expression
+      (import_alt_expression
+        (import_alt_expression
+          (primitive_expression (identifier (label)))
+          (primitive_expression (identifier (label))))
+        (primitive_expression (identifier (label))))
+      (primitive_expression (identifier (label)))))
+    (expression (equivalent_expression
+      (primitive_expression (identifier (label)))
+      (primitive_expression (identifier (label)))))
+    (expression (equivalent_expression
+      (equivalent_expression
+        (equivalent_expression
+          (primitive_expression (identifier (label)))
+          (primitive_expression (identifier (label))))
+        (primitive_expression (identifier (label))))
+      (primitive_expression (identifier (label))))))))
+
+==================
+Boolean operator precedence
+==================
+
+a && b || c d == e || f != g && h || i
+
+---
+
+(expression
+  (or_expression
+    (or_expression
+      (or_expression
+        (and_expression
+          (primitive_expression (identifier (label)))
+          (primitive_expression (identifier (label))))
+        (equal_expression
+          (application_expression
+            (primitive_expression (identifier (label)))
+            (primitive_expression (identifier (label))))
+          (primitive_expression (identifier (label)))))
+      (and_expression
+        (not_equal_expression
+          (primitive_expression (identifier (label)))
+          (primitive_expression (identifier (label))))
+        (primitive_expression (identifier (label)))))
+    (primitive_expression (identifier (label)))))
+
+==================
+Arithmetic operator precedence
+==================
+
+a + b * d + e f * (g + h)
+
+---
+
+(expression
+  (plus_expression
+    (plus_expression
+      (primitive_expression (identifier (label)))
+      (times_expression
+        (primitive_expression (identifier (label)))
+        (primitive_expression (identifier (label)))))
+    (times_expression
+      (application_expression
+        (primitive_expression (identifier (label)))
+        (primitive_expression (identifier (label))))
+      (primitive_expression (expression (plus_expression
+        (primitive_expression (identifier (label)))
+        (primitive_expression (identifier (label)))))))))
+
+==================
+Record operator precedence
+==================
+
+a // b c /\ d ⫽ e.{x} ∧ f
+
+---
+
+(expression
+  (combine_expression
+    (combine_expression
+      (prefer_expression
+        (primitive_expression (identifier (label)))
+        (application_expression
+          (primitive_expression (identifier (label)))
+          (primitive_expression (identifier (label)))))
+      (prefer_expression
+        (primitive_expression (identifier (label)))
+        (primitive_expression (identifier (label)))
+        (selector (label_set (label)))))
+    (primitive_expression (identifier (label)))))
+
+==================
+Equivalence operator precedence
+==================
+
+2 + 3 * 4 === 4 * 3 + 2
+
+---
+
+(expression
+  (equivalent_expression
+    (plus_expression
+      (primitive_expression (numeric_literal (natural_literal)))
+      (times_expression
+        (primitive_expression (numeric_literal (natural_literal)))
+        (primitive_expression (numeric_literal (natural_literal)))))
+    (plus_expression
+      (times_expression
+        (primitive_expression (numeric_literal (natural_literal)))
+        (primitive_expression (numeric_literal (natural_literal))))
+      (primitive_expression (numeric_literal (natural_literal))))))

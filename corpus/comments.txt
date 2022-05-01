@@ -95,9 +95,11 @@ Unterminated block comment
 ---
 
 (expression
-  (ERROR (block_comment_open) (label))
-  (block_comment
-    (block_comment_open)
-    (block_comment_content)
-    (block_comment_close))
-  (primitive_expression (numeric_literal (natural_literal))))
+  (ERROR (block_comment_open))
+  (application_expression
+    (primitive_expression (identifier (label)))
+    (block_comment
+      (block_comment_open)
+      (block_comment_content)
+      (block_comment_close))
+    (primitive_expression (numeric_literal (natural_literal)))))
