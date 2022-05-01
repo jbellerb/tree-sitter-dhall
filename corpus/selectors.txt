@@ -7,8 +7,9 @@ foo.bar
 ---
 
 (expression
-  (primitive_expression (identifier (label)))
-  (selector (label)))
+  (primitive_expression
+    (identifier (label))
+    (selector (label))))
 
 ==================
 Field projection
@@ -19,8 +20,9 @@ foo.{ bar, baz }
 ---
 
 (expression
-  (primitive_expression (identifier (label)))
-  (selector (label_set (label) (label))))
+  (primitive_expression
+    (identifier (label))
+    (selector (label_set (label) (label)))))
 
 ==================
 Type selection
@@ -31,6 +33,7 @@ foo.(bar)
 ---
 
 (expression
-  (primitive_expression (identifier (label)))
-  (selector (type_selector (expression
-    (primitive_expression (identifier (label)))))))
+  (primitive_expression
+    (identifier (label))
+    (selector (type_selector (expression
+      (primitive_expression (identifier (label))))))))

@@ -8,6 +8,10 @@
         {
           "type": "SYMBOL",
           "name": "annotated_expression"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "empty_list_literal"
         }
       ]
     },
@@ -190,8 +194,12 @@
                   "value": ":"
                 },
                 {
-                  "type": "SYMBOL",
-                  "name": "expression"
+                  "type": "FIELD",
+                  "name": "type",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "expression"
+                  }
                 }
               ]
             },
@@ -199,6 +207,43 @@
               "type": "BLANK"
             }
           ]
+        }
+      ]
+    },
+    "empty_list_literal": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "["
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "]"
+        },
+        {
+          "type": "STRING",
+          "value": ":"
+        },
+        {
+          "type": "FIELD",
+          "name": "type",
+          "content": {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
         }
       ]
     },
@@ -278,17 +323,22 @@
             "name": "_operator_expression"
           },
           {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "≡"
-              },
-              {
-                "type": "STRING",
-                "value": "==="
-              }
-            ]
+            "type": "ALIAS",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "≡"
+                },
+                {
+                  "type": "STRING",
+                  "value": "==="
+                }
+              ]
+            },
+            "named": true,
+            "value": "infix_operator"
           },
           {
             "type": "SYMBOL",
@@ -308,8 +358,13 @@
             "name": "_operator_expression"
           },
           {
-            "type": "STRING",
-            "value": "?"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "?"
+            },
+            "named": true,
+            "value": "infix_operator"
           },
           {
             "type": "SYMBOL",
@@ -329,8 +384,13 @@
             "name": "_operator_expression"
           },
           {
-            "type": "STRING",
-            "value": "||"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "||"
+            },
+            "named": true,
+            "value": "infix_operator"
           },
           {
             "type": "SYMBOL",
@@ -350,8 +410,13 @@
             "name": "_operator_expression"
           },
           {
-            "type": "STRING",
-            "value": "+"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "+"
+            },
+            "named": true,
+            "value": "infix_operator"
           },
           {
             "type": "SYMBOL",
@@ -371,8 +436,13 @@
             "name": "_operator_expression"
           },
           {
-            "type": "STRING",
-            "value": "++"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "++"
+            },
+            "named": true,
+            "value": "infix_operator"
           },
           {
             "type": "SYMBOL",
@@ -392,8 +462,13 @@
             "name": "_operator_expression"
           },
           {
-            "type": "STRING",
-            "value": "#"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "#"
+            },
+            "named": true,
+            "value": "infix_operator"
           },
           {
             "type": "SYMBOL",
@@ -413,8 +488,13 @@
             "name": "_operator_expression"
           },
           {
-            "type": "STRING",
-            "value": "&&"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "&&"
+            },
+            "named": true,
+            "value": "infix_operator"
           },
           {
             "type": "SYMBOL",
@@ -434,17 +514,22 @@
             "name": "_operator_expression"
           },
           {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "∧"
-              },
-              {
-                "type": "STRING",
-                "value": "/\\"
-              }
-            ]
+            "type": "ALIAS",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "∧"
+                },
+                {
+                  "type": "STRING",
+                  "value": "/\\"
+                }
+              ]
+            },
+            "named": true,
+            "value": "infix_operator"
           },
           {
             "type": "SYMBOL",
@@ -464,17 +549,22 @@
             "name": "_operator_expression"
           },
           {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "⫽"
-              },
-              {
-                "type": "STRING",
-                "value": "//"
-              }
-            ]
+            "type": "ALIAS",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "⫽"
+                },
+                {
+                  "type": "STRING",
+                  "value": "//"
+                }
+              ]
+            },
+            "named": true,
+            "value": "infix_operator"
           },
           {
             "type": "SYMBOL",
@@ -494,17 +584,22 @@
             "name": "_operator_expression"
           },
           {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "⩓"
-              },
-              {
-                "type": "STRING",
-                "value": "//\\\\"
-              }
-            ]
+            "type": "ALIAS",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "⩓"
+                },
+                {
+                  "type": "STRING",
+                  "value": "//\\\\"
+                }
+              ]
+            },
+            "named": true,
+            "value": "infix_operator"
           },
           {
             "type": "SYMBOL",
@@ -524,8 +619,13 @@
             "name": "_operator_expression"
           },
           {
-            "type": "STRING",
-            "value": "*"
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "*"
+            },
+            "named": true,
+            "value": "infix_operator"
           },
           {
             "type": "SYMBOL",
@@ -545,8 +645,13 @@
             "name": "_operator_expression"
           },
           {
-            "type": "STRING",
-            "value": "=="
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "=="
+            },
+            "named": true,
+            "value": "infix_operator"
           },
           {
             "type": "SYMBOL",
@@ -566,8 +671,13 @@
             "name": "_operator_expression"
           },
           {
-            "type": "STRING",
-            "value": "!="
+            "type": "ALIAS",
+            "content": {
+              "type": "STRING",
+              "value": "!="
+            },
+            "named": true,
+            "value": "infix_operator"
           },
           {
             "type": "SYMBOL",
@@ -670,7 +780,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "_selector_expression"
+              "name": "primitive_expression"
             },
             {
               "type": "CHOICE",
@@ -684,7 +794,7 @@
                     },
                     {
                       "type": "SYMBOL",
-                      "name": "_selector_expression"
+                      "name": "primitive_expression"
                     }
                   ]
                 },
@@ -697,12 +807,46 @@
         }
       ]
     },
-    "_selector_expression": {
+    "primitive_expression": {
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "primitive_expression"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "numeric_literal"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "text_literal"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "non_empty_list_literal"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "identifier"
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "("
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "expression"
+                },
+                {
+                  "type": "STRING",
+                  "value": ")"
+                }
+              ]
+            }
+          ]
         },
         {
           "type": "REPEAT",
@@ -841,44 +985,6 @@
         {
           "type": "STRING",
           "value": ")"
-        }
-      ]
-    },
-    "primitive_expression": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "numeric_literal"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "text_literal"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "non_empty_list_literal"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "identifier"
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "("
-            },
-            {
-              "type": "SYMBOL",
-              "name": "expression"
-            },
-            {
-              "type": "STRING",
-              "value": ")"
-            }
-          ]
         }
       ]
     },

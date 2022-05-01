@@ -2,8 +2,14 @@ const digits = /[0-9]+/;
 const hexadecimal_natural = /0x[0-9A-F]+/;
 const decimal_double_exponent = /e[+-]?[0-9]+/;
 
-const operator = (precedence, expression, symbol) =>
-  prec.left(precedence, seq(expression, symbol, expression));
+const operator = (precedence, $, symbol) => prec.left(
+  precedence,
+  seq(
+    $._operator_expression,
+    alias(symbol, $.infix_operator),
+    $._operator_expression,
+  ),
+);
 
 module.exports = grammar({
   name: 'dhall',
@@ -29,6 +35,7 @@ module.exports = grammar({
     expression: $ => choice(
       // TODO: the others
       $.annotated_expression,
+      $.empty_list_literal,
     ),
     label: $ => /`[ -_a-~]+`|[A-Z_a-z][0-9\-/A-Z_a-z]*/,
 
@@ -75,7 +82,15 @@ module.exports = grammar({
 
     annotated_expression: $ => seq(
       $._operator_expression,
-      optional(seq(':', $.expression))
+      optional(seq(':', field('type', $.expression))),
+    ),
+
+    empty_list_literal: $ => seq(
+      '[',
+      optional(','),
+      ']',
+      ':',
+      field('type', $.expression),
     ),
 
     _operator_expression: $ => choice(
@@ -95,35 +110,19 @@ module.exports = grammar({
       $.application_expression,
       $._import_expression,
     ),
-    equivalent_expression: $ => operator(
-      0,
-      $._operator_expression,
-      choice('\u2261', '==='),
-    ),
-    import_alt_expression: $ => operator(1, $._operator_expression, '?'),
-    or_expression: $ => operator(2, $._operator_expression, '||'),
-    plus_expression: $ => operator(3, $._operator_expression, '+'),
-    text_append_expression: $ => operator(4, $._operator_expression, '++'),
-    list_append_expression: $ => operator(5, $._operator_expression, '#'),
-    and_expression: $ => operator(6, $._operator_expression, '&&'),
-    combine_expression: $ => operator(
-      7,
-      $._operator_expression,
-      choice('\u2227', '/\\'),
-    ),
-    prefer_expression: $ => operator(
-      8,
-      $._operator_expression,
-      choice('\u2AFD', '//'),
-    ),
-    combine_types_expression: $ => operator(
-      9,
-      $._operator_expression,
-      choice('\u2A53', '//\\\\'),
-    ),
-    times_expression: $ => operator(10, $._operator_expression, '*'),
-    equal_expression: $ => operator(11, $._operator_expression, '=='),
-    not_equal_expression: $ => operator(12, $._operator_expression, '!='),
+    equivalent_expression: $ => operator(0, $, choice('\u2261', '===')),
+    import_alt_expression: $ => operator(1, $, '?'),
+    or_expression: $ => operator(2, $, '||'),
+    plus_expression: $ => operator(3, $, '+'),
+    text_append_expression: $ => operator(4, $, '++'),
+    list_append_expression: $ => operator(5, $, '#'),
+    and_expression: $ => operator(6, $, '&&'),
+    combine_expression: $ => operator(7, $, choice('\u2227', '/\\')),
+    prefer_expression: $ => operator(8, $, choice('\u2AFD', '//')),
+    combine_types_expression: $ => operator(9, $, choice('\u2A53', '//\\\\')),
+    times_expression: $ => operator(10, $, '*'),
+    equal_expression: $ => operator(11, $, '=='),
+    not_equal_expression: $ => operator(12, $, '!='),
 
     application_expression: $ => seq(
       choice(
@@ -138,9 +137,19 @@ module.exports = grammar({
 
     _import_expression: $ => choice(
       // TODO: $.import,
-      seq($._selector_expression, optional(seq('::', $._selector_expression))),
+      seq($.primitive_expression, optional(seq('::', $.primitive_expression))),
     ),
-    _selector_expression: $ => seq($.primitive_expression, repeat($.selector)),
+    primitive_expression: $ => seq(
+      choice(
+        $.numeric_literal,
+        $.text_literal,
+        $.non_empty_list_literal,
+        $.identifier,
+        seq('(', $.expression, ')'),
+      ),
+      repeat($.selector)
+    ),
+
     selector: $ => seq(
       '.',
       choice($.label, $.label_set, $.type_selector),
@@ -156,14 +165,6 @@ module.exports = grammar({
       '}',
     ),
     type_selector: $ => seq('(', $.expression, ')'),
-
-    primitive_expression: $ => choice(
-      $.numeric_literal,
-      $.text_literal,
-      $.non_empty_list_literal,
-      $.identifier,
-      seq('(', $.expression, ')'),
-    ),
 
     line_comment: $ => seq($.line_comment_prefix, $.line_comment_content),
     line_comment_prefix: $ => '--',

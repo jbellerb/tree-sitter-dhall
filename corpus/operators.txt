@@ -18,43 +18,59 @@ Boolean operators
   (primitive_expression (non_empty_list_literal
     (expression (and_expression
       (primitive_expression (identifier (label)))
+      (infix_operator)
       (primitive_expression (identifier (label)))))
     (expression (and_expression
       (and_expression
         (and_expression
           (primitive_expression (identifier (label)))
+          (infix_operator)
           (primitive_expression (identifier (label))))
+        (infix_operator)
         (primitive_expression (identifier (label))))
+      (infix_operator)
       (primitive_expression (identifier (label)))))
     (expression (or_expression
       (primitive_expression (identifier (label)))
+      (infix_operator)
       (primitive_expression (identifier (label)))))
     (expression (or_expression
       (or_expression
         (or_expression
           (primitive_expression (identifier (label)))
+          (infix_operator)
           (primitive_expression (identifier (label))))
+        (infix_operator)
         (primitive_expression (identifier (label))))
+      (infix_operator)
       (primitive_expression (identifier (label)))))
     (expression (equal_expression
       (primitive_expression (identifier (label)))
+      (infix_operator)
       (primitive_expression (identifier (label)))))
     (expression (equal_expression
       (equal_expression
         (equal_expression
           (primitive_expression (identifier (label)))
+          (infix_operator)
           (primitive_expression (identifier (label))))
+        (infix_operator)
         (primitive_expression (identifier (label))))
+      (infix_operator)
       (primitive_expression (identifier (label)))))
     (expression (not_equal_expression
       (primitive_expression (identifier (label)))
+      (infix_operator)
       (primitive_expression (identifier (label)))))
     (expression (not_equal_expression
       (not_equal_expression
         (not_equal_expression
           (primitive_expression (identifier (label)))
+          (infix_operator)
           (primitive_expression (identifier (label))))
+        (infix_operator)
         (primitive_expression (identifier (label))))
+      (infix_operator)
       (primitive_expression (identifier (label))))))))
 
 ==================
@@ -73,23 +89,31 @@ Arithmetic operators
   (primitive_expression (non_empty_list_literal
     (expression (plus_expression
       (primitive_expression (identifier (label)))
+      (infix_operator)
       (primitive_expression (identifier (label)))))
     (expression (plus_expression
       (plus_expression
         (plus_expression
           (primitive_expression (identifier (label)))
+          (infix_operator)
           (primitive_expression (identifier (label))))
+        (infix_operator)
         (primitive_expression (identifier (label))))
+      (infix_operator)
       (primitive_expression (identifier (label)))))
     (expression (times_expression
       (primitive_expression (identifier (label)))
+      (infix_operator)
       (primitive_expression (identifier (label)))))
     (expression (times_expression
       (times_expression
         (times_expression
           (primitive_expression (identifier (label)))
+          (infix_operator)
           (primitive_expression (identifier (label))))
+        (infix_operator)
         (primitive_expression (identifier (label))))
+      (infix_operator)
       (primitive_expression (identifier (label))))))))
 
 ==================
@@ -110,33 +134,45 @@ Record merge operators
   (primitive_expression (non_empty_list_literal
     (expression (combine_types_expression
       (primitive_expression (identifier (label)))
+      (infix_operator)
       (primitive_expression (identifier (label)))))
     (expression (combine_types_expression
       (combine_types_expression
         (combine_types_expression
           (primitive_expression (identifier (label)))
+          (infix_operator)
           (primitive_expression (identifier (label))))
+        (infix_operator)
         (primitive_expression (identifier (label))))
+      (infix_operator)
       (primitive_expression (identifier (label)))))
     (expression (combine_expression
       (primitive_expression (identifier (label)))
+    (infix_operator)
       (primitive_expression (identifier (label)))))
     (expression (combine_expression
       (combine_expression
         (combine_expression
           (primitive_expression (identifier (label)))
+          (infix_operator)
           (primitive_expression (identifier (label))))
+        (infix_operator)
         (primitive_expression (identifier (label))))
+      (infix_operator)
       (primitive_expression (identifier (label)))))
     (expression (prefer_expression
       (primitive_expression (identifier (label)))
+      (infix_operator)
       (primitive_expression (identifier (label)))))
     (expression (prefer_expression
       (prefer_expression
         (prefer_expression
           (primitive_expression (identifier (label)))
+          (infix_operator)
           (primitive_expression (identifier (label))))
+        (infix_operator)
         (primitive_expression (identifier (label))))
+      (infix_operator)
       (primitive_expression (identifier (label))))))))
 
 ==================
@@ -157,33 +193,45 @@ Record merge unicode operators
   (primitive_expression (non_empty_list_literal
     (expression (combine_types_expression
       (primitive_expression (identifier (label)))
+      (infix_operator)
       (primitive_expression (identifier (label)))))
     (expression (combine_types_expression
       (combine_types_expression
         (combine_types_expression
           (primitive_expression (identifier (label)))
+          (infix_operator)
           (primitive_expression (identifier (label))))
+        (infix_operator)
         (primitive_expression (identifier (label))))
+      (infix_operator)
       (primitive_expression (identifier (label)))))
     (expression (combine_expression
       (primitive_expression (identifier (label)))
+    (infix_operator)
       (primitive_expression (identifier (label)))))
     (expression (combine_expression
       (combine_expression
         (combine_expression
           (primitive_expression (identifier (label)))
+          (infix_operator)
           (primitive_expression (identifier (label))))
+        (infix_operator)
         (primitive_expression (identifier (label))))
+      (infix_operator)
       (primitive_expression (identifier (label)))))
     (expression (prefer_expression
       (primitive_expression (identifier (label)))
+      (infix_operator)
       (primitive_expression (identifier (label)))))
     (expression (prefer_expression
       (prefer_expression
         (prefer_expression
           (primitive_expression (identifier (label)))
+          (infix_operator)
           (primitive_expression (identifier (label))))
+        (infix_operator)
         (primitive_expression (identifier (label))))
+      (infix_operator)
       (primitive_expression (identifier (label))))))))
 
 ==================
@@ -202,23 +250,31 @@ Append operators
   (primitive_expression (non_empty_list_literal
     (expression (list_append_expression
       (primitive_expression (identifier (label)))
+      (infix_operator)
       (primitive_expression (identifier (label)))))
     (expression (list_append_expression
       (list_append_expression
         (list_append_expression
           (primitive_expression (identifier (label)))
+          (infix_operator)
           (primitive_expression (identifier (label))))
+        (infix_operator)
         (primitive_expression (identifier (label))))
+      (infix_operator)
       (primitive_expression (identifier (label)))))
     (expression (text_append_expression
       (primitive_expression (identifier (label)))
+      (infix_operator)
       (primitive_expression (identifier (label)))))
     (expression (text_append_expression
       (text_append_expression
         (text_append_expression
           (primitive_expression (identifier (label)))
+          (infix_operator)
           (primitive_expression (identifier (label))))
+        (infix_operator)
         (primitive_expression (identifier (label))))
+      (infix_operator)
       (primitive_expression (identifier (label))))))))
 
 ==================
@@ -237,23 +293,31 @@ Alternative and equivalence operators
   (primitive_expression (non_empty_list_literal
     (expression (import_alt_expression
       (primitive_expression (identifier (label)))
+      (infix_operator)
       (primitive_expression (identifier (label)))))
     (expression (import_alt_expression
       (import_alt_expression
         (import_alt_expression
           (primitive_expression (identifier (label)))
+          (infix_operator)
           (primitive_expression (identifier (label))))
+        (infix_operator)
         (primitive_expression (identifier (label))))
+      (infix_operator)
       (primitive_expression (identifier (label)))))
     (expression (equivalent_expression
       (primitive_expression (identifier (label)))
+      (infix_operator)
       (primitive_expression (identifier (label)))))
     (expression (equivalent_expression
       (equivalent_expression
         (equivalent_expression
           (primitive_expression (identifier (label)))
+          (infix_operator)
           (primitive_expression (identifier (label))))
+        (infix_operator)
         (primitive_expression (identifier (label))))
+      (infix_operator)
       (primitive_expression (identifier (label))))))))
 
 ==================
@@ -270,17 +334,24 @@ a && b || c d == e || f != g && h || i
       (or_expression
         (and_expression
           (primitive_expression (identifier (label)))
+          (infix_operator)
           (primitive_expression (identifier (label))))
+        (infix_operator)
         (equal_expression
           (application_expression
             (primitive_expression (identifier (label)))
             (primitive_expression (identifier (label))))
+          (infix_operator)
           (primitive_expression (identifier (label)))))
+      (infix_operator)
       (and_expression
         (not_equal_expression
           (primitive_expression (identifier (label)))
+          (infix_operator)
           (primitive_expression (identifier (label))))
+        (infix_operator)
         (primitive_expression (identifier (label)))))
+    (infix_operator)
     (primitive_expression (identifier (label)))))
 
 ==================
@@ -295,15 +366,20 @@ a + b * d + e f * (g + h)
   (plus_expression
     (plus_expression
       (primitive_expression (identifier (label)))
+      (infix_operator)
       (times_expression
         (primitive_expression (identifier (label)))
+        (infix_operator)
         (primitive_expression (identifier (label)))))
+    (infix_operator)
     (times_expression
       (application_expression
         (primitive_expression (identifier (label)))
         (primitive_expression (identifier (label))))
+      (infix_operator)
       (primitive_expression (expression (plus_expression
         (primitive_expression (identifier (label)))
+        (infix_operator)
         (primitive_expression (identifier (label)))))))))
 
 ==================
@@ -319,13 +395,18 @@ a // b c /\ d ⫽ e.{x} ∧ f
     (combine_expression
       (prefer_expression
         (primitive_expression (identifier (label)))
+        (infix_operator)
         (application_expression
           (primitive_expression (identifier (label)))
           (primitive_expression (identifier (label)))))
+      (infix_operator)
       (prefer_expression
         (primitive_expression (identifier (label)))
-        (primitive_expression (identifier (label)))
-        (selector (label_set (label)))))
+        (infix_operator)
+        (primitive_expression
+          (identifier (label))
+          (selector (label_set (label))))))
+    (infix_operator)
     (primitive_expression (identifier (label)))))
 
 ==================
@@ -340,11 +421,16 @@ Equivalence operator precedence
   (equivalent_expression
     (plus_expression
       (primitive_expression (numeric_literal (natural_literal)))
+      (infix_operator)
       (times_expression
         (primitive_expression (numeric_literal (natural_literal)))
+        (infix_operator)
         (primitive_expression (numeric_literal (natural_literal)))))
+    (infix_operator)
     (plus_expression
       (times_expression
         (primitive_expression (numeric_literal (natural_literal)))
+        (infix_operator)
         (primitive_expression (numeric_literal (natural_literal))))
+      (infix_operator)
       (primitive_expression (numeric_literal (natural_literal))))))

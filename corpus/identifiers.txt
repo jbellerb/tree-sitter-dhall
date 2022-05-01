@@ -96,6 +96,7 @@ x == x@0
 (expression
   (equal_expression
     (primitive_expression (identifier (label)))
+    (infix_operator)
     (primitive_expression (identifier
       (label) (de_bruijn_index (natural_literal))))))
 

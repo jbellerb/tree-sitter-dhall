@@ -1,0 +1,54 @@
+==================
+Basic type annotation
+==================
+
+x : T
+
+---
+
+(expression
+  (primitive_expression (identifier (label)))
+  type: (expression
+    (primitive_expression (identifier (label)))))
+
+==================
+Nested type annotations
+==================
+
+([] : List Natural) # [ 1, 2, 3 ] # ([ 1, 2, 3 ] : List Natural) : List Natural
+
+---
+
+(expression
+  (list_append_expression
+    (list_append_expression
+      (primitive_expression (expression (empty_list_literal
+        type: (expression
+          (application_expression
+            (primitive_expression (identifier (builtin)))
+            (primitive_expression (identifier (builtin))))))))
+      (infix_operator)
+      (primitive_expression (non_empty_list_literal
+        (expression
+          (primitive_expression (numeric_literal (natural_literal))))
+        (expression
+          (primitive_expression (numeric_literal (natural_literal))))
+        (expression
+          (primitive_expression (numeric_literal (natural_literal)))))))
+    (infix_operator)
+    (primitive_expression (expression
+      (primitive_expression (non_empty_list_literal
+        (expression
+          (primitive_expression (numeric_literal (natural_literal))))
+        (expression
+          (primitive_expression (numeric_literal (natural_literal))))
+        (expression
+          (primitive_expression (numeric_literal (natural_literal))))))
+      type: (expression
+        (application_expression
+          (primitive_expression (identifier (builtin)))
+          (primitive_expression (identifier (builtin))))))))
+  type: (expression
+    (application_expression
+      (primitive_expression (identifier (builtin)))
+      (primitive_expression (identifier (builtin))))))
