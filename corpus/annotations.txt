@@ -8,6 +8,7 @@ x : T
 
 (expression
   (primitive_expression (identifier (label)))
+  (infix_operator)
   type: (expression
     (primitive_expression (identifier (label)))))
 
@@ -23,6 +24,7 @@ Nested type annotations
   (list_append_expression
     (list_append_expression
       (primitive_expression (expression (empty_list_literal
+        (infix_operator)
         type: (expression
           (application_expression
             (primitive_expression (identifier (builtin)))
@@ -44,11 +46,13 @@ Nested type annotations
           (primitive_expression (numeric_literal (natural_literal))))
         (expression
           (primitive_expression (numeric_literal (natural_literal))))))
-      type: (expression
-        (application_expression
-          (primitive_expression (identifier (builtin)))
-          (primitive_expression (identifier (builtin))))))))
-  type: (expression
-    (application_expression
-      (primitive_expression (identifier (builtin)))
-      (primitive_expression (identifier (builtin))))))
+        (infix_operator)
+        type: (expression
+          (application_expression
+            (primitive_expression (identifier (builtin)))
+            (primitive_expression (identifier (builtin))))))))
+    (infix_operator)
+    type: (expression
+      (application_expression
+        (primitive_expression (identifier (builtin)))
+        (primitive_expression (identifier (builtin))))))

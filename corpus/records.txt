@@ -1,0 +1,232 @@
+==================
+Record literals
+==================
+
+{ foo = +1
+, bar = 2
+, baz = True
+} : { foo : Integer, bar : Natural, baz : Bool }
+
+---
+
+(expression
+  (primitive_expression (non_empty_record_literal
+    (record_literal_entry
+      (label)
+      (infix_operator)
+      (expression (primitive_expression
+        (numeric_literal (integer_literal)))))
+    (record_literal_entry
+      (label)
+      (infix_operator)
+      (expression (primitive_expression
+        (numeric_literal (natural_literal)))))
+    (record_literal_entry
+      (label)
+      (infix_operator)
+      (expression (primitive_expression
+        (identifier (builtin)))))))
+    (infix_operator)
+    type: (expression (primitive_expression (non_empty_record_literal
+      (record_type_entry
+        (label)
+        (infix_operator)
+        type: (expression (primitive_expression (identifier (builtin)))))
+      (record_type_entry
+        (label)
+        (infix_operator)
+        type: (expression (primitive_expression (identifier (builtin)))))
+      (record_type_entry
+        (label)
+        (infix_operator)
+        type: (expression (primitive_expression (identifier (builtin)))))))))
+
+==================
+Quoted record labels
+==================
+
+{foo = 1, `` = 2, ` ` = 3}
+
+---
+
+(expression
+  (primitive_expression (non_empty_record_literal
+    (record_literal_entry
+      (label)
+      (infix_operator)
+      (expression (primitive_expression
+        (numeric_literal (natural_literal)))))
+    (record_literal_entry
+      (label)
+      (infix_operator)
+      (expression (primitive_expression
+        (numeric_literal (natural_literal)))))
+    (record_literal_entry
+      (label)
+      (infix_operator)
+      (expression (primitive_expression
+        (numeric_literal (natural_literal))))))))
+
+==================
+Dotted record labels
+==================
+
+{ foo.bar.baz = 1 }
+
+---
+
+(expression
+  (primitive_expression (non_empty_record_literal
+    (record_literal_entry
+      (label)
+      (selector (selector_dot) (label) (selector_dot) (label))
+      (infix_operator)
+      (expression (primitive_expression
+        (numeric_literal (natural_literal))))))))
+
+==================
+Quoted dotted record labels
+==================
+
+{ `foo.bar`.baz = 1 }
+
+---
+
+(expression
+  (primitive_expression (non_empty_record_literal
+    (record_literal_entry
+      (label)
+      (selector (selector_dot) (label))
+      (infix_operator)
+      (expression (primitive_expression
+        (numeric_literal (natural_literal))))))))
+
+==================
+Commas in record literals
+==================
+
+[ { , x = 0, y = 1 }
+, { , x = 0, y = 1, }
+, { x = 0, y = 1, }
+]
+
+---
+
+(expression
+  (primitive_expression (non_empty_list_literal
+    (expression (primitive_expression (non_empty_record_literal
+      (record_literal_entry (label) (infix_operator)
+        (expression (primitive_expression
+          (numeric_literal (natural_literal)))))
+      (record_literal_entry (label) (infix_operator)
+        (expression (primitive_expression
+          (numeric_literal (natural_literal))))))))
+    (expression (primitive_expression (non_empty_record_literal
+      (record_literal_entry (label) (infix_operator)
+        (expression (primitive_expression
+          (numeric_literal (natural_literal)))))
+      (record_literal_entry (label) (infix_operator)
+        (expression (primitive_expression
+          (numeric_literal (natural_literal))))))))
+    (expression (primitive_expression (non_empty_record_literal
+      (record_literal_entry (label) (infix_operator)
+        (expression (primitive_expression
+          (numeric_literal (natural_literal)))))
+      (record_literal_entry (label) (infix_operator)
+        (expression (primitive_expression
+          (numeric_literal (natural_literal)))))))))))
+
+==================
+Commas in record types
+==================
+
+[ { , x : T, y : U }
+, { , x : T, y : U, }
+, { x : T, y : U, }
+]
+
+---
+
+(expression
+  (primitive_expression (non_empty_list_literal
+    (expression (primitive_expression (non_empty_record_literal
+      (record_type_entry (label) (infix_operator)
+        (expression (primitive_expression (identifier (label)))))
+      (record_type_entry (label) (infix_operator)
+        (expression (primitive_expression (identifier (label))))))))
+    (expression (primitive_expression (non_empty_record_literal
+      (record_type_entry (label) (infix_operator)
+        (expression (primitive_expression (identifier (label)))))
+      (record_type_entry (label) (infix_operator)
+        (expression (primitive_expression (identifier (label))))))))
+    (expression (primitive_expression (non_empty_record_literal
+      (record_type_entry (label) (infix_operator)
+        (expression (primitive_expression (identifier (label)))))
+      (record_type_entry (label) (infix_operator)
+        (expression (primitive_expression (identifier (label)))))))))))
+
+==================
+Record literal puns
+==================
+
+[ { x, y, z }
+, { x, y = 1, z, w.a.b = 2 }
+, { Some, Some = 0 }
+]
+
+---
+
+(expression
+  (primitive_expression (non_empty_list_literal
+    (expression (primitive_expression (non_empty_record_literal
+      (record_literal_entry (label))
+      (record_literal_entry (label))
+      (record_literal_entry (label)))))
+    (expression (primitive_expression (non_empty_record_literal
+      (record_literal_entry (label))
+      (record_literal_entry (label) (infix_operator)
+        (expression (primitive_expression
+          (numeric_literal (natural_literal)))))
+      (record_literal_entry (label))
+      (record_literal_entry
+        (label) (selector (selector_dot) (label) (selector_dot) (label))
+        (infix_operator)
+        (expression (primitive_expression
+          (numeric_literal (natural_literal))))))))
+    (expression (primitive_expression (non_empty_record_literal
+      (record_literal_entry (label))
+      (record_literal_entry (label) (infix_operator)
+        (expression (primitive_expression
+          (numeric_literal (natural_literal)))))))))))
+
+==================
+Empty record literal
+==================
+
+[ {=}
+, { , = }
+, { =, }
+]
+
+---
+
+(expression
+  (primitive_expression (non_empty_list_literal
+    (expression (primitive_expression (empty_record_literal)))
+    (expression (primitive_expression (empty_record_literal)))
+    (expression (primitive_expression (empty_record_literal))))))
+
+==================
+Empty record type
+==================
+
+[ {}
+, { , }
+]
+
+---
+
+(expression
+  (primitive_expression (non_empty_list_literal
+    (expression (primitive_expression (non_empty_record_literal)))
+    (expression (primitive_expression (non_empty_record_literal))))))

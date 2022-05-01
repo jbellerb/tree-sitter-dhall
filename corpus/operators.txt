@@ -405,7 +405,7 @@ a // b c /\ d ⫽ e.{x} ∧ f
         (infix_operator)
         (primitive_expression
           (identifier (label))
-          (selector (label_set (label))))))
+          (selector (selector_dot) (label_set (label))))))
     (infix_operator)
     (primitive_expression (identifier (label)))))
 

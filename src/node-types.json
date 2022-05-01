@@ -320,7 +320,22 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "infix_operator",
+          "named": true
+        }
+      ]
     }
+  },
+  {
+    "type": "empty_record_literal",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "equal_expression",
@@ -489,7 +504,7 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "and_expression",
@@ -521,6 +536,10 @@
         },
         {
           "type": "import_alt_expression",
+          "named": true
+        },
+        {
+          "type": "infix_operator",
           "named": true
         },
         {
@@ -790,6 +809,25 @@
       "types": [
         {
           "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "non_empty_record_literal",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "record_literal_entry",
+          "named": true
+        },
+        {
+          "type": "record_type_entry",
           "named": true
         }
       ]
@@ -1121,11 +1159,26 @@
   {
     "type": "primitive_expression",
     "named": true,
-    "fields": {},
+    "fields": {
+      "selector": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "selector",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "empty_record_literal",
+          "named": true
+        },
         {
           "type": "expression",
           "named": true
@@ -1139,11 +1192,11 @@
           "named": true
         },
         {
-          "type": "numeric_literal",
+          "type": "non_empty_record_literal",
           "named": true
         },
         {
-          "type": "selector",
+          "type": "numeric_literal",
           "named": true
         },
         {
@@ -1154,11 +1207,68 @@
     }
   },
   {
+    "type": "record_literal_entry",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "infix_operator",
+          "named": true
+        },
+        {
+          "type": "label",
+          "named": true
+        },
+        {
+          "type": "selector",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "record_type_entry",
+    "named": true,
+    "fields": {
+      "type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "infix_operator",
+          "named": true
+        },
+        {
+          "type": "label",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "selector",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
@@ -1167,6 +1277,10 @@
         },
         {
           "type": "label_set",
+          "named": true
+        },
+        {
+          "type": "selector_dot",
           "named": true
         },
         {
@@ -1381,15 +1495,11 @@
     "named": false
   },
   {
-    "type": ".",
-    "named": false
-  },
-  {
-    "type": ":",
-    "named": false
-  },
-  {
     "type": "::",
+    "named": false
+  },
+  {
+    "type": "=",
     "named": false
   },
   {
@@ -1569,6 +1679,14 @@
     "named": false
   },
   {
+    "type": "as",
+    "named": false
+  },
+  {
+    "type": "assert",
+    "named": false
+  },
+  {
     "type": "block_comment_close",
     "named": true
   },
@@ -1585,6 +1703,22 @@
     "named": true
   },
   {
+    "type": "else",
+    "named": false
+  },
+  {
+    "type": "forall",
+    "named": false
+  },
+  {
+    "type": "if",
+    "named": false
+  },
+  {
+    "type": "in",
+    "named": false
+  },
+  {
     "type": "infix_operator",
     "named": true
   },
@@ -1595,6 +1729,10 @@
   {
     "type": "label",
     "named": true
+  },
+  {
+    "type": "let",
+    "named": false
   },
   {
     "type": "line_comment_content",
@@ -1609,7 +1747,15 @@
     "named": false
   },
   {
+    "type": "missing",
+    "named": false
+  },
+  {
     "type": "natural_literal",
+    "named": true
+  },
+  {
+    "type": "selector_dot",
     "named": true
   },
   {
@@ -1617,7 +1763,19 @@
     "named": false
   },
   {
+    "type": "then",
+    "named": false
+  },
+  {
     "type": "toMap",
+    "named": false
+  },
+  {
+    "type": "using",
+    "named": false
+  },
+  {
+    "type": "with",
     "named": false
   },
   {
@@ -1626,6 +1784,10 @@
   },
   {
     "type": "}",
+    "named": false
+  },
+  {
+    "type": "∀",
     "named": false
   }
 ]

@@ -9,31 +9,96 @@ foo.bar
 (expression
   (primitive_expression
     (identifier (label))
-    (selector (label))))
+    (selector (selector_dot) (label))))
 
 ==================
 Field projection
 ==================
 
-foo.{ bar, baz }
+[ foo.{ bar, baz }
+, foo.{ , bar, baz }
+, foo.{ , bar, baz, }
+, foo.{ bar, baz, }
+]
+
+---
+
+(expression
+  (primitive_expression (non_empty_list_literal
+    (expression (primitive_expression
+      (identifier (label))
+      (selector (selector_dot) (label_set (label) (label)))))
+    (expression (primitive_expression
+      (identifier (label))
+      (selector (selector_dot) (label_set (label) (label)))))
+    (expression (primitive_expression
+      (identifier (label))
+      (selector (selector_dot) (label_set (label) (label)))))
+    (expression (primitive_expression
+      (identifier (label))
+      (selector (selector_dot) (label_set (label) (label))))))))
+
+==================
+Field projection by type
+==================
+
+foo.({ bar: Natural })
 
 ---
 
 (expression
   (primitive_expression
     (identifier (label))
-    (selector (label_set (label) (label)))))
+    (selector
+      (selector_dot)
+      (type_selector (expression
+        (primitive_expression (non_empty_record_literal
+          (record_type_entry
+            (label)
+            (infix_operator)
+            (expression (primitive_expression (identifier (builtin))))))))))))
 
 ==================
-Type selection
+Empty field projection by type
 ==================
 
-foo.(bar)
+foo.({})
 
 ---
 
 (expression
   (primitive_expression
     (identifier (label))
-    (selector (type_selector (expression
-      (primitive_expression (identifier (label))))))))
+    (selector
+      (selector_dot)
+      (type_selector (expression
+        (primitive_expression (non_empty_record_literal)))))))
+
+==================
+Nested selections
+==================
+
+({ foo = { bar = { baz = 1 } } }).foo. bar .baz
+
+---
+
+(expression
+  (primitive_expression
+    (expression (primitive_expression (non_empty_record_literal
+      (record_literal_entry
+        (label)
+        (infix_operator)
+        (expression (primitive_expression (non_empty_record_literal
+          (record_literal_entry
+            (label)
+            (infix_operator)
+            (expression (primitive_expression (non_empty_record_literal
+              (record_literal_entry
+                (label)
+                (infix_operator)
+                (expression (primitive_expression
+                  (numeric_literal (natural_literal))))))))))))))))
+    (selector
+      (selector_dot) (label)
+      (selector_dot) (label)
+      (selector_dot) (label))))

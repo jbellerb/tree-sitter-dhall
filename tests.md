@@ -4,8 +4,6 @@
 - [x] unterminated block comment
 - [x] list of lists
 - [x] list whitespace
-- [x] basic selectors
-- [ ] type selectors
 - [x] de Bruijn indices
 
 ## dhall-lang tests
@@ -15,7 +13,7 @@
 - [ ] builtinNameAsField
 - [x] builtins
 - [ ] collectionImportType
-- [ ] fields
+- [x] fields
 - [ ] forall
 - [ ] functionType
 - [ ] hexadecimal
@@ -38,9 +36,9 @@
 - [ ] preferMissingNoSpaces
 - [ ] quotedBoundVariable
 - [ ] quotedLabel
-- [ ] quotedRecordLabel
+- [x] quotedRecordLabel
 - [ ] quotedUnionLabel
-- [ ] record
+- [x] record
 - [ ] recordProjectionByExpression
 - [ ] reservedPrefix
 - [ ] text/dollarSign
@@ -99,8 +97,8 @@
 - [x] unit/DoubleLitPositive
 - [x] unit/DoubleLitSecretelyInt
 - [x] unit/DoubleLitZero
-- [ ] unit/EmptyRecordLiteral
-- [ ] unit/Field
+- [x] unit/EmptyRecordLiteral
+- [x] unit/Field
 - [ ] unit/FieldBuiltinName
 - [ ] unit/FieldQuoted
 - [ ] unit/Forall
@@ -140,38 +138,38 @@
 - [ ] unit/MergeParenAnnotation
 - [ ] unit/MergeXYZ
 - [ ] unit/NaturalLit
-- [ ] unit/Projection
-- [ ] unit/ProjectionLeadingComma
-- [ ] unit/ProjectionTrailingAndLeadingCommas
-- [ ] unit/ProjectionTrailingComma
+- [x] unit/Projection
+- [x] unit/ProjectionLeadingComma
+- [x] unit/ProjectionTrailingAndLeadingCommas
+- [x] unit/ProjectionTrailingComma
 - [ ] unit/QuotedBool
 - [ ] unit/QuotedTrue
 - [ ] unit/QuotedType
 - [ ] unit/QuotedVariable
-- [ ] unit/RecordFieldAccess
-- [ ] unit/RecordLit
-- [ ] unit/RecordLitDotted
-- [ ] unit/RecordLitDottedEscape
-- [ ] unit/RecordLitDuplicates
-- [ ] unit/RecordLitEmptyLeadingComma
-- [ ] unit/RecordLitEmptyTrailingComma
-- [ ] unit/RecordLitLeadingComma
-- [ ] unit/RecordLitNixLike
-- [ ] unit/RecordLitPun
-- [ ] unit/RecordLitPunDuplicate
-- [ ] unit/RecordLitPunMixed
-- [ ] unit/RecordLitPunSome
-- [ ] unit/RecordLitSome
-- [ ] unit/RecordLitTrailingAndLeadingCommas
-- [ ] unit/RecordLitTrailingComma
-- [ ] unit/RecordProjectFields
-- [ ] unit/RecordProjectionByType
-- [ ] unit/RecordProjectionByTypeEmpty
-- [ ] unit/RecordType
-- [ ] unit/RecordTypeEmptyComma
-- [ ] unit/RecordTypeLeadingComma
-- [ ] unit/RecordTypeTrailingAndLeadingCommas
-- [ ] unit/RecordTypeTrailingComma
+- [x] unit/RecordFieldAccess
+- [x] unit/RecordLit
+- [x] unit/RecordLitDotted
+- [x] unit/RecordLitDottedEscape
+- [ ] ~~unit/RecordLitDuplicates~~
+- [x] unit/RecordLitEmptyLeadingComma
+- [x] unit/RecordLitEmptyTrailingComma
+- [x] unit/RecordLitLeadingComma
+- [ ] ~~unit/RecordLitNixLike~~
+- [x] unit/RecordLitPun
+- [ ] ~~unit/RecordLitPunDuplicate~~
+- [x] unit/RecordLitPunMixed
+- [x] unit/RecordLitPunSome
+- [x] unit/RecordLitSome
+- [x] unit/RecordLitTrailingAndLeadingCommas
+- [x] unit/RecordLitTrailingComma
+- [x] unit/RecordProjectFields
+- [x] unit/RecordProjectionByType
+- [x] unit/RecordProjectionByTypeEmpty
+- [x] unit/RecordType
+- [x] unit/RecordTypeEmptyComma
+- [x] unit/RecordTypeLeadingComma
+- [x] unit/RecordTypeTrailingAndLeadingCommas
+- [x] unit/RecordTypeTrailingComma
 - [ ] unit/SelectionSome
 - [ ] ~~unit/Shebang~~
 - [ ] ~~unit/ShebangNix~~
