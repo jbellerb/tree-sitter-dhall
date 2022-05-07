@@ -274,7 +274,7 @@ module.exports = grammar({
     ),
 
     text_literal: $ => choice($.double_quote_literal), //, $.single_quote_literal),
-    double_quote_literal: $ => seq('"', repeat1($._double_quote_chunk), '"'),
+    double_quote_literal: $ => seq('"', repeat($._double_quote_chunk), '"'),
     _double_quote_chunk: $ => choice(
       $.interpolation,
       $.double_quote_escaped,

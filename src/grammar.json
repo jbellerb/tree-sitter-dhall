@@ -1529,7 +1529,7 @@
           "value": "\""
         },
         {
-          "type": "REPEAT1",
+          "type": "REPEAT",
           "content": {
             "type": "SYMBOL",
             "name": "_double_quote_chunk"
