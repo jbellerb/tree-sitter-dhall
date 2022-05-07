@@ -1,8 +1,8 @@
 ==================
-Field selection
+Field selection (unit/FieldA.dhall)
 ==================
 
-foo.bar
+r.x
 
 ---
 
@@ -12,43 +12,107 @@ foo.bar
     (selector (selector_dot) (label))))
 
 ==================
-Field projection
+Record field selection (unit/RecordFieldAccessA.dhall)
 ==================
 
-[ foo.{ bar, baz }
-, foo.{ , bar, baz }
-, foo.{ , bar, baz, }
-, foo.{ bar, baz, }
-]
-
----
-
-(expression
-  (primitive_expression (list_literal
-    (expression (primitive_expression
-      (identifier (label))
-      (selector (selector_dot) (label_set (label) (label)))))
-    (expression (primitive_expression
-      (identifier (label))
-      (selector (selector_dot) (label_set (label) (label)))))
-    (expression (primitive_expression
-      (identifier (label))
-      (selector (selector_dot) (label_set (label) (label)))))
-    (expression (primitive_expression
-      (identifier (label))
-      (selector (selector_dot) (label_set (label) (label))))))))
-
-==================
-Field projection by type
-==================
-
-foo.({ bar : Natural })
+r.x
 
 ---
 
 (expression
   (primitive_expression
     (identifier (label))
+    (selector (selector_dot) (label))))
+
+==================
+Field projection (unit/RecordProjectFieldsA.dhall)
+==================
+
+r.{ x, y, z }
+
+---
+
+(expression (primitive_expression
+  (identifier (label))
+  (selector (selector_dot) (label_set (label) (label) (label)))))
+
+==================
+Field projection without spaces (unit/ProjectionA.dhall)
+==================
+
+r.{x, y, z}
+
+---
+
+(expression (primitive_expression
+  (identifier (label))
+  (selector (selector_dot) (label_set (label) (label) (label)))))
+
+==================
+Field projection with a leading comma (unit/ProjectionLeadingCommaA.dhall)
+==================
+
+foo.{ , x, y }
+
+---
+
+ (expression (primitive_expression
+   (identifier (label))
+   (selector (selector_dot) (label_set (label) (label)))))
+
+==================
+Field projection with a trailing comma (unit/ProjectionTrailingCommaA.dhall)
+==================
+
+foo.{ x, y, }
+
+---
+
+ (expression (primitive_expression
+   (identifier (label))
+   (selector (selector_dot) (label_set (label) (label)))))
+
+==================
+Field projection with a trailing and leading comma (unit/ProjectionTrailingAndLeadingCommasA.dhall)
+==================
+
+foo.{ , x, y, }
+
+---
+
+ (expression (primitive_expression
+   (identifier (label))
+   (selector (selector_dot) (label_set (label) (label)))))
+
+==================
+Project Some field (unit/SelectionSomeA.dhall)
+==================
+
+record.{ Some }
+
+---
+
+(expression (primitive_expression
+  (identifier (label))
+  (selector (selector_dot) (label_set (label)))))
+
+==================
+Field projection by type (unit/RecordProjectionByTypeA.dhall)
+==================
+
+{ a = 1, b = 2 }.({ a : Natural })
+
+---
+
+(expression
+  (primitive_expression
+    (record_literal
+      (record_literal_entry (label) (assign_operator)
+        (expression (primitive_expression
+          (numeric_literal (natural_literal)))))
+      (record_literal_entry (label) (assign_operator)
+        (expression (primitive_expression
+          (numeric_literal (natural_literal))))))
     (selector
       (selector_dot)
       (type_selector (expression
@@ -59,23 +123,29 @@ foo.({ bar : Natural })
             (expression (primitive_expression (identifier (builtin))))))))))))
 
 ==================
-Empty field projection by type
+Empty field projection by type (unit/RecordProjectionByTypeEmptyA.dhall)
 ==================
 
-foo.({})
+{ a = 1, b = 2 }.({})
 
 ---
 
 (expression
   (primitive_expression
-    (identifier (label))
+    (record_literal
+      (record_literal_entry (label) (assign_operator)
+        (expression (primitive_expression
+          (numeric_literal (natural_literal)))))
+      (record_literal_entry (label) (assign_operator)
+        (expression (primitive_expression
+          (numeric_literal (natural_literal))))))
     (selector
       (selector_dot)
       (type_selector (expression
         (primitive_expression (record_type)))))))
 
 ==================
-Nested selections
+Nested selections (fieldsA.dhall)
 ==================
 
 ({ foo = { bar = { baz = 1 } } }).foo. bar .baz

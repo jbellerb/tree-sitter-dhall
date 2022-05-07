@@ -1,5 +1,5 @@
 ==================
-Line comment
+Line comment (lineCommentA.dhall)
 ==================
 
 -- foo
@@ -13,7 +13,7 @@ Line comment
   (primitive_expression (numeric_literal (natural_literal))))
 
 ==================
-Block comment
+Block comment (blockCommentA.dhall)
 ==================
 
 {- foo -}
@@ -30,7 +30,7 @@ Block comment
   (primitive_expression (numeric_literal (natural_literal))))
 
 ==================
-Nested block comments
+Nested block comments (nestedBlockCommentA.dhall)
 ==================
 
 {- foo {- bar -} baz -}
@@ -71,17 +71,20 @@ Mixed comments
   (primitive_expression (numeric_literal (natural_literal))))
 
 ==================
-Unicode comment
+Unicode comment (unicodeCommentA.dhall)
 ==================
 
--- fꝏ
+{- ∀(a : Type) → a -}
 
 1
 
 ---
 
 (expression
-  (line_comment (line_comment_prefix) (line_comment_content))
+  (block_comment
+    (block_comment_open)
+    (block_comment_content)
+    (block_comment_close))
   (primitive_expression (numeric_literal (natural_literal))))
 
 ==================

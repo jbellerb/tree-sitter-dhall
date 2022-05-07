@@ -1,14 +1,21 @@
 # Implemented tests
 ## Custom tests
+- [x] hexadecimal numeric literals
 - [x] mixed block and line comments
 - [x] unterminated block comment
-- [x] list of lists
-- [x] list whitespace
+- [x] empty record literal with a trailing and leading comma
+- [x] empty record type
+- [x] multi-line lists
+- [x] comments in lists
+- [x] complete double-quoted string unicode escape sequence test
+- [x] updated builtins test
 - [x] de Bruijn indices
+- [x] de Bruijn indices don't apply to builtins
+- [x] equivalence operator associativity
 
 ## dhall-lang tests
 
-- [ ] annotations
+- [x] annotations
 - [x] blockComment
 - [ ] builtinNameAsField
 - [x] builtins
@@ -35,7 +42,7 @@
 - [ ] operators
 - [ ] preferMissingNoSpaces
 - [ ] quotedBoundVariable
-- [ ] quotedLabel
+- [x] quotedLabel
 - [x] quotedRecordLabel
 - [ ] quotedUnionLabel
 - [x] record
@@ -72,7 +79,7 @@
 - [ ] time/TimeTimeZoneZ
 - [ ] toMap
 - [x] unicodeComment
-- [ ] unit/Annotation
+- [x] unit/Annotation
 - [ ] unit/Assert
 - [ ] unit/AssertEquivalence
 - [ ] unit/AssertEquivalenceUnicode
@@ -137,7 +144,7 @@
 - [ ] unit/MergeAnnotationPrecedence
 - [ ] unit/MergeParenAnnotation
 - [ ] unit/MergeXYZ
-- [ ] unit/NaturalLit
+- [x] unit/NaturalLit
 - [x] unit/Projection
 - [x] unit/ProjectionLeadingComma
 - [x] unit/ProjectionTrailingAndLeadingCommas
@@ -150,13 +157,13 @@
 - [x] unit/RecordLit
 - [x] unit/RecordLitDotted
 - [x] unit/RecordLitDottedEscape
-- [ ] ~~unit/RecordLitDuplicates~~
+- [x] unit/RecordLitDuplicates
 - [x] unit/RecordLitEmptyLeadingComma
 - [x] unit/RecordLitEmptyTrailingComma
 - [x] unit/RecordLitLeadingComma
-- [ ] ~~unit/RecordLitNixLike~~
+- [x] unit/RecordLitNixLike
 - [x] unit/RecordLitPun
-- [ ] ~~unit/RecordLitPunDuplicate~~
+- [x] unit/RecordLitPunDuplicate
 - [x] unit/RecordLitPunMixed
 - [x] unit/RecordLitPunSome
 - [x] unit/RecordLitSome
@@ -170,7 +177,7 @@
 - [x] unit/RecordTypeLeadingComma
 - [x] unit/RecordTypeTrailingAndLeadingCommas
 - [x] unit/RecordTypeTrailingComma
-- [ ] unit/SelectionSome
+- [x] unit/SelectionSome
 - [ ] ~~unit/Shebang~~
 - [ ] ~~unit/ShebangNix~~
 - [ ] unit/SomeX

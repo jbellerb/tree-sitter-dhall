@@ -1,22 +1,26 @@
 ==================
-Basic double-quoted strings
+Basic double-quoted strings (text/doubleQuotedStringA.dhall)
 ==================
 
-"abc"
+"ABC"
 
 ---
 
 (expression (primitive_expression (text_literal (double_quote_literal))))
 
 ==================
-Double-quoted strings with escape sequences
+Double-quoted strings with escape sequences (text/escapedDoubleQuotedStringA.dhall)
 ==================
 
-"A'B\"C\$D\\E\/F\bG\fH\nI\rJ\tK"
+"\\\"\$\\\/\b\f\n\r\t\u{1D11E} \u2200(a : Type) \u2192 a"
 
 ---
 
 (expression (primitive_expression (text_literal (double_quote_literal
+  (double_quote_escaped)
+  (double_quote_escaped)
+  (double_quote_escaped)
+  (double_quote_escaped)
   (double_quote_escaped)
   (double_quote_escaped)
   (double_quote_escaped)

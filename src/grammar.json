@@ -355,7 +355,7 @@
             "value": "="
           },
           "named": true,
-          "value": "assignment_operator"
+          "value": "assign_operator"
         },
         {
           "type": "SYMBOL",
@@ -538,7 +538,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "equivalent_expression"
+          "name": "equivalence_expression"
         },
         {
           "type": "SYMBOL",
@@ -598,7 +598,7 @@
         }
       ]
     },
-    "equivalent_expression": {
+    "equivalence_expression": {
       "type": "PREC_LEFT",
       "value": 0,
       "content": {

@@ -1,5 +1,5 @@
 ==================
-Basic with statement
+Basic with statement (unit/WithA.dhall)
 ==================
 
 { a = 1 } with a = 2
@@ -18,7 +18,7 @@ Basic with statement
     (primitive_expression (numeric_literal (natural_literal)))))
 
 ==================
-Chained with statements
+Chained with statements (unit/WithMultipleA.dhall)
 ==================
 
 { a.b = 1, c.d = 2 } with a.b = 3 with c.e = 4
@@ -49,7 +49,7 @@ Chained with statements
     (primitive_expression (numeric_literal (natural_literal)))))
 
 ==================
-Chained with statement precedence
+Chained with statement precedence (unit/WithPrecedence1A.dhall)
 ==================
 
 { a = Some 1 } with a = Some 2 with a = Some 3
@@ -79,7 +79,7 @@ Chained with statement precedence
       (primitive_expression (numeric_literal (natural_literal))))))
 
 ==================
-With statement operator precedence
+With statement operator precedence (unit/WithPrecedence2A.dhall)
 ==================
 
 { x = 0 } with x = 1 + 1
@@ -103,7 +103,7 @@ With statement operator precedence
       (primitive_expression (numeric_literal (natural_literal))))))
 
 ==================
-With statement completion precedence
+With statement completion precedence (unit/WithPrecedence3A.dhall)
 ==================
 
 foo::{ x = 0 } with x = 1
@@ -128,7 +128,7 @@ foo::{ x = 0 } with x = 1
     (primitive_expression (numeric_literal (natural_literal)))))
 
 ==================
-With statement using Some
+With statement using Some (unit/WithSomeA.dhall)
 ==================
 
 { Some = 0 } with Some = 1
@@ -149,7 +149,7 @@ With statement using Some
     (primitive_expression (numeric_literal (natural_literal)))))
 
 ==================
-With statement question mark
+With statement question mark (withQuestionMarkA.dhall)
 ==================
 
 (Some 0) with ? = 1

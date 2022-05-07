@@ -1,5 +1,19 @@
 ==================
-Annotated non-empty list
+Non-empty list (unit/ListLitNonEmptyA.dhall)
+==================
+
+[x, y]
+
+---
+
+(expression
+  (primitive_expression
+    (list_literal
+      (expression (primitive_expression (identifier (label))))
+      (expression (primitive_expression (identifier (label)))))))
+
+==================
+Annotated non-empty list (unit/ListLitNonEmptyAnnotatedA.dhall)
 ==================
 
 [x, y] : List T
@@ -78,7 +92,46 @@ Comments in lists
       (numeric_literal (natural_literal)))))))
 
 ==================
-Empty list
+List literal with a leading comma (unit/ListLitLeadingCommaA.dhall)
+==================
+
+[ , x, y ]
+
+---
+
+(expression
+  (primitive_expression (list_literal
+    (expression (primitive_expression (identifier (label))))
+    (expression (primitive_expression (identifier (label)))))))
+
+==================
+List literal with a trailing comma (unit/ListLitTrailingCommaA.dhall)
+==================
+
+[ x, y, ]
+
+---
+
+(expression
+  (primitive_expression (list_literal
+    (expression (primitive_expression (identifier (label))))
+    (expression (primitive_expression (identifier (label)))))))
+
+==================
+List literal with a leading and trailing comma (unit/ListLitTrailingAndLeadingCommasA.dhall)
+==================
+
+[ , x, y, ]
+
+---
+
+(expression
+  (primitive_expression (list_literal
+    (expression (primitive_expression (identifier (label))))
+    (expression (primitive_expression (identifier (label)))))))
+
+==================
+Empty list (unit/ListLitEmpty1A.dhall)
 ==================
 
 [] : List T
@@ -93,7 +146,7 @@ Empty list
     (primitive_expression (identifier (label))))))
 
 ==================
-Empty list with a pre-defined type
+Empty list with a pre-defined type (unit/ListLitEmpty2A.dhall)
 ==================
 
 [] : T
@@ -106,7 +159,7 @@ Empty list with a pre-defined type
   type: (expression (primitive_expression (identifier (label)))))
 
 ==================
-Empty list with a comma
+Empty list with a comma (unit/ListLitEmptyCommaA.dhall)
 ==================
 
 [ , ] : List Bool
@@ -121,7 +174,7 @@ Empty list with a comma
     (primitive_expression (identifier (builtin))))))
 
 ==================
-Empty list type operator precedence
+Empty list type operator precedence (unit/ListLitEmptyPrecedenceA.dhall)
 ==================
 
 [] : List T U
@@ -137,7 +190,7 @@ Empty list type operator precedence
     (primitive_expression (identifier (label))))))
 
 ==================
-Complex list
+Complex list (listA.dhall)
 ==================
 
 [ [+1, +2, +3]

@@ -112,7 +112,7 @@ module.exports = grammar({
       'let',
       field('label', $.label),
       optional($.type),
-      alias('=', $.assignment_operator),
+      alias('=', $.assign_operator),
       $.expression,
     ),
 
@@ -151,7 +151,7 @@ module.exports = grammar({
     _empty_list_literal_text: $ => seq('[', optional(','), ']'),
 
     _operator_expression: $ => choice(
-      $.equivalent_expression,
+      $.equivalence_expression,
       $.import_alt_expression,
       $.or_expression,
       $.plus_expression,
@@ -167,7 +167,7 @@ module.exports = grammar({
       $.application_expression,
       $._import_expression,
     ),
-    equivalent_expression: $ => operator(0, $, choice('\u2261', '===')),
+    equivalence_expression: $ => operator(0, $, choice('\u2261', '===')),
     import_alt_expression: $ => operator(1, $, '?'),
     or_expression: $ => operator(2, $, '||'),
     plus_expression: $ => operator(3, $, '+'),

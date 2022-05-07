@@ -1,5 +1,5 @@
 ==================
-Basic type annotation
+Basic type annotation (unit/AnnotationA.dhall)
 ==================
 
 x : T
@@ -13,7 +13,7 @@ x : T
     (primitive_expression (identifier (label)))))
 
 ==================
-Nested type annotations
+Nested type annotations (annotationsA.dhall)
 ==================
 
 ([] : List Natural) # [ 1, 2, 3 ] # ([ 1, 2, 3 ] : List Natural) : List Natural

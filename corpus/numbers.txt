@@ -1,5 +1,16 @@
 ==================
-Natural literals
+Natural literal (unit/NaturalLitA.dhall)
+==================
+
+42
+
+---
+
+(expression (primitive_expression
+  (numeric_literal (natural_literal))))
+
+==================
+Natural literals (naturalA.dhall)
 ==================
 
 [ 0, 1, 10 ]
@@ -16,65 +27,180 @@ Natural literals
       (numeric_literal (natural_literal)))))))
 
 ==================
-Integer literals
+Positive integer literals (unit/IntegerLitPositiveA.dhall)
 ==================
 
-[ +0, -1, +10 ]
++10
 
 ---
 
 (expression (primitive_expression
-  (list_literal
-    (expression (primitive_expression
-      (numeric_literal (integer_literal))))
-    (expression (primitive_expression
-      (numeric_literal (integer_literal))))
-    (expression (primitive_expression
-      (numeric_literal (integer_literal)))))))
+  (numeric_literal (integer_literal))))
 
 ==================
-Double literals
+Negative integer literals (unit/IntegerLitNegativeA.dhall)
 ==================
 
-[ 10.0, -10000.0, 100000000000.0, 11e1, 11.1e1, 11.1e-1 ]
++10
 
 ---
 
 (expression (primitive_expression
-  (list_literal
-    (expression (primitive_expression
-      (numeric_literal (double_literal))))
-    (expression (primitive_expression
-      (numeric_literal (double_literal))))
-    (expression (primitive_expression
-      (numeric_literal (double_literal))))
-    (expression (primitive_expression
-      (numeric_literal (double_literal))))
-    (expression (primitive_expression
-      (numeric_literal (double_literal))))
-    (expression (primitive_expression
-      (numeric_literal (double_literal)))))))
+  (numeric_literal (integer_literal))))
 
 ==================
-Special double literals
+Small double literal (unit/DoubleLit16bitA.dhall)
 ==================
 
-[ Infinity, NaN, -Infinity, -0.0, 0.0 ]
+5.5
 
 ---
 
 (expression (primitive_expression
-  (list_literal
-    (expression (primitive_expression
-      (numeric_literal (double_literal))))
-    (expression (primitive_expression
-      (numeric_literal (double_literal))))
-    (expression (primitive_expression
-      (numeric_literal (double_literal))))
-    (expression (primitive_expression
-      (numeric_literal (double_literal))))
-    (expression (primitive_expression
-      (numeric_literal (double_literal)))))))
+  (numeric_literal (double_literal))))
+
+==================
+Medium double literal (unit/DoubleLit32bitA.dhall)
+==================
+
+5555.5
+
+---
+
+(expression (primitive_expression
+  (numeric_literal (double_literal))))
+
+==================
+Large double literal (unit/DoubleLit64bitA.dhall)
+==================
+
+55555555555.5
+
+---
+
+(expression (primitive_expression
+  (numeric_literal (double_literal))))
+
+==================
+Positive double literal (unit/DoubleLitPositiveA.dhall)
+==================
+
+1.23
+
+---
+
+(expression (primitive_expression
+  (numeric_literal (double_literal))))
+
+==================
+Negative double literal (unit/DoubleLitNegativeA.dhall)
+==================
+
+-1.23
+
+---
+
+(expression (primitive_expression
+  (numeric_literal (double_literal))))
+
+==================
+Double literal with an exponent (unit/DoubleLitExponentA.dhall)
+==================
+
+1.23e4
+
+---
+
+(expression (primitive_expression
+  (numeric_literal (double_literal))))
+
+==================
+Double literal with a negative exponent (unit/DoubleLitExponentNegativeA.dhall)
+==================
+
+1.23e-4
+
+---
+
+(expression (primitive_expression
+  (numeric_literal (double_literal))))
+
+==================
+Double literal with an exponent and no dot (unit/DoubleLitExponentNoDotA.dhall)
+==================
+
+1e4
+
+---
+
+(expression (primitive_expression
+  (numeric_literal (double_literal))))
+
+==================
+Zero double literal (unit/DoubleLitZeroA.dhall)
+==================
+
+0.0
+
+---
+
+(expression (primitive_expression
+  (numeric_literal (double_literal))))
+
+==================
+Negative zero double literal (unit/DoubleLitNegZeroA.dhall)
+==================
+
+-0.0
+
+---
+
+(expression (primitive_expression
+  (numeric_literal (double_literal))))
+
+==================
+Infinity double literal (unit/DoubleLitInfinityA.dhall)
+==================
+
+Infinity
+
+---
+
+(expression (primitive_expression
+  (numeric_literal (double_literal))))
+
+==================
+Negative infinity double literal (unit/DoubleLitNegInfinityA.dhall)
+==================
+
+-Infinity
+
+---
+
+(expression (primitive_expression
+  (numeric_literal (double_literal))))
+
+==================
+NaN double literal (unit/DoubleLitNaNA.dhall)
+==================
+
+NaN
+
+---
+
+(expression (primitive_expression
+  (numeric_literal (double_literal))))
+
+==================
+Integer-valued double literal (unit/DoubleLitSecretlyIntA.dhall)
+==================
+
+1.0
+
+---
+
+(expression (primitive_expression
+  (numeric_literal (double_literal))))
 
 ==================
 Hexadecimal natural and integer literals
