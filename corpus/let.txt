@@ -1,0 +1,100 @@
+==================
+Basic let statement
+==================
+
+let x: T = v in e
+
+---
+
+(expression
+  (let_expression
+    (let_binding
+      label: (label)
+      (type_operator)
+      type: (expression (primitive_expression (identifier (label))))
+      (assignment_operator)
+      (expression (primitive_expression (identifier (label)))))
+    (expression (primitive_expression (identifier (label))))))
+
+==================
+Un-annotated let statement
+==================
+
+let x = y in e
+
+---
+
+(expression
+  (let_expression
+    (let_binding
+      label: (label)
+      (assignment_operator)
+      (expression (primitive_expression (identifier (label)))))
+    (expression (primitive_expression (identifier (label))))))
+
+==================
+Annotated let statement
+==================
+
+let x: T = y in e
+
+---
+
+(expression
+  (let_expression
+    (let_binding
+      label: (label)
+      (type_operator)
+      type: (expression (primitive_expression (identifier (label))))
+      (assignment_operator)
+      (expression (primitive_expression (identifier (label)))))
+    (expression (primitive_expression (identifier (label))))))
+
+==================
+Multi-clause let statement
+==================
+
+let x: T = v let y: U = w in e
+
+---
+
+(expression
+  (let_expression
+    (let_binding
+      label: (label)
+      (type_operator)
+      type: (expression (primitive_expression (identifier (label))))
+      (assignment_operator)
+      (expression (primitive_expression (identifier (label)))))
+    (let_binding
+      label: (label)
+      (type_operator)
+      type: (expression (primitive_expression (identifier (label))))
+      (assignment_operator)
+      (expression (primitive_expression (identifier (label)))))
+    (expression (primitive_expression (identifier (label))))))
+
+==================
+Nested let statements
+==================
+
+let x: T = v in let y: U = w in e
+
+---
+
+(expression
+  (let_expression
+    (let_binding
+      label: (label)
+      (type_operator)
+      type: (expression (primitive_expression (identifier (label))))
+      (assignment_operator)
+      (expression (primitive_expression (identifier (label)))))
+    (expression (let_expression
+      (let_binding
+        label: (label)
+        (type_operator)
+        type: (expression (primitive_expression (identifier (label))))
+        (assignment_operator)
+        (expression (primitive_expression (identifier (label)))))
+      (expression (primitive_expression (identifier (label))))))))

@@ -80,7 +80,7 @@
 - [ ] unit/Bool
 - [ ] unit/BoolLitTrue
 - [ ] unit/BuiltinListBuild
-- [ ] unit/Completion
+- [x] unit/Completion
 - [ ] unit/Date
 - [ ] unit/DateLiteral
 - [x] unit/DoubleLit16bit
@@ -118,11 +118,11 @@
 - [ ] unit/LambdaNested
 - [ ] unit/LambdaUnderscore
 - [ ] unit/LambdaUnicode
-- [ ] unit/Let
-- [ ] unit/LetAnnot
-- [ ] unit/LetMulti
-- [ ] unit/LetNested
-- [ ] unit/LetNoAnnot
+- [x] unit/Let
+- [x] unit/LetAnnot
+- [x] unit/LetMulti
+- [x] unit/LetNested
+- [x] unit/LetNoAnnot
 - [x] unit/ListLitEmpty1
 - [x] unit/ListLitEmpty2
 - [x] unit/ListLitEmptyComma
@@ -198,12 +198,12 @@
 - [ ] unit/Variable
 - [ ] unit/VariableQuotedWithSpace
 - [ ] unit/VariableUnderscore
-- [ ] unit/With
-- [ ] unit/WithMultiple
-- [ ] unit/WithPrecedence1
-- [ ] unit/WithPrecedence2
-- [ ] unit/WithPrecedence3
-- [ ] unit/WithSome
+- [x] unit/With
+- [x] unit/WithMultiple
+- [x] unit/WithPrecedence1
+- [x] unit/WithPrecedence2
+- [x] unit/WithPrecedence3
+- [x] unit/WithSome
 - [ ] unit/ifThenElse
 - [ ] unit/import/AsLocationAbsolute
 - [ ] unit/import/AsLocationEnv
@@ -291,4 +291,4 @@
 - [ ] usingToMap
 - [ ] whitespace
 - [ ] whitespaceBuffet
-- [ ] withQuestionMark
+- [x] withQuestionMark

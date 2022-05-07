@@ -24,6 +24,10 @@
           "named": true
         },
         {
+          "type": "completion",
+          "named": true
+        },
+        {
           "type": "equal_expression",
           "named": true
         },
@@ -83,7 +87,27 @@
       "required": true,
       "types": [
         {
+          "type": "completion",
+          "named": true
+        },
+        {
+          "type": "merge",
+          "named": true
+        },
+        {
           "type": "primitive_expression",
+          "named": true
+        },
+        {
+          "type": "show_constructor",
+          "named": true
+        },
+        {
+          "type": "some",
+          "named": true
+        },
+        {
+          "type": "to_map",
           "named": true
         }
       ]
@@ -139,6 +163,10 @@
         },
         {
           "type": "combine_types_expression",
+          "named": true
+        },
+        {
+          "type": "completion",
           "named": true
         },
         {
@@ -217,6 +245,10 @@
           "named": true
         },
         {
+          "type": "completion",
+          "named": true
+        },
+        {
           "type": "equal_expression",
           "named": true
         },
@@ -262,6 +294,36 @@
         },
         {
           "type": "times_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "completion",
+    "named": true,
+    "fields": {
+      "type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "primitive_expression",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "completion_operator",
+          "named": true
+        },
+        {
+          "type": "primitive_expression",
           "named": true
         }
       ]
@@ -328,6 +390,10 @@
         },
         {
           "type": "combine_types_expression",
+          "named": true
+        },
+        {
+          "type": "completion",
           "named": true
         },
         {
@@ -403,6 +469,10 @@
         },
         {
           "type": "combine_types_expression",
+          "named": true
+        },
+        {
+          "type": "completion",
           "named": true
         },
         {
@@ -492,6 +562,10 @@
           "named": true
         },
         {
+          "type": "completion",
+          "named": true
+        },
+        {
           "type": "equal_expression",
           "named": true
         },
@@ -501,6 +575,10 @@
         },
         {
           "type": "import_alt_expression",
+          "named": true
+        },
+        {
+          "type": "let_expression",
           "named": true
         },
         {
@@ -537,6 +615,10 @@
         },
         {
           "type": "type_operator",
+          "named": true
+        },
+        {
+          "type": "with_expression",
           "named": true
         }
       ]
@@ -587,6 +669,10 @@
         },
         {
           "type": "combine_types_expression",
+          "named": true
+        },
+        {
+          "type": "completion",
           "named": true
         },
         {
@@ -671,6 +757,69 @@
     }
   },
   {
+    "type": "let_binding",
+    "named": true,
+    "fields": {
+      "label": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "label",
+            "named": true
+          }
+        ]
+      },
+      "type": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "assignment_operator",
+          "named": true
+        },
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "type_operator",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "let_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "let_binding",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "line_comment",
     "named": true,
     "fields": {},
@@ -711,6 +860,10 @@
         },
         {
           "type": "combine_types_expression",
+          "named": true
+        },
+        {
+          "type": "completion",
           "named": true
         },
         {
@@ -801,6 +954,10 @@
         },
         {
           "type": "combine_types_expression",
+          "named": true
+        },
+        {
+          "type": "completion",
           "named": true
         },
         {
@@ -902,6 +1059,10 @@
           "named": true
         },
         {
+          "type": "completion",
+          "named": true
+        },
+        {
           "type": "equal_expression",
           "named": true
         },
@@ -977,6 +1138,10 @@
           "named": true
         },
         {
+          "type": "completion",
+          "named": true
+        },
+        {
           "type": "equal_expression",
           "named": true
         },
@@ -1049,6 +1214,10 @@
         },
         {
           "type": "combine_types_expression",
+          "named": true
+        },
+        {
+          "type": "completion",
           "named": true
         },
         {
@@ -1260,6 +1429,10 @@
           "named": true
         },
         {
+          "type": "question_mark",
+          "named": true
+        },
+        {
           "type": "selector_dot",
           "named": true
         },
@@ -1292,6 +1465,10 @@
         },
         {
           "type": "combine_types_expression",
+          "named": true
+        },
+        {
+          "type": "completion",
           "named": true
         },
         {
@@ -1385,6 +1562,10 @@
           "named": true
         },
         {
+          "type": "completion",
+          "named": true
+        },
+        {
           "type": "equal_expression",
           "named": true
         },
@@ -1451,6 +1632,105 @@
     }
   },
   {
+    "type": "with_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "and_expression",
+          "named": true
+        },
+        {
+          "type": "application_expression",
+          "named": true
+        },
+        {
+          "type": "assign_operator",
+          "named": true
+        },
+        {
+          "type": "combine_expression",
+          "named": true
+        },
+        {
+          "type": "combine_types_expression",
+          "named": true
+        },
+        {
+          "type": "completion",
+          "named": true
+        },
+        {
+          "type": "equal_expression",
+          "named": true
+        },
+        {
+          "type": "equivalent_expression",
+          "named": true
+        },
+        {
+          "type": "import_alt_expression",
+          "named": true
+        },
+        {
+          "type": "label",
+          "named": true
+        },
+        {
+          "type": "list_append_expression",
+          "named": true
+        },
+        {
+          "type": "not_equal_expression",
+          "named": true
+        },
+        {
+          "type": "or_expression",
+          "named": true
+        },
+        {
+          "type": "plus_expression",
+          "named": true
+        },
+        {
+          "type": "prefer_expression",
+          "named": true
+        },
+        {
+          "type": "primitive_expression",
+          "named": true
+        },
+        {
+          "type": "question_mark",
+          "named": true
+        },
+        {
+          "type": "selector",
+          "named": true
+        },
+        {
+          "type": "text_append_expression",
+          "named": true
+        },
+        {
+          "type": "times_expression",
+          "named": true
+        },
+        {
+          "type": "with_expression",
+          "named": true
+        },
+        {
+          "type": "with_operator",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "\"",
     "named": false
   },
@@ -1472,10 +1752,6 @@
   },
   {
     "type": "-Infinity",
-    "named": false
-  },
-  {
-    "type": "::",
     "named": false
   },
   {
@@ -1667,6 +1943,10 @@
     "named": true
   },
   {
+    "type": "assignment_operator",
+    "named": true
+  },
+  {
     "type": "block_comment_close",
     "named": true
   },
@@ -1676,6 +1956,10 @@
   },
   {
     "type": "block_comment_open",
+    "named": true
+  },
+  {
+    "type": "completion_operator",
     "named": true
   },
   {
@@ -1728,6 +2012,10 @@
   },
   {
     "type": "merge",
+    "named": true
+  },
+  {
+    "type": "merge",
     "named": false
   },
   {
@@ -1739,6 +2027,10 @@
     "named": true
   },
   {
+    "type": "question_mark",
+    "named": true
+  },
+  {
     "type": "selector_dot",
     "named": true
   },
@@ -1747,12 +2039,24 @@
     "named": false
   },
   {
+    "type": "show_constructor",
+    "named": true
+  },
+  {
+    "type": "some",
+    "named": true
+  },
+  {
     "type": "then",
     "named": false
   },
   {
     "type": "toMap",
     "named": false
+  },
+  {
+    "type": "to_map",
+    "named": true
   },
   {
     "type": "type_operator",
@@ -1765,6 +2069,10 @@
   {
     "type": "with",
     "named": false
+  },
+  {
+    "type": "with_operator",
+    "named": true
   },
   {
     "type": "{",
