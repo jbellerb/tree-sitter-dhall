@@ -1,6 +1,5 @@
 # Implemented tests
 ## Custom tests
-- [x] hexadecimal numeric literals
 - [x] mixed block and line comments
 - [x] unterminated block comment
 - [x] empty record literal with a trailing and leading comma
@@ -23,23 +22,23 @@
 - [x] fields
 - [ ] forall
 - [ ] functionType
-- [ ] hexadecimal
-- [ ] identifier
-- [ ] label
+- [x] hexadecimal
+- [x] identifier
+- [x] label
 - [x] lambda
 - [ ] largeExpression
 - [ ] leadingSeparators
 - [ ] leadingTabs
 - [x] lineComment
-- [ ] lineCommentCRLF
+- [x] lineCommentCRLF
 - [x] list
 - [ ] merge
-- [ ] missingFoo
+- [x] missingFoo
 - [ ] missingInParentheses
 - [ ] missingSlash
 - [x] natural
 - [x] nestedBlockComment
-- [ ] operators
+- [x] operators
 - [ ] preferMissingNoSpaces
 - [ ] quotedBoundVariable
 - [x] quotedLabel
@@ -211,7 +210,7 @@
 - [x] unit/WithPrecedence2
 - [x] unit/WithPrecedence3
 - [x] unit/WithSome
-- [ ] unit/ifThenElse
+- [x] unit/ifThenElse
 - [ ] unit/import/AsLocationAbsolute
 - [ ] unit/import/AsLocationEnv
 - [ ] unit/import/AsLocationHash

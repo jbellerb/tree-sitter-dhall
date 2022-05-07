@@ -12,6 +12,20 @@ Line comment (lineCommentA.dhall)
   (line_comment (line_comment_prefix) (line_comment_content))
   (primitive_expression (numeric_literal (natural_literal))))
 
+=================
+Line comment ending in CLRF (lineCommentCLRFA.dhall)
+==================
+
+-- foo
+
+1
+
+---
+
+(expression
+  (line_comment (line_comment_prefix) (line_comment_content))
+  (primitive_expression (numeric_literal (natural_literal))))
+
 ==================
 Block comment (blockCommentA.dhall)
 ==================

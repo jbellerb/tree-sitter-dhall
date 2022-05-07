@@ -86,6 +86,33 @@ Builtins (builtinsA.dhall*)
     (expression (primitive_expression (identifier (builtin)))))))
 
 ==================
+Labels are alphanumeric (labelA.dhall)
+==================
+
+let _ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-/ = 1
+in  _ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-/
+
+---
+
+(expression
+  (let_expression
+    (let_binding (label) (assign_operator)
+      (expression (primitive_expression
+        (numeric_literal (natural_literal)))))
+    (expression (primitive_expression (identifier (label))))))
+
+==================
+Labels can contain reserved keywords (missingFooA.dhall)
+==================
+
+missingFoo
+
+---
+
+(expression
+  (primitive_expression (identifier (label))))
+
+==================
 de Bruijn indices
 ==================
 
@@ -113,3 +140,27 @@ Bool@0
     (primitive_expression (identifier (builtin)))
     (ERROR)
     (primitive_expression (numeric_literal (natural_literal)))))
+
+==================
+Using a de Bruijn index in another expression (identifierA.dhall)
+==================
+
+λ(a : Type) → λ(a : Type) → a@1
+
+---
+
+(expression
+  (lambda_expression
+    (lambda_operator)
+    label: (label)
+    (type_operator)
+    type: (expression (primitive_expression (identifier (builtin))))
+    (arrow_operator)
+    expression: (expression (lambda_expression
+      (lambda_operator)
+      label: (label)
+      (type_operator)
+      type: (expression (primitive_expression (identifier (builtin))))
+      (arrow_operator)
+      expression: (expression (primitive_expression
+        (identifier (label) (de_bruijn_index (natural_literal)))))))))

@@ -574,6 +574,10 @@
           "named": true
         },
         {
+          "type": "if_then_else_expression",
+          "named": true
+        },
+        {
           "type": "import_alt_expression",
           "named": true
         },
@@ -649,6 +653,42 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "if_then_else_expression",
+    "named": true,
+    "fields": {
+      "alternate": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "expression": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "predicate": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {

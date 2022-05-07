@@ -1,8 +1,4 @@
 ==================
-Boolean operators
-==================
-
-==================
 Boolean and operator (unit/operators/BoolAndA.dhall)
 ==================
 
@@ -660,3 +656,72 @@ Equivalence operator precedence (unit/operators/PrecedenceEquivalenceA.dhall)
         (primitive_expression (numeric_literal (natural_literal))))
       (infix_operator)
       (primitive_expression (numeric_literal (natural_literal))))))
+
+==================
+General operator precedence (operatorsA.dhall)
+==================
+
+  { foo = False && Natural/even (1 + 2 * 3) || True == False != True }
+∧ { bar = [ "ABC" ++ "DEF" ] # [ "GHI" ] } ⫽ { baz = True }
+: { foo : Bool, baz: Bool } ⩓ { bar : List Text }
+
+---
+
+(expression
+  (combine_expression
+    (primitive_expression (record_literal
+      (record_literal_entry (label) (assign_operator)
+        (expression (or_expression
+          (and_expression
+            (primitive_expression (identifier (builtin)))
+            (infix_operator)
+            (application_expression
+              (primitive_expression (identifier (builtin)))
+              (primitive_expression (expression (plus_expression
+                (primitive_expression (numeric_literal (natural_literal)))
+                (infix_operator)
+                (times_expression
+                  (primitive_expression (numeric_literal (natural_literal)))
+                  (infix_operator)
+                  (primitive_expression (numeric_literal (natural_literal)))))))))
+          (infix_operator)
+          (equal_expression
+            (primitive_expression (identifier (builtin)))
+            (infix_operator)
+            (not_equal_expression
+              (primitive_expression (identifier (builtin)))
+              (infix_operator)
+              (primitive_expression (identifier (builtin))))))))))
+    (infix_operator)
+    (prefer_expression
+      (primitive_expression (record_literal
+        (record_literal_entry (label) (assign_operator)
+          (expression (list_append_expression
+            (primitive_expression (list_literal
+              (expression (text_append_expression
+                (primitive_expression
+                  (text_literal (double_quote_literal)))
+                (infix_operator)
+                (primitive_expression
+                  (text_literal (double_quote_literal)))))))
+            (infix_operator)
+            (primitive_expression (list_literal (expression
+              (primitive_expression
+                (text_literal (double_quote_literal)))))))))))
+      (infix_operator)
+      (primitive_expression (record_literal
+        (record_literal_entry (label) (assign_operator)
+          (expression (primitive_expression (identifier (builtin)))))))))
+  (type_operator)
+  type: (expression (combine_types_expression
+    (primitive_expression (record_type
+      (record_type_entry (label) (type_operator)
+        type: (expression (primitive_expression (identifier (builtin)))))
+      (record_type_entry (label) (type_operator)
+        type: (expression (primitive_expression (identifier (builtin)))))))
+    (infix_operator)
+    (primitive_expression (record_type
+      (record_type_entry (label) (type_operator)
+        type: (expression (application_expression
+          (primitive_expression (identifier (builtin)))
+          (primitive_expression (identifier (builtin)))))))))))

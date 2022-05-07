@@ -37,6 +37,7 @@ module.exports = grammar({
     expression: $ => choice(
       // TODO: the others
       $.lambda_expression,
+      $.if_then_else_expression,
       $.let_expression,
       $.with_expression,
       $.annotated_expression,
@@ -116,6 +117,15 @@ module.exports = grammar({
       ')',
       alias(choice('\u2192', '->'), $.arrow_operator),
       field('expression', $.expression),
+    ),
+
+    if_then_else_expression: $ => seq(
+      'if',
+      field('predicate', $.expression),
+      'then',
+      field('expression', $.expression),
+      'else',
+      field('alternate', $.expression),
     ),
 
     let_expression: $ => seq(repeat1($.let_binding), 'in', $.expression),

@@ -1,0 +1,15 @@
+==================
+If-Then-Else statement (unit/ifThenElseA.dhall)
+==================
+
+if True then 1 else 2
+
+---
+
+(expression
+  (if_then_else_expression
+    predicate: (expression (primitive_expression (identifier (builtin))))
+    expression: (expression (primitive_expression
+      (numeric_literal (natural_literal))))
+    alternate: (expression (primitive_expression
+      (numeric_literal (natural_literal))))))

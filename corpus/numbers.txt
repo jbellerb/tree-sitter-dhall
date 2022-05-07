@@ -6,8 +6,8 @@ Natural literal (unit/NaturalLitA.dhall)
 
 ---
 
-(expression (primitive_expression
-  (numeric_literal (natural_literal))))
+(expression
+  (primitive_expression (numeric_literal (natural_literal))))
 
 ==================
 Natural literals (naturalA.dhall)
@@ -17,8 +17,8 @@ Natural literals (naturalA.dhall)
 
 ---
 
-(expression (primitive_expression
-  (list_literal
+(expression
+  (primitive_expression (list_literal
     (expression (primitive_expression
       (numeric_literal (natural_literal))))
     (expression (primitive_expression
@@ -34,8 +34,8 @@ Positive integer literals (unit/IntegerLitPositiveA.dhall)
 
 ---
 
-(expression (primitive_expression
-  (numeric_literal (integer_literal))))
+(expression
+  (primitive_expression (numeric_literal (integer_literal))))
 
 ==================
 Negative integer literals (unit/IntegerLitNegativeA.dhall)
@@ -45,8 +45,8 @@ Negative integer literals (unit/IntegerLitNegativeA.dhall)
 
 ---
 
-(expression (primitive_expression
-  (numeric_literal (integer_literal))))
+(expression
+  (primitive_expression (numeric_literal (integer_literal))))
 
 ==================
 Small double literal (unit/DoubleLit16bitA.dhall)
@@ -56,8 +56,8 @@ Small double literal (unit/DoubleLit16bitA.dhall)
 
 ---
 
-(expression (primitive_expression
-  (numeric_literal (double_literal))))
+(expression
+  (primitive_expression (numeric_literal (double_literal))))
 
 ==================
 Medium double literal (unit/DoubleLit32bitA.dhall)
@@ -67,8 +67,8 @@ Medium double literal (unit/DoubleLit32bitA.dhall)
 
 ---
 
-(expression (primitive_expression
-  (numeric_literal (double_literal))))
+(expression
+  (primitive_expression (numeric_literal (double_literal))))
 
 ==================
 Large double literal (unit/DoubleLit64bitA.dhall)
@@ -78,8 +78,8 @@ Large double literal (unit/DoubleLit64bitA.dhall)
 
 ---
 
-(expression (primitive_expression
-  (numeric_literal (double_literal))))
+(expression
+  (primitive_expression (numeric_literal (double_literal))))
 
 ==================
 Positive double literal (unit/DoubleLitPositiveA.dhall)
@@ -89,8 +89,8 @@ Positive double literal (unit/DoubleLitPositiveA.dhall)
 
 ---
 
-(expression (primitive_expression
-  (numeric_literal (double_literal))))
+(expression
+  (primitive_expression (numeric_literal (double_literal))))
 
 ==================
 Negative double literal (unit/DoubleLitNegativeA.dhall)
@@ -100,8 +100,8 @@ Negative double literal (unit/DoubleLitNegativeA.dhall)
 
 ---
 
-(expression (primitive_expression
-  (numeric_literal (double_literal))))
+(expression
+  (primitive_expression (numeric_literal (double_literal))))
 
 ==================
 Double literal with an exponent (unit/DoubleLitExponentA.dhall)
@@ -111,8 +111,8 @@ Double literal with an exponent (unit/DoubleLitExponentA.dhall)
 
 ---
 
-(expression (primitive_expression
-  (numeric_literal (double_literal))))
+(expression
+  (primitive_expression (numeric_literal (double_literal))))
 
 ==================
 Double literal with a negative exponent (unit/DoubleLitExponentNegativeA.dhall)
@@ -122,8 +122,8 @@ Double literal with a negative exponent (unit/DoubleLitExponentNegativeA.dhall)
 
 ---
 
-(expression (primitive_expression
-  (numeric_literal (double_literal))))
+(expression
+  (primitive_expression (numeric_literal (double_literal))))
 
 ==================
 Double literal with an exponent and no dot (unit/DoubleLitExponentNoDotA.dhall)
@@ -133,8 +133,8 @@ Double literal with an exponent and no dot (unit/DoubleLitExponentNoDotA.dhall)
 
 ---
 
-(expression (primitive_expression
-  (numeric_literal (double_literal))))
+(expression
+  (primitive_expression (numeric_literal (double_literal))))
 
 ==================
 Zero double literal (unit/DoubleLitZeroA.dhall)
@@ -144,8 +144,8 @@ Zero double literal (unit/DoubleLitZeroA.dhall)
 
 ---
 
-(expression (primitive_expression
-  (numeric_literal (double_literal))))
+(expression
+  (primitive_expression (numeric_literal (double_literal))))
 
 ==================
 Negative zero double literal (unit/DoubleLitNegZeroA.dhall)
@@ -155,8 +155,8 @@ Negative zero double literal (unit/DoubleLitNegZeroA.dhall)
 
 ---
 
-(expression (primitive_expression
-  (numeric_literal (double_literal))))
+(expression
+  (primitive_expression (numeric_literal (double_literal))))
 
 ==================
 Infinity double literal (unit/DoubleLitInfinityA.dhall)
@@ -166,8 +166,8 @@ Infinity
 
 ---
 
-(expression (primitive_expression
-  (numeric_literal (double_literal))))
+(expression
+  (primitive_expression (numeric_literal (double_literal))))
 
 ==================
 Negative infinity double literal (unit/DoubleLitNegInfinityA.dhall)
@@ -177,8 +177,8 @@ Negative infinity double literal (unit/DoubleLitNegInfinityA.dhall)
 
 ---
 
-(expression (primitive_expression
-  (numeric_literal (double_literal))))
+(expression
+  (primitive_expression (numeric_literal (double_literal))))
 
 ==================
 NaN double literal (unit/DoubleLitNaNA.dhall)
@@ -188,8 +188,8 @@ NaN
 
 ---
 
-(expression (primitive_expression
-  (numeric_literal (double_literal))))
+(expression
+  (primitive_expression (numeric_literal (double_literal))))
 
 ==================
 Integer-valued double literal (unit/DoubleLitSecretlyIntA.dhall)
@@ -199,22 +199,42 @@ Integer-valued double literal (unit/DoubleLitSecretlyIntA.dhall)
 
 ---
 
-(expression (primitive_expression
-  (numeric_literal (double_literal))))
+(expression
+  (primitive_expression (numeric_literal (double_literal))))
 
 ==================
-Hexadecimal natural and integer literals
+Hexadecimal natural and integer literals (hexadecimalA.dhall)
 ==================
 
-[ 0x00, +0x11, -0x12 ]
+  λ(x : Bool)
+→ λ(x : Bool)
+→ { example0 = 0xFF
+  , example1 = -0x1A10
+  , example2 = x@0x01
+  }
 
 ---
 
-(expression (primitive_expression
-  (list_literal
-    (expression (primitive_expression
-      (numeric_literal (natural_literal))))
-    (expression (primitive_expression
-      (numeric_literal (integer_literal))))
-    (expression (primitive_expression
-      (numeric_literal (integer_literal)))))))
+(expression
+  (lambda_expression
+    (lambda_operator)
+    label: (label)
+    (type_operator)
+    type: (expression (primitive_expression (identifier (builtin))))
+    (arrow_operator)
+    expression: (expression (lambda_expression
+      (lambda_operator)
+      label: (label)
+      (type_operator)
+      type: (expression (primitive_expression (identifier (builtin))))
+      (arrow_operator)
+      expression: (expression (primitive_expression (record_literal
+        (record_literal_entry (label) (assign_operator)
+          (expression (primitive_expression
+            (numeric_literal (natural_literal)))))
+        (record_literal_entry (label) (assign_operator)
+          (expression (primitive_expression
+            (numeric_literal (integer_literal)))))
+        (record_literal_entry (label) (assign_operator)
+          (expression (primitive_expression
+            (identifier (label) (de_bruijn_index (natural_literal)))))))))))))
