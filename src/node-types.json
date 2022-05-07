@@ -578,6 +578,10 @@
           "named": true
         },
         {
+          "type": "lambda_expression",
+          "named": true
+        },
+        {
           "type": "let_expression",
           "named": true
         },
@@ -751,6 +755,60 @@
       "types": [
         {
           "type": "label",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "lambda_expression",
+    "named": true,
+    "fields": {
+      "expression": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "label": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "label",
+            "named": true
+          }
+        ]
+      },
+      "type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "arrow_operator",
+          "named": true
+        },
+        {
+          "type": "lambda_operator",
+          "named": true
+        },
+        {
+          "type": "type_operator",
           "named": true
         }
       ]
@@ -1931,6 +1989,10 @@
     "named": false
   },
   {
+    "type": "arrow_operator",
+    "named": true
+  },
+  {
     "type": "as",
     "named": false
   },
@@ -1992,6 +2054,10 @@
   },
   {
     "type": "label",
+    "named": true
+  },
+  {
+    "type": "lambda_operator",
     "named": true
   },
   {

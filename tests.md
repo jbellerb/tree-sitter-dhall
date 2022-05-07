@@ -26,7 +26,7 @@
 - [ ] hexadecimal
 - [ ] identifier
 - [ ] label
-- [ ] lambda
+- [x] lambda
 - [ ] largeExpression
 - [ ] leadingSeparators
 - [ ] leadingTabs
@@ -121,10 +121,10 @@
 - [x] unit/IntegerLitNegative
 - [x] unit/IntegerLitPositive
 - [ ] unit/Kind
-- [ ] unit/Lambda
-- [ ] unit/LambdaNested
-- [ ] unit/LambdaUnderscore
-- [ ] unit/LambdaUnicode
+- [x] unit/Lambda
+- [x] unit/LambdaNested
+- [x] unit/LambdaUnderscore
+- [x] unit/LambdaUnicode
 - [x] unit/Let
 - [x] unit/LetAnnot
 - [x] unit/LetMulti

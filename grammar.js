@@ -36,6 +36,7 @@ module.exports = grammar({
   rules: {
     expression: $ => choice(
       // TODO: the others
+      $.lambda_expression,
       $.let_expression,
       $.with_expression,
       $.annotated_expression,
@@ -105,6 +106,16 @@ module.exports = grammar({
       'Type',
       'Kind',
       'Sort',
+    ),
+
+    lambda_expression: $ => seq(
+      alias(choice('\u03BB', '\\'), $.lambda_operator),
+      '(',
+      field('label', $.label),
+      $.type,
+      ')',
+      alias(choice('\u2192', '->'), $.arrow_operator),
+      field('expression', $.expression),
     ),
 
     let_expression: $ => seq(repeat1($.let_binding), 'in', $.expression),

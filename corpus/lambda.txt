@@ -1,0 +1,96 @@
+==================
+Basic lambda expression (unit/LambdaA.dhall)
+==================
+
+\(x: T) -> x
+
+---
+
+(expression
+  (lambda_expression
+    (lambda_operator)
+    label: (label)
+    (type_operator)
+    type: (expression (primitive_expression (identifier (label))))
+    (arrow_operator)
+    expression: (expression (primitive_expression (identifier (label))))))
+
+==================
+Unicode lambda expression (unit/LambdaUnicodeA.dhall)
+==================
+
+λ(x : T) -> y
+
+---
+
+(expression
+  (lambda_expression
+    (lambda_operator)
+    label: (label)
+    (type_operator)
+    type: (expression (primitive_expression (identifier (label))))
+    (arrow_operator)
+    expression: (expression (primitive_expression (identifier (label))))))
+
+==================
+Lambda expression with an underscore parameter (unit/LambdaUnderscoreA.dhall)
+==================
+
+\(_: T) -> x
+
+---
+
+(expression
+  (lambda_expression
+    (lambda_operator)
+    label: (label)
+    (type_operator)
+    type: (expression (primitive_expression (identifier (label))))
+    (arrow_operator)
+    expression: (expression (primitive_expression (identifier (label))))))
+
+==================
+Nested lambda expressions (unit/LambdaNestedA.dhall)
+==================
+
+\(x: T) -> \(y: U) -> x
+
+---
+
+(expression
+  (lambda_expression
+    (lambda_operator)
+    label: (label)
+    (type_operator)
+    type: (expression (primitive_expression (identifier (label))))
+    (arrow_operator)
+    expression: (expression (lambda_expression
+      (lambda_operator)
+      label: (label)
+      (type_operator)
+      type: (expression (primitive_expression (identifier (label))))
+      (arrow_operator)
+      expression: (expression (primitive_expression (identifier (label))))))))
+
+==================
+Comprehensive lambda expression (lambdaA.dhall)
+==================
+
+λ(a : Type) → \(b : Type) -> a
+
+---
+
+(expression
+  (lambda_expression
+    (lambda_operator)
+    label: (label)
+    (type_operator)
+    type: (expression (primitive_expression (identifier (builtin))))
+    (arrow_operator)
+    expression: (expression (lambda_expression
+      (lambda_operator)
+      label: (label)
+      (type_operator)
+      type: (expression (primitive_expression (identifier (builtin))))
+      (arrow_operator)
+      expression: (expression (primitive_expression (identifier (label))))))))
