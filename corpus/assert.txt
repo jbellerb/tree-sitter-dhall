@@ -1,0 +1,59 @@
+==================
+Assert statement (unit/AssertA.dhall)
+==================
+
+assert : T
+
+---
+
+(expression
+  (assert_expression
+    (assert_operator)
+    (expression (primitive_expression (identifier (label))))))
+
+==================
+Assert with an equivalence expression (unit/AssertEquivalenceA.dhall)
+==================
+
+assert : x === y
+
+---
+
+(expression
+  (assert_expression
+    (assert_operator)
+    (expression (equivalence_expression
+      (primitive_expression (identifier (label)))
+      (infix_operator)
+      (primitive_expression (identifier (label)))))))
+
+==================
+Assert with a unicode equivalence expression (unit/AssertEquivalenceUnicodeA.dhall)
+==================
+
+assert : x ≡ y
+
+---
+
+(expression
+  (assert_expression
+    (assert_operator)
+    (expression (equivalence_expression
+      (primitive_expression (identifier (label)))
+      (infix_operator)
+      (primitive_expression (identifier (label)))))))
+
+==================
+Assert statement precedence (unit/AssertPrecedenceA.dhall)
+==================
+
+assert : T U
+
+---
+
+(expression
+  (assert_expression
+    (assert_operator)
+    (expression (application_expression
+      (primitive_expression (identifier (label)))
+      (primitive_expression (identifier (label)))))))

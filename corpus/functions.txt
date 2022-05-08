@@ -1,0 +1,129 @@
+==================
+Merge statement (unit/MergeA.dhall)
+==================
+
+merge x y
+
+---
+
+(expression
+  (merge_expression
+    (builtin_operator)
+    (primitive_expression (identifier (label)))
+    (primitive_expression (identifier (label)))))
+
+==================
+Annotated merge statement (unit/MergeAnnotationA.dhall)
+==================
+
+merge x y : t
+
+---
+
+(expression
+  (merge_expression
+    (builtin_operator)
+    (primitive_expression (identifier (label)))
+    (primitive_expression (identifier (label))))
+  (type_operator)
+  type: (expression (primitive_expression (identifier (label)))))
+
+==================
+Annotated merge statement precendence (unit/MergeAnnotationPrecedenceA.dhall)
+==================
+
+merge x y : t a
+
+---
+
+(expression
+  (merge_expression
+    (builtin_operator)
+    (primitive_expression (identifier (label)))
+    (primitive_expression (identifier (label))))
+  (type_operator)
+  type: (expression (application_expression
+    (primitive_expression (identifier (label)))
+    (primitive_expression (identifier (label))))))
+
+==================
+Merge statement precendence with parens (unit/MergeParenPrecedenceA.dhall)
+==================
+
+(merge x y) : t
+
+---
+
+(expression
+  (primitive_expression (expression (merge_expression
+    (builtin_operator)
+    (primitive_expression (identifier (label)))
+    (primitive_expression (identifier (label))))))
+  (type_operator)
+  type: (expression (primitive_expression (identifier (label)))))
+
+==================
+Merge statement applied to parameter (unit/MergeXYZA.dhall)
+==================
+
+merge x y z
+
+---
+
+(expression
+  (application_expression
+    (merge_expression
+      (builtin_operator)
+      (primitive_expression (identifier (label)))
+      (primitive_expression (identifier (label))))
+    (primitive_expression (identifier (label)))))
+
+==================
+toMap statement (unit/ToMapA.dhall)
+==================
+
+toMap x
+
+---
+
+(expression
+  (to_map_expression
+    (builtin_operator)
+    (primitive_expression (identifier (label)))))
+
+==================
+Annotated toMap statement (unit/ToMapAnnotA.dhall)
+==================
+
+toMap x : T
+
+---
+
+(expression
+  (to_map_expression
+    (builtin_operator)
+    (primitive_expression (identifier (label))))
+  (type_operator)
+  type: (expression (primitive_expression (identifier (label)))))
+
+==================
+toMap statement on a record literal (toMapA.dhall)
+==================
+
+toMap { foo= 1, bar= 4, baz= 9 }
+
+---
+
+(expression
+  (to_map_expression
+    (builtin_operator)
+    (primitive_expression (record_literal
+      (record_literal_entry (label) (assign_operator)
+        (expression (primitive_expression
+          (numeric_literal (natural_literal)))))
+      (record_literal_entry (label) (assign_operator)
+        (expression (primitive_expression
+          (numeric_literal (natural_literal)))))
+      (record_literal_entry (label) (assign_operator)
+        (expression (primitive_expression
+          (numeric_literal (natural_literal)))))))))

@@ -61,21 +61,21 @@ Chained with statement precedence (unit/WithPrecedence1A.dhall)
     (with_expression
       (primitive_expression (record_literal
         (record_literal_entry (label) (assign_operator)
-          (expression (application_expression
-            (some)
+          (expression (some_expression
+            (builtin_operator)
             (primitive_expression
               (numeric_literal (natural_literal))))))))
       (with_operator)
       (label)
       (assign_operator)
-      (application_expression
-        (some)
+      (some_expression
+        (builtin_operator)
         (primitive_expression (numeric_literal (natural_literal)))))
     (with_operator)
     (label)
     (assign_operator)
-    (application_expression
-      (some)
+    (some_expression
+      (builtin_operator)
       (primitive_expression (numeric_literal (natural_literal))))))
 
 ==================
@@ -158,8 +158,8 @@ With statement question mark (withQuestionMarkA.dhall)
 
 (expression
   (with_expression
-    (primitive_expression (expression (application_expression
-      (some)
+    (primitive_expression (expression (some_expression
+      (builtin_operator)
       (primitive_expression (numeric_literal (natural_literal))))))
     (with_operator)
     (question_mark)

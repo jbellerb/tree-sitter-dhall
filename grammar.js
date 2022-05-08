@@ -35,15 +35,15 @@ module.exports = grammar({
 
   rules: {
     expression: $ => choice(
-      // TODO: the others
       $.lambda_expression,
       $.if_then_else_expression,
       $.let_expression,
       $.forall_expression,
       $.function_type,
       $.with_expression,
-      $.annotated_expression,
       $.empty_list_literal,
+      $.assert_expression,
+      $.annotated_expression,
     ),
     label: $ => /`[ -_a-~]*`|[A-Z_a-z][0-9\-/A-Z_a-z]*/,
     type: $ => seq(alias(':', $.type_operator), field('type', $.expression)),
@@ -168,11 +168,6 @@ module.exports = grammar({
       alias('?', $.question_mark),
     ),
 
-    annotated_expression: $ => seq(
-      $._operator_expression,
-      optional($.type),
-    ),
-
     empty_list_literal: $ => seq(
       alias($._empty_list_literal_primitive, $.primitive_expression),
       $.type,
@@ -182,6 +177,17 @@ module.exports = grammar({
       $.list_literal,
     ),
     _empty_list_literal_text: $ => seq('[', optional(','), ']'),
+
+    assert_expression: $ => seq(
+      'assert',
+      alias(':', $.assert_operator),
+      $.expression,
+    ),
+
+    annotated_expression: $ => seq(
+      $._operator_expression,
+      optional($.type),
+    ),
 
     _operator_expression: $ => choice(
       $.equivalence_expression,
@@ -197,6 +203,7 @@ module.exports = grammar({
       $.times_expression,
       $.equal_expression,
       $.not_equal_expression,
+      $._builtin_expression,
       $.application_expression,
       $._import_expression,
     ),
@@ -214,18 +221,32 @@ module.exports = grammar({
     equal_expression: $ => operator(11, $, '=='),
     not_equal_expression: $ => operator(12, $, '!='),
 
+    _builtin_expression: $ => choice(
+      $.merge_expression,
+      $.some_expression,
+      $.to_map_expression,
+      $.show_constructor_expression,
+    ),
+    merge_expression: $ => seq(
+      alias('merge', $.builtin_operator),
+      $._import_expression,
+      $._import_expression,
+    ),
+    some_expression: $ => seq(
+      alias('Some', $.builtin_operator),
+      $._import_expression,
+    ),
+    to_map_expression: $ => seq(
+      alias('toMap', $.builtin_operator),
+      $._import_expression,
+    ),
+    show_constructor_expression: $ => seq(
+      alias('showConstructor', $.builtin_operator),
+      $._import_expression,
+    ),
     application_expression: $ => seq(
       choice(
-        seq(
-          alias('merge', $.merge),
-          $._import_expression,
-          $._import_expression),
-        seq(alias('Some', $.some), $._import_expression),
-        seq(alias('toMap', $.to_map), $._import_expression),
-        seq(
-          alias('showConstructor', $.show_constructor),
-          $._import_expression
-        ),
+        seq($._builtin_expression, $._import_expression),
         seq($._import_expression, $._import_expression),
       ),
       repeat($._import_expression),

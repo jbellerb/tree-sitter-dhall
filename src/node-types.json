@@ -48,6 +48,10 @@
           "named": true
         },
         {
+          "type": "merge_expression",
+          "named": true
+        },
+        {
           "type": "not_equal_expression",
           "named": true
         },
@@ -68,11 +72,23 @@
           "named": true
         },
         {
+          "type": "show_constructor_expression",
+          "named": true
+        },
+        {
+          "type": "some_expression",
+          "named": true
+        },
+        {
           "type": "text_append_expression",
           "named": true
         },
         {
           "type": "times_expression",
+          "named": true
+        },
+        {
+          "type": "to_map_expression",
           "named": true
         }
       ]
@@ -91,7 +107,7 @@
           "named": true
         },
         {
-          "type": "merge",
+          "type": "merge_expression",
           "named": true
         },
         {
@@ -99,15 +115,15 @@
           "named": true
         },
         {
-          "type": "show_constructor",
+          "type": "show_constructor_expression",
           "named": true
         },
         {
-          "type": "some",
+          "type": "some_expression",
           "named": true
         },
         {
-          "type": "to_map",
+          "type": "to_map_expression",
           "named": true
         }
       ]
@@ -117,6 +133,25 @@
     "type": "arrow_operator",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "assert_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "assert_operator",
+          "named": true
+        },
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "block_comment",
@@ -195,6 +230,10 @@
           "named": true
         },
         {
+          "type": "merge_expression",
+          "named": true
+        },
+        {
           "type": "not_equal_expression",
           "named": true
         },
@@ -215,11 +254,23 @@
           "named": true
         },
         {
+          "type": "show_constructor_expression",
+          "named": true
+        },
+        {
+          "type": "some_expression",
+          "named": true
+        },
+        {
           "type": "text_append_expression",
           "named": true
         },
         {
           "type": "times_expression",
+          "named": true
+        },
+        {
+          "type": "to_map_expression",
           "named": true
         }
       ]
@@ -274,6 +325,10 @@
           "named": true
         },
         {
+          "type": "merge_expression",
+          "named": true
+        },
+        {
           "type": "not_equal_expression",
           "named": true
         },
@@ -294,11 +349,23 @@
           "named": true
         },
         {
+          "type": "show_constructor_expression",
+          "named": true
+        },
+        {
+          "type": "some_expression",
+          "named": true
+        },
+        {
           "type": "text_append_expression",
           "named": true
         },
         {
           "type": "times_expression",
+          "named": true
+        },
+        {
+          "type": "to_map_expression",
           "named": true
         }
       ]
@@ -422,6 +489,10 @@
           "named": true
         },
         {
+          "type": "merge_expression",
+          "named": true
+        },
+        {
           "type": "not_equal_expression",
           "named": true
         },
@@ -442,11 +513,23 @@
           "named": true
         },
         {
+          "type": "show_constructor_expression",
+          "named": true
+        },
+        {
+          "type": "some_expression",
+          "named": true
+        },
+        {
           "type": "text_append_expression",
           "named": true
         },
         {
           "type": "times_expression",
+          "named": true
+        },
+        {
+          "type": "to_map_expression",
           "named": true
         }
       ]
@@ -501,6 +584,10 @@
           "named": true
         },
         {
+          "type": "merge_expression",
+          "named": true
+        },
+        {
           "type": "not_equal_expression",
           "named": true
         },
@@ -521,11 +608,23 @@
           "named": true
         },
         {
+          "type": "show_constructor_expression",
+          "named": true
+        },
+        {
+          "type": "some_expression",
+          "named": true
+        },
+        {
           "type": "text_append_expression",
           "named": true
         },
         {
           "type": "times_expression",
+          "named": true
+        },
+        {
+          "type": "to_map_expression",
           "named": true
         }
       ]
@@ -556,6 +655,10 @@
         },
         {
           "type": "application_expression",
+          "named": true
+        },
+        {
+          "type": "assert_expression",
           "named": true
         },
         {
@@ -607,6 +710,10 @@
           "named": true
         },
         {
+          "type": "merge_expression",
+          "named": true
+        },
+        {
           "type": "not_equal_expression",
           "named": true
         },
@@ -627,11 +734,23 @@
           "named": true
         },
         {
+          "type": "show_constructor_expression",
+          "named": true
+        },
+        {
+          "type": "some_expression",
+          "named": true
+        },
+        {
           "type": "text_append_expression",
           "named": true
         },
         {
           "type": "times_expression",
+          "named": true
+        },
+        {
+          "type": "to_map_expression",
           "named": true
         },
         {
@@ -749,6 +868,10 @@
             "named": true
           },
           {
+            "type": "merge_expression",
+            "named": true
+          },
+          {
             "type": "not_equal_expression",
             "named": true
           },
@@ -769,11 +892,23 @@
             "named": true
           },
           {
+            "type": "show_constructor_expression",
+            "named": true
+          },
+          {
+            "type": "some_expression",
+            "named": true
+          },
+          {
             "type": "text_append_expression",
             "named": true
           },
           {
             "type": "times_expression",
+            "named": true
+          },
+          {
+            "type": "to_map_expression",
             "named": true
           }
         ]
@@ -908,6 +1043,10 @@
           "named": true
         },
         {
+          "type": "merge_expression",
+          "named": true
+        },
+        {
           "type": "not_equal_expression",
           "named": true
         },
@@ -928,11 +1067,23 @@
           "named": true
         },
         {
+          "type": "show_constructor_expression",
+          "named": true
+        },
+        {
+          "type": "some_expression",
+          "named": true
+        },
+        {
           "type": "text_append_expression",
           "named": true
         },
         {
           "type": "times_expression",
+          "named": true
+        },
+        {
+          "type": "to_map_expression",
           "named": true
         }
       ]
@@ -1158,6 +1309,10 @@
           "named": true
         },
         {
+          "type": "merge_expression",
+          "named": true
+        },
+        {
           "type": "not_equal_expression",
           "named": true
         },
@@ -1178,11 +1333,23 @@
           "named": true
         },
         {
+          "type": "show_constructor_expression",
+          "named": true
+        },
+        {
+          "type": "some_expression",
+          "named": true
+        },
+        {
           "type": "text_append_expression",
           "named": true
         },
         {
           "type": "times_expression",
+          "named": true
+        },
+        {
+          "type": "to_map_expression",
           "named": true
         }
       ]
@@ -1198,6 +1365,29 @@
       "types": [
         {
           "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "merge_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "builtin_operator",
+          "named": true
+        },
+        {
+          "type": "completion",
+          "named": true
+        },
+        {
+          "type": "primitive_expression",
           "named": true
         }
       ]
@@ -1252,6 +1442,10 @@
           "named": true
         },
         {
+          "type": "merge_expression",
+          "named": true
+        },
+        {
           "type": "not_equal_expression",
           "named": true
         },
@@ -1272,11 +1466,23 @@
           "named": true
         },
         {
+          "type": "show_constructor_expression",
+          "named": true
+        },
+        {
+          "type": "some_expression",
+          "named": true
+        },
+        {
           "type": "text_append_expression",
           "named": true
         },
         {
           "type": "times_expression",
+          "named": true
+        },
+        {
+          "type": "to_map_expression",
           "named": true
         }
       ]
@@ -1354,6 +1560,10 @@
           "named": true
         },
         {
+          "type": "merge_expression",
+          "named": true
+        },
+        {
           "type": "not_equal_expression",
           "named": true
         },
@@ -1374,11 +1584,23 @@
           "named": true
         },
         {
+          "type": "show_constructor_expression",
+          "named": true
+        },
+        {
+          "type": "some_expression",
+          "named": true
+        },
+        {
           "type": "text_append_expression",
           "named": true
         },
         {
           "type": "times_expression",
+          "named": true
+        },
+        {
+          "type": "to_map_expression",
           "named": true
         }
       ]
@@ -1433,6 +1655,10 @@
           "named": true
         },
         {
+          "type": "merge_expression",
+          "named": true
+        },
+        {
           "type": "not_equal_expression",
           "named": true
         },
@@ -1453,11 +1679,23 @@
           "named": true
         },
         {
+          "type": "show_constructor_expression",
+          "named": true
+        },
+        {
+          "type": "some_expression",
+          "named": true
+        },
+        {
           "type": "text_append_expression",
           "named": true
         },
         {
           "type": "times_expression",
+          "named": true
+        },
+        {
+          "type": "to_map_expression",
           "named": true
         }
       ]
@@ -1512,6 +1750,10 @@
           "named": true
         },
         {
+          "type": "merge_expression",
+          "named": true
+        },
+        {
           "type": "not_equal_expression",
           "named": true
         },
@@ -1532,11 +1774,23 @@
           "named": true
         },
         {
+          "type": "show_constructor_expression",
+          "named": true
+        },
+        {
+          "type": "some_expression",
+          "named": true
+        },
+        {
           "type": "text_append_expression",
           "named": true
         },
         {
           "type": "times_expression",
+          "named": true
+        },
+        {
+          "type": "to_map_expression",
           "named": true
         }
       ]
@@ -1715,6 +1969,52 @@
     }
   },
   {
+    "type": "show_constructor_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "builtin_operator",
+          "named": true
+        },
+        {
+          "type": "completion",
+          "named": true
+        },
+        {
+          "type": "primitive_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "some_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "builtin_operator",
+          "named": true
+        },
+        {
+          "type": "completion",
+          "named": true
+        },
+        {
+          "type": "primitive_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "text_append_expression",
     "named": true,
     "fields": {},
@@ -1763,6 +2063,10 @@
           "named": true
         },
         {
+          "type": "merge_expression",
+          "named": true
+        },
+        {
           "type": "not_equal_expression",
           "named": true
         },
@@ -1783,11 +2087,23 @@
           "named": true
         },
         {
+          "type": "show_constructor_expression",
+          "named": true
+        },
+        {
+          "type": "some_expression",
+          "named": true
+        },
+        {
           "type": "text_append_expression",
           "named": true
         },
         {
           "type": "times_expression",
+          "named": true
+        },
+        {
+          "type": "to_map_expression",
           "named": true
         }
       ]
@@ -1857,6 +2173,10 @@
           "named": true
         },
         {
+          "type": "merge_expression",
+          "named": true
+        },
+        {
           "type": "not_equal_expression",
           "named": true
         },
@@ -1877,11 +2197,46 @@
           "named": true
         },
         {
+          "type": "show_constructor_expression",
+          "named": true
+        },
+        {
+          "type": "some_expression",
+          "named": true
+        },
+        {
           "type": "text_append_expression",
           "named": true
         },
         {
           "type": "times_expression",
+          "named": true
+        },
+        {
+          "type": "to_map_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "to_map_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "builtin_operator",
+          "named": true
+        },
+        {
+          "type": "completion",
+          "named": true
+        },
+        {
+          "type": "primitive_expression",
           "named": true
         }
       ]
@@ -1955,6 +2310,10 @@
           "named": true
         },
         {
+          "type": "merge_expression",
+          "named": true
+        },
+        {
           "type": "not_equal_expression",
           "named": true
         },
@@ -1983,11 +2342,23 @@
           "named": true
         },
         {
+          "type": "show_constructor_expression",
+          "named": true
+        },
+        {
+          "type": "some_expression",
+          "named": true
+        },
+        {
           "type": "text_append_expression",
           "named": true
         },
         {
           "type": "times_expression",
+          "named": true
+        },
+        {
+          "type": "to_map_expression",
           "named": true
         },
         {
@@ -2218,6 +2589,10 @@
     "named": false
   },
   {
+    "type": "assert_operator",
+    "named": true
+  },
+  {
     "type": "assign_operator",
     "named": true
   },
@@ -2231,6 +2606,10 @@
   },
   {
     "type": "block_comment_open",
+    "named": true
+  },
+  {
+    "type": "builtin_operator",
     "named": true
   },
   {
@@ -2287,10 +2666,6 @@
   },
   {
     "type": "merge",
-    "named": true
-  },
-  {
-    "type": "merge",
     "named": false
   },
   {
@@ -2314,24 +2689,12 @@
     "named": false
   },
   {
-    "type": "show_constructor",
-    "named": true
-  },
-  {
-    "type": "some",
-    "named": true
-  },
-  {
     "type": "then",
     "named": false
   },
   {
     "type": "toMap",
     "named": false
-  },
-  {
-    "type": "to_map",
-    "named": true
   },
   {
     "type": "type_operator",

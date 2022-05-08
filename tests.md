@@ -22,7 +22,7 @@
 - [ ] collectionImportType
 - [x] fields
 - [x] forall
-- [ ] functionType
+- [x] functionType
 - [x] hexadecimal
 - [x] identifier
 - [x] label
@@ -77,13 +77,13 @@
 - [ ] time/LowercaseT
 - [ ] time/TimeTimeZone
 - [ ] time/TimeTimeZoneZ
-- [ ] toMap
+- [x] toMap
 - [x] unicodeComment
 - [x] unit/Annotation
-- [ ] unit/Assert
-- [ ] unit/AssertEquivalence
-- [ ] unit/AssertEquivalenceUnicode
-- [ ] unit/AssertPrecedence
+- [x] unit/Assert
+- [x] unit/AssertEquivalence
+- [x] unit/AssertEquivalenceUnicode
+- [x] unit/AssertPrecedence
 - [ ] unit/Bool
 - [ ] unit/BoolLitTrue
 - [ ] unit/BuiltinListBuild
@@ -139,11 +139,11 @@
 - [x] unit/ListLitNonEmptyAnnotated
 - [x] unit/ListLitTrailingAndLeadingCommas
 - [x] unit/ListLitTrailingComma
-- [ ] unit/Merge
-- [ ] unit/MergeAnnotation
-- [ ] unit/MergeAnnotationPrecedence
-- [ ] unit/MergeParenAnnotation
-- [ ] unit/MergeXYZ
+- [x] unit/Merge
+- [x] unit/MergeAnnotation
+- [x] unit/MergeAnnotationPrecedence
+- [x] unit/MergeParenAnnotation
+- [x] unit/MergeXYZ
 - [x] unit/NaturalLit
 - [x] unit/Projection
 - [x] unit/ProjectionLeadingComma
@@ -187,8 +187,8 @@
 - [ ] unit/TimeLiteral
 - [ ] unit/TimeZone
 - [ ] unit/TimeZoneLiteral
-- [ ] unit/ToMap
-- [ ] unit/ToMapAnnot
+- [x] unit/ToMap
+- [x] unit/ToMapAnnot
 - [ ] unit/TrailingLineCommentWithoutNewline
 - [ ] unit/Type
 - [ ] unit/UnionTypeEmpty

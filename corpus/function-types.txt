@@ -13,6 +13,23 @@ T -> U
     right: (expression (primitive_expression (identifier (label))))))
 
 ==================
+Nested function types (functionTypeA.dhall)
+==================
+
+Bool → Bool -> Bool
+
+---
+
+(expression
+  (function_type
+    left: (primitive_expression (identifier (builtin)))
+    (arrow_operator)
+    right: (expression (function_type
+      left: (primitive_expression (identifier (builtin)))
+      (arrow_operator)
+      right: (expression (primitive_expression (identifier (builtin))))))))
+
+==================
 Forall function type (unit/FunctionTypePiA.dhall)
 ==================
 

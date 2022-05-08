@@ -31,11 +31,15 @@
         },
         {
           "type": "SYMBOL",
-          "name": "annotated_expression"
+          "name": "empty_list_literal"
         },
         {
           "type": "SYMBOL",
-          "name": "empty_list_literal"
+          "name": "assert_expression"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "annotated_expression"
         }
       ]
     },
@@ -644,27 +648,6 @@
         }
       ]
     },
-    "annotated_expression": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "_operator_expression"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "type"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        }
-      ]
-    },
     "empty_list_literal": {
       "type": "SEQ",
       "members": [
@@ -714,6 +697,49 @@
         {
           "type": "STRING",
           "value": "]"
+        }
+      ]
+    },
+    "assert_expression": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "assert"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": ":"
+          },
+          "named": true,
+          "value": "assert_operator"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "expression"
+        }
+      ]
+    },
+    "annotated_expression": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_operator_expression"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "type"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -771,6 +797,10 @@
         {
           "type": "SYMBOL",
           "name": "not_equal_expression"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_builtin_expression"
         },
         {
           "type": "SYMBOL",
@@ -1156,6 +1186,103 @@
         ]
       }
     },
+    "_builtin_expression": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "merge_expression"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "some_expression"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "to_map_expression"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "show_constructor_expression"
+        }
+      ]
+    },
+    "merge_expression": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "merge"
+          },
+          "named": true,
+          "value": "builtin_operator"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_import_expression"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_import_expression"
+        }
+      ]
+    },
+    "some_expression": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "Some"
+          },
+          "named": true,
+          "value": "builtin_operator"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_import_expression"
+        }
+      ]
+    },
+    "to_map_expression": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "toMap"
+          },
+          "named": true,
+          "value": "builtin_operator"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_import_expression"
+        }
+      ]
+    },
+    "show_constructor_expression": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "showConstructor"
+          },
+          "named": true,
+          "value": "builtin_operator"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_import_expression"
+        }
+      ]
+    },
     "application_expression": {
       "type": "SEQ",
       "members": [
@@ -1166,71 +1293,8 @@
               "type": "SEQ",
               "members": [
                 {
-                  "type": "ALIAS",
-                  "content": {
-                    "type": "STRING",
-                    "value": "merge"
-                  },
-                  "named": true,
-                  "value": "merge"
-                },
-                {
                   "type": "SYMBOL",
-                  "name": "_import_expression"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "_import_expression"
-                }
-              ]
-            },
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "ALIAS",
-                  "content": {
-                    "type": "STRING",
-                    "value": "Some"
-                  },
-                  "named": true,
-                  "value": "some"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "_import_expression"
-                }
-              ]
-            },
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "ALIAS",
-                  "content": {
-                    "type": "STRING",
-                    "value": "toMap"
-                  },
-                  "named": true,
-                  "value": "to_map"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "_import_expression"
-                }
-              ]
-            },
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "ALIAS",
-                  "content": {
-                    "type": "STRING",
-                    "value": "showConstructor"
-                  },
-                  "named": true,
-                  "value": "show_constructor"
+                  "name": "_builtin_expression"
                 },
                 {
                   "type": "SYMBOL",
