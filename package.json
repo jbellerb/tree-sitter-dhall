@@ -9,7 +9,7 @@
     "test": "tree-sitter test"
   },
   "author": "Jared Beller",
-  "license": "GPL-3.0-or-later",
+  "license": "MIT",
   "dependencies": {
     "nan": "^2.15.0"
   },
