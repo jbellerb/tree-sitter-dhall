@@ -1330,17 +1330,12 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "completion"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "primitive_expression"
-            }
-          ]
+          "type": "SYMBOL",
+          "name": "completion"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "primitive_expression"
         }
       ]
     },
@@ -1801,8 +1796,26 @@
           "name": "double_quote_escaped"
         },
         {
-          "type": "PATTERN",
-          "value": "[^\\\"\\\\]"
+          "type": "IMMEDIATE_TOKEN",
+          "content": {
+            "type": "PREC",
+            "value": 1,
+            "content": {
+              "type": "PATTERN",
+              "value": "[^\\\"\\\\\\$]+"
+            }
+          }
+        },
+        {
+          "type": "IMMEDIATE_TOKEN",
+          "content": {
+            "type": "PREC",
+            "value": 1,
+            "content": {
+              "type": "PATTERN",
+              "value": "\\$"
+            }
+          }
         }
       ]
     },

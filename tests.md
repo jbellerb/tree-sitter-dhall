@@ -7,6 +7,7 @@
 - [x] multi-line lists
 - [x] comments in lists
 - [x] complete double-quoted string unicode escape sequence test
+- [x] comments in double-quoted strings
 - [x] updated builtins test
 - [x] de Bruijn indices
 - [x] de Bruijn indices don't apply to builtins
@@ -48,7 +49,7 @@
 - [x] record
 - [ ] recordProjectionByExpression
 - [ ] reservedPrefix
-- [ ] text/dollarSign
+- [x] text/dollarSign
 - [x] text/doubleQuotedString
 - [ ] text/escape
 - [x] text/escapedDoubleQuotedString
@@ -64,14 +65,14 @@
 - [ ] text/multilineIndentedAndAligned
 - [ ] text/multilineMismatchedLeadingWhitespace
 - [ ] text/multilineTabs
-- [ ] text/nonAssignedUnicode
+- [x] text/nonAssignedUnicode
 - [ ] text/preserveComment
 - [ ] text/singleLine
 - [ ] text/singleQuoteConcat
 - [ ] text/singleQuotedString
 - [ ] text/template
 - [ ] text/twoLines
-- [ ] text/unicodeDoubleQuotedString
+- [x] text/unicodeDoubleQuotedString
 - [ ] time/DateTime
 - [ ] time/DateTimeTimeZone
 - [ ] time/LowercaseT

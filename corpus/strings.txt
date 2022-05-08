@@ -1,46 +1,96 @@
 ==================
-Basic double-quoted strings (text/doubleQuotedStringA.dhall)
+Basic double-quoted string (text/doubleQuotedStringA.dhall)
 ==================
 
 "ABC"
 
 ---
 
-(expression (primitive_expression (text_literal (double_quote_literal))))
+(expression
+  (primitive_expression (text_literal (double_quote_literal))))
 
 ==================
-Double-quoted strings with escape sequences (text/escapedDoubleQuotedStringA.dhall)
+Unicode double-quoted string (text/unicodeDoubleQuotedStringA.dhall)
+==================
+
+"∀(a : Type) → a"
+
+---
+
+(expression
+  (primitive_expression (text_literal (double_quote_literal))))
+
+==================
+Double-quoted string with escape sequences (text/escapedDoubleQuotedStringA.dhall)
 ==================
 
 "\\\"\$\\\/\b\f\n\r\t\u{1D11E} \u2200(a : Type) \u2192 a"
 
 ---
 
-(expression (primitive_expression (text_literal (double_quote_literal
-  (double_quote_escaped)
-  (double_quote_escaped)
-  (double_quote_escaped)
-  (double_quote_escaped)
-  (double_quote_escaped)
-  (double_quote_escaped)
-  (double_quote_escaped)
-  (double_quote_escaped)
-  (double_quote_escaped)
-  (double_quote_escaped)
-  (double_quote_escaped)
-  (double_quote_escaped)
-  (double_quote_escaped)))))
+(expression
+  (primitive_expression (text_literal (double_quote_literal
+    (double_quote_escaped)
+    (double_quote_escaped)
+    (double_quote_escaped)
+    (double_quote_escaped)
+    (double_quote_escaped)
+    (double_quote_escaped)
+    (double_quote_escaped)
+    (double_quote_escaped)
+    (double_quote_escaped)
+    (double_quote_escaped)
+    (double_quote_escaped)
+    (double_quote_escaped)
+    (double_quote_escaped)))))
 
 ==================
-Double-quoted strings with unicode escape sequences
+Double-quoted string with unicode escape sequences
 ==================
 
 "A\u2115B\u{1FA00}C\u{43}D\u{00000001F574}E"
 
 ---
 
-(expression (primitive_expression (text_literal (double_quote_literal
-  (double_quote_escaped)
-  (double_quote_escaped)
-  (double_quote_escaped)
-  (double_quote_escaped)))))
+(expression
+  (primitive_expression (text_literal (double_quote_literal
+    (double_quote_escaped)
+    (double_quote_escaped)
+    (double_quote_escaped)
+    (double_quote_escaped)))))
+
+==================
+Double-quoted string with an invalid unicode escape (text/nonAssignedUnicodeA.dhall)
+==================
+
+"\u{1FFF0}"
+
+---
+
+; Intentionally deviating from the spec because I don't see the need to
+; validate unicode codepoints for syntax highlighting.
+(expression
+  (primitive_expression (text_literal
+    (double_quote_literal (double_quote_escaped)))))
+
+==================
+Double-quoted string with a dollar sign (text/dollarSignA.dhall)
+==================
+
+"$"
+
+---
+
+(expression
+  (primitive_expression (text_literal (double_quote_literal))))
+
+==================
+Comments inside a double-quoted string
+==================
+
+"-- $--$--{--}$"
+
+---
+
+(expression
+  (primitive_expression (text_literal (double_quote_literal))))

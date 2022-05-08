@@ -22,7 +22,7 @@ module.exports = grammar({
   extras: $ => [
     $.line_comment,
     $.block_comment,
-    /\s/
+    /\s/,
   ],
 
   inline: $ => [
@@ -254,7 +254,8 @@ module.exports = grammar({
 
     _import_expression: $ => choice(
       // TODO: $.import,
-      choice($.completion, $.primitive_expression),
+      $.completion,
+      $.primitive_expression,
     ),
     completion: $ => seq(
       field('type', $.primitive_expression),
@@ -332,7 +333,8 @@ module.exports = grammar({
     _double_quote_chunk: $ => choice(
       $.interpolation,
       $.double_quote_escaped,
-      /[^\"\\]/,
+      token.immediate(prec(1, /[^\"\\\$]+/)),
+      token.immediate(prec(1, /\$/)),
     ),
     interpolation: $ => seq('${', $.expression, '}'),
     double_quote_escaped: $ => token(
