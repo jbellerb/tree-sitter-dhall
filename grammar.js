@@ -39,6 +39,8 @@ module.exports = grammar({
       $.lambda_expression,
       $.if_then_else_expression,
       $.let_expression,
+      $.forall_expression,
+      $.function_type,
       $.with_expression,
       $.annotated_expression,
       $.empty_list_literal,
@@ -109,15 +111,19 @@ module.exports = grammar({
       'Sort',
     ),
 
-    lambda_expression: $ => seq(
-      alias(choice('\u03BB', '\\'), $.lambda_operator),
+    lambda_expression: $ => seq($.lambda_operator, $._function_expression),
+    forall_expression: $ => seq($.forall_operator, $._function_expression),
+    _function_expression: $ => seq(
       '(',
       field('label', $.label),
       $.type,
       ')',
-      alias(choice('\u2192', '->'), $.arrow_operator),
+      $.arrow_operator,
       field('expression', $.expression),
     ),
+    arrow_operator:$ => choice('\u2192', '->'),
+    lambda_operator:$ => choice('\u03BB', '\\'),
+    forall_operator:$ => choice('\u2200', 'forall'),
 
     if_then_else_expression: $ => seq(
       'if',
@@ -135,6 +141,12 @@ module.exports = grammar({
       optional($.type),
       alias('=', $.assign_operator),
       $.expression,
+    ),
+
+    function_type: $ => seq(
+      field('left', $._operator_expression),
+      $.arrow_operator,
+      field('right', $.expression),
     ),
 
     with_expression: $ => seq(

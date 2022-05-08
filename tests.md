@@ -11,6 +11,7 @@
 - [x] de Bruijn indices
 - [x] de Bruijn indices don't apply to builtins
 - [x] equivalence operator associativity
+- [x] unicode forall expression
 
 ## dhall-lang tests
 
@@ -20,7 +21,7 @@
 - [x] builtins
 - [ ] collectionImportType
 - [x] fields
-- [ ] forall
+- [x] forall
 - [ ] functionType
 - [x] hexadecimal
 - [x] identifier
@@ -107,16 +108,16 @@
 - [x] unit/Field
 - [ ] unit/FieldBuiltinName
 - [ ] unit/FieldQuoted
-- [ ] unit/Forall
-- [ ] unit/ForallNested
-- [ ] unit/ForallUnderscore
+- [x] unit/Forall
+- [x] unit/ForallNested
+- [x] unit/ForallUnderscore
 - [ ] unit/FunctionApplicationMultipleArgs
 - [ ] unit/FunctionApplicationOneArg
-- [ ] unit/FunctionTypeArrow
-- [ ] unit/FunctionTypePi
-- [ ] unit/FunctionTypePiNested
-- [ ] unit/FunctionTypePiUnderscore
-- [ ] unit/FunctionTypePiUnicode
+- [x] unit/FunctionTypeArrow
+- [x] unit/FunctionTypePi
+- [x] unit/FunctionTypePiNested
+- [x] unit/FunctionTypePiUnderscore
+- [x] unit/FunctionTypePiUnicode
 - [x] unit/IntegerLitNegative
 - [x] unit/IntegerLitPositive
 - [ ] unit/Kind

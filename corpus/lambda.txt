@@ -94,3 +94,100 @@ Comprehensive lambda expression (lambdaA.dhall)
       type: (expression (primitive_expression (identifier (builtin))))
       (arrow_operator)
       expression: (expression (primitive_expression (identifier (label))))))))
+
+==================
+Basic forall expression (unit/ForallA.dhall)
+==================
+
+forall(x: T) -> x
+
+---
+
+(expression
+  (forall_expression
+    (forall_operator)
+    label: (label)
+    (type_operator)
+    type: (expression (primitive_expression (identifier (label))))
+    (arrow_operator)
+    expression: (expression (primitive_expression (identifier (label))))))
+
+==================
+Unicode forall expression
+==================
+
+∀(x : T) -> y
+
+---
+
+(expression
+  (forall_expression
+    (forall_operator)
+    label: (label)
+    (type_operator)
+    type: (expression (primitive_expression (identifier (label))))
+    (arrow_operator)
+    expression: (expression (primitive_expression (identifier (label))))))
+
+==================
+Forall expression with an underscore parameter (unit/ForallUnderscoreA.dhall)
+==================
+
+forall(_: T) -> x
+
+---
+
+(expression
+  (forall_expression
+    (forall_operator)
+    label: (label)
+    (type_operator)
+    type: (expression (primitive_expression (identifier (label))))
+    (arrow_operator)
+    expression: (expression (primitive_expression (identifier (label))))))
+
+==================
+Nested forall expressions (unit/ForallNestedA.dhall)
+==================
+
+forall(x: T) -> forall(y: U) -> x
+
+---
+
+(expression
+  (forall_expression
+    (forall_operator)
+    label: (label)
+    (type_operator)
+    type: (expression (primitive_expression (identifier (label))))
+    (arrow_operator)
+    expression: (expression (forall_expression
+      (forall_operator)
+      label: (label)
+      (type_operator)
+      type: (expression (primitive_expression (identifier (label))))
+      (arrow_operator)
+      expression: (expression (primitive_expression (identifier (label))))))))
+
+==================
+Comprehensive forall expression (forallA.dhall)
+==================
+
+∀(a : Type) → forall (b : Type) -> a
+
+---
+
+(expression
+  (forall_expression
+    (forall_operator)
+    label: (label)
+    (type_operator)
+    type: (expression (primitive_expression (identifier (builtin))))
+    (arrow_operator)
+    expression: (expression (forall_expression
+      (forall_operator)
+      label: (label)
+      (type_operator)
+      type: (expression (primitive_expression (identifier (builtin))))
+      (arrow_operator)
+      expression: (expression (primitive_expression (identifier (label))))))))

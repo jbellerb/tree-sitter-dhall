@@ -114,6 +114,11 @@
     }
   },
   {
+    "type": "arrow_operator",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "block_comment",
     "named": true,
     "fields": {},
@@ -574,6 +579,14 @@
           "named": true
         },
         {
+          "type": "forall_expression",
+          "named": true
+        },
+        {
+          "type": "function_type",
+          "named": true
+        },
+        {
           "type": "if_then_else_expression",
           "named": true
         },
@@ -627,6 +640,161 @@
         },
         {
           "type": "with_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "forall_expression",
+    "named": true,
+    "fields": {
+      "expression": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "label": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "label",
+            "named": true
+          }
+        ]
+      },
+      "type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "arrow_operator",
+          "named": true
+        },
+        {
+          "type": "forall_operator",
+          "named": true
+        },
+        {
+          "type": "type_operator",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "forall_operator",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "function_type",
+    "named": true,
+    "fields": {
+      "left": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "and_expression",
+            "named": true
+          },
+          {
+            "type": "application_expression",
+            "named": true
+          },
+          {
+            "type": "combine_expression",
+            "named": true
+          },
+          {
+            "type": "combine_types_expression",
+            "named": true
+          },
+          {
+            "type": "completion",
+            "named": true
+          },
+          {
+            "type": "equal_expression",
+            "named": true
+          },
+          {
+            "type": "equivalence_expression",
+            "named": true
+          },
+          {
+            "type": "import_alt_expression",
+            "named": true
+          },
+          {
+            "type": "list_append_expression",
+            "named": true
+          },
+          {
+            "type": "not_equal_expression",
+            "named": true
+          },
+          {
+            "type": "or_expression",
+            "named": true
+          },
+          {
+            "type": "plus_expression",
+            "named": true
+          },
+          {
+            "type": "prefer_expression",
+            "named": true
+          },
+          {
+            "type": "primitive_expression",
+            "named": true
+          },
+          {
+            "type": "text_append_expression",
+            "named": true
+          },
+          {
+            "type": "times_expression",
+            "named": true
+          }
+        ]
+      },
+      "right": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "arrow_operator",
           "named": true
         }
       ]
@@ -853,6 +1021,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "lambda_operator",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "let_binding",
@@ -1849,6 +2022,10 @@
     "named": false
   },
   {
+    "type": "->",
+    "named": false
+  },
+  {
     "type": "-Infinity",
     "named": false
   },
@@ -2025,12 +2202,12 @@
     "named": false
   },
   {
-    "type": "]",
+    "type": "\\",
     "named": false
   },
   {
-    "type": "arrow_operator",
-    "named": true
+    "type": "]",
+    "named": false
   },
   {
     "type": "as",
@@ -2094,10 +2271,6 @@
   },
   {
     "type": "label",
-    "named": true
-  },
-  {
-    "type": "lambda_operator",
     "named": true
   },
   {
@@ -2182,6 +2355,14 @@
   },
   {
     "type": "}",
+    "named": false
+  },
+  {
+    "type": "λ",
+    "named": false
+  },
+  {
+    "type": "→",
     "named": false
   },
   {

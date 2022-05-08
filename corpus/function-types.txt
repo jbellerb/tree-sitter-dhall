@@ -1,0 +1,87 @@
+==================
+Function type (unit/FunctionTypeArrowA.dhall)
+==================
+
+T -> U
+
+---
+
+(expression
+  (function_type
+    left: (primitive_expression (identifier (label)))
+    (arrow_operator)
+    right: (expression (primitive_expression (identifier (label))))))
+
+==================
+Forall function type (unit/FunctionTypePiA.dhall)
+==================
+
+forall(x: T) -> U
+
+---
+
+(expression
+  (forall_expression
+    (forall_operator)
+    label: (label)
+    (type_operator)
+    type: (expression (primitive_expression (identifier (label))))
+    (arrow_operator)
+    expression: (expression (primitive_expression (identifier (label))))))
+
+==================
+Unicode forall function type (unit/FunctionTypePiUnicodeA.dhall)
+==================
+
+∀(x: T) -> U
+
+---
+
+(expression
+  (forall_expression
+    (forall_operator)
+    label: (label)
+    (type_operator)
+    type: (expression (primitive_expression (identifier (label))))
+    (arrow_operator)
+    expression: (expression (primitive_expression (identifier (label))))))
+
+==================
+Forall function type with an underscore parameter (unit/FunctionTypePiUnderscoreA.dhall)
+==================
+
+forall(_: T) -> U
+
+---
+
+(expression
+  (forall_expression
+    (forall_operator)
+    label: (label)
+    (type_operator)
+    type: (expression (primitive_expression (identifier (label))))
+    (arrow_operator)
+    expression: (expression (primitive_expression (identifier (label))))))
+
+==================
+Nested forall function type (unit/FunctionTypePiNestedA.dhall)
+==================
+
+forall(x: T) -> ∀(y: U) -> V
+
+---
+
+(expression
+  (forall_expression
+    (forall_operator)
+    label: (label)
+    (type_operator)
+    type: (expression (primitive_expression (identifier (label))))
+    (arrow_operator)
+    expression: (expression (forall_expression
+      (forall_operator)
+      label: (label)
+      (type_operator)
+      type: (expression (primitive_expression (identifier (label))))
+      (arrow_operator)
+      expression: (expression (primitive_expression (identifier (label))))))))

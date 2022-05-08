@@ -19,6 +19,14 @@
         },
         {
           "type": "SYMBOL",
+          "name": "forall_expression"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "function_type"
+        },
+        {
+          "type": "SYMBOL",
           "name": "with_expression"
         },
         {
@@ -313,23 +321,31 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "λ"
-              },
-              {
-                "type": "STRING",
-                "value": "\\"
-              }
-            ]
-          },
-          "named": true,
-          "value": "lambda_operator"
+          "type": "SYMBOL",
+          "name": "lambda_operator"
         },
+        {
+          "type": "SYMBOL",
+          "name": "_function_expression"
+        }
+      ]
+    },
+    "forall_expression": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "forall_operator"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_function_expression"
+        }
+      ]
+    },
+    "_function_expression": {
+      "type": "SEQ",
+      "members": [
         {
           "type": "STRING",
           "value": "("
@@ -351,22 +367,8 @@
           "value": ")"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "→"
-              },
-              {
-                "type": "STRING",
-                "value": "->"
-              }
-            ]
-          },
-          "named": true,
-          "value": "arrow_operator"
+          "type": "SYMBOL",
+          "name": "arrow_operator"
         },
         {
           "type": "FIELD",
@@ -375,6 +377,45 @@
             "type": "SYMBOL",
             "name": "expression"
           }
+        }
+      ]
+    },
+    "arrow_operator": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "→"
+        },
+        {
+          "type": "STRING",
+          "value": "->"
+        }
+      ]
+    },
+    "lambda_operator": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "λ"
+        },
+        {
+          "type": "STRING",
+          "value": "\\"
+        }
+      ]
+    },
+    "forall_operator": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "∀"
+        },
+        {
+          "type": "STRING",
+          "value": "forall"
         }
       ]
     },
@@ -478,6 +519,31 @@
         {
           "type": "SYMBOL",
           "name": "expression"
+        }
+      ]
+    },
+    "function_type": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "left",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_operator_expression"
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "arrow_operator"
+        },
+        {
+          "type": "FIELD",
+          "name": "right",
+          "content": {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
         }
       ]
     },
