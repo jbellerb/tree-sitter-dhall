@@ -1,6 +1,8 @@
-const digits = /[0-9]+/;
-const hexadecimal_natural = /0x[0-9A-F]+/;
-const decimal_double_exponent = /e[+-]?[0-9]+/;
+const digit = /[0-9]/;
+const hexdigit = /[0-9A-Fa-f]/;
+const decimal_natural = choice('0', seq(/[1-9]/, repeat(digit)));
+const hexadecimal_natural = seq('0x', repeat1(hexdigit));
+const double_exponent = seq(/[Ee][+-]?/, repeat1(digit));
 
 const operator = (precedence, $, symbol) => prec.left(
   precedence,
@@ -253,7 +255,7 @@ module.exports = grammar({
     ),
 
     _import_expression: $ => choice(
-      // TODO: $.import,
+      $.import,
       $.completion,
       $.primitive_expression,
     ),
@@ -291,6 +293,30 @@ module.exports = grammar({
     ),
     type_selector: $ => seq('(', $.expression, ')'),
 
+    import: $ => prec.right(seq(
+      $._import_type,
+      optional($.import_hash),
+      optional(seq('as', choice(
+        alias('Text', $.import_as_text),
+        alias('Location', $.import_as_location),
+      ))),
+    )),
+    _import_type: $ => choice(
+      alias('missing', $.missing_import),
+      $.local_import,
+      // $.http_import,
+      // $.env_import,
+    ),
+    import_hash: $ => /sha256:[0-9A-Fa-f]{64}/,
+
+    local_import: $ => token(seq(
+      optional(choice('.', '..', '~')),
+      repeat1(choice(
+        /\/[^\x00- \"\#\(\),\/<>\?\[\\\]\{\}\x7f]+/,
+        /\/"[^\x00-\x1f\\\/]+"/,
+      )),
+    )),
+
     line_comment: $ => seq($.line_comment_prefix, $.line_comment_content),
     line_comment_prefix: $ => '--',
     line_comment_content: $ => /.*/,
@@ -316,16 +342,16 @@ module.exports = grammar({
       'NaN',
       token(seq(
         optional(choice('+', '-')),
-        digits,
+        repeat1(digit),
         choice(
-          seq('.', digits, optional(decimal_double_exponent)),
-          decimal_double_exponent,
+          seq('.', repeat1(digit), optional(double_exponent)),
+          double_exponent,
         ),
       )),
     ),
-    natural_literal: $ => token(choice(hexadecimal_natural, digits)),
+    natural_literal: $ => token(choice(hexadecimal_natural, decimal_natural)),
     integer_literal: $ => token(
-      seq(choice('+', '-'), choice(hexadecimal_natural, digits)),
+      seq(choice('+', '-'), choice(hexadecimal_natural, decimal_natural)),
     ),
 
     text_literal: $ => choice($.double_quote_literal), //, $.single_quote_literal),
@@ -333,15 +359,15 @@ module.exports = grammar({
     _double_quote_chunk: $ => choice(
       $.interpolation,
       $.double_quote_escaped,
-      token.immediate(prec(1, /[^\"\\\$]+/)),
-      token.immediate(prec(1, /\$/)),
+      token.immediate(prec(1, /[^\x00-\x1f\"\\\$]+/)),
+      token.immediate(prec(1, '$')),
     ),
     interpolation: $ => seq('${', $.expression, '}'),
     double_quote_escaped: $ => token(
       choice(
         /\\["\$\\/bfnrt]/,
-        /\\u[0-9A-F]{4}/,
-        /\\u\{0*[0-9A-F]{1,6}\}/,
+        /\\u[0-9A-Fa-f]{4}/,
+        /\\u\{0*[0-9A-Fa-f]{1,6}\}/,
       ),
     ),
     // TODO: single_quote_literal: $ => ,

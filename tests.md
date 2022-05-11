@@ -213,35 +213,35 @@
 - [x] unit/WithPrecedence3
 - [x] unit/WithSome
 - [x] unit/ifThenElse
-- [ ] unit/import/AsLocationAbsolute
+- [x] unit/import/AsLocationAbsolute
 - [ ] unit/import/AsLocationEnv
-- [ ] unit/import/AsLocationHash
-- [ ] unit/import/AsLocationLocal
-- [ ] unit/import/AsLocationMissing
+- [x] unit/import/AsLocationHash
+- [x] unit/import/AsLocationLocal
+- [x] unit/import/AsLocationMissing
 - [ ] unit/import/AsLocationRemote
 - [ ] unit/import/Headers
 - [ ] unit/import/HeadersDoubleHash
 - [ ] unit/import/HeadersDoubleHashPrecedence
 - [ ] unit/import/HeadersHashPrecedence
 - [ ] unit/import/HeadersInteriorHash
-- [ ] unit/import/ImportAsNoSpace
-- [ ] unit/import/Missing
+- [x] unit/import/ImportAsNoSpace
+- [x] unit/import/Missing
 - [ ] unit/import/asText
 - [ ] unit/import/environmentVariableBash
 - [ ] unit/import/environmentVariablePosix
-- [ ] unit/import/hash
+- [x] unit/import/hash
 - [ ] unit/import/importAlt
 - [ ] unit/import/inlineUsing
-- [ ] unit/import/pathAbsolute
-- [ ] unit/import/pathHere
-- [ ] unit/import/pathHome
-- [ ] unit/import/pathParent
-- [ ] unit/import/pathTerminationLambda
-- [ ] unit/import/pathTerminationList
-- [ ] unit/import/pathTerminationRecord
+- [x] unit/import/pathAbsolute
+- [x] unit/import/pathHere
+- [x] unit/import/pathHome
+- [x] unit/import/pathParent
+- [x] unit/import/pathTerminationLambda
+- [x] unit/import/pathTerminationList
+- [x] unit/import/pathTerminationRecord
 - [ ] unit/import/pathTerminationUnion
-- [ ] unit/import/quotedPaths
-- [ ] unit/import/unicodePaths
+- [x] unit/import/quotedPaths
+- [x] unit/import/unicodePaths
 - [ ] unit/import/urls/basicHttp
 - [ ] unit/import/urls/basicHttps
 - [ ] unit/import/urls/emptyPath0

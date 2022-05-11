@@ -36,6 +36,10 @@
           "named": true
         },
         {
+          "type": "import",
+          "named": true
+        },
+        {
           "type": "import_alt_expression",
           "named": true
         },
@@ -104,6 +108,10 @@
       "types": [
         {
           "type": "completion",
+          "named": true
+        },
+        {
+          "type": "import",
           "named": true
         },
         {
@@ -218,6 +226,10 @@
           "named": true
         },
         {
+          "type": "import",
+          "named": true
+        },
+        {
           "type": "import_alt_expression",
           "named": true
         },
@@ -310,6 +322,10 @@
         },
         {
           "type": "equivalence_expression",
+          "named": true
+        },
+        {
+          "type": "import",
           "named": true
         },
         {
@@ -477,6 +493,10 @@
           "named": true
         },
         {
+          "type": "import",
+          "named": true
+        },
+        {
           "type": "import_alt_expression",
           "named": true
         },
@@ -569,6 +589,10 @@
         },
         {
           "type": "equivalence_expression",
+          "named": true
+        },
+        {
+          "type": "import",
           "named": true
         },
         {
@@ -691,6 +715,10 @@
         },
         {
           "type": "if_then_else_expression",
+          "named": true
+        },
+        {
+          "type": "import",
           "named": true
         },
         {
@@ -860,6 +888,10 @@
             "named": true
           },
           {
+            "type": "import",
+            "named": true
+          },
+          {
             "type": "import_alt_expression",
             "named": true
           },
@@ -995,6 +1027,37 @@
     }
   },
   {
+    "type": "import",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "import_as_location",
+          "named": true
+        },
+        {
+          "type": "import_as_text",
+          "named": true
+        },
+        {
+          "type": "import_hash",
+          "named": true
+        },
+        {
+          "type": "local_import",
+          "named": true
+        },
+        {
+          "type": "missing_import",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "import_alt_expression",
     "named": true,
     "fields": {},
@@ -1028,6 +1091,10 @@
         },
         {
           "type": "equivalence_expression",
+          "named": true
+        },
+        {
+          "type": "import",
           "named": true
         },
         {
@@ -1297,6 +1364,10 @@
           "named": true
         },
         {
+          "type": "import",
+          "named": true
+        },
+        {
           "type": "import_alt_expression",
           "named": true
         },
@@ -1387,6 +1458,10 @@
           "named": true
         },
         {
+          "type": "import",
+          "named": true
+        },
+        {
           "type": "primitive_expression",
           "named": true
         }
@@ -1427,6 +1502,10 @@
         },
         {
           "type": "equivalence_expression",
+          "named": true
+        },
+        {
+          "type": "import",
           "named": true
         },
         {
@@ -1548,6 +1627,10 @@
           "named": true
         },
         {
+          "type": "import",
+          "named": true
+        },
+        {
           "type": "import_alt_expression",
           "named": true
         },
@@ -1643,6 +1726,10 @@
           "named": true
         },
         {
+          "type": "import",
+          "named": true
+        },
+        {
           "type": "import_alt_expression",
           "named": true
         },
@@ -1735,6 +1822,10 @@
         },
         {
           "type": "equivalence_expression",
+          "named": true
+        },
+        {
+          "type": "import",
           "named": true
         },
         {
@@ -1985,6 +2076,10 @@
           "named": true
         },
         {
+          "type": "import",
+          "named": true
+        },
+        {
           "type": "primitive_expression",
           "named": true
         }
@@ -2005,6 +2100,10 @@
         },
         {
           "type": "completion",
+          "named": true
+        },
+        {
+          "type": "import",
           "named": true
         },
         {
@@ -2048,6 +2147,10 @@
         },
         {
           "type": "equivalence_expression",
+          "named": true
+        },
+        {
+          "type": "import",
           "named": true
         },
         {
@@ -2161,6 +2264,10 @@
           "named": true
         },
         {
+          "type": "import",
+          "named": true
+        },
+        {
           "type": "import_alt_expression",
           "named": true
         },
@@ -2236,6 +2343,10 @@
           "named": true
         },
         {
+          "type": "import",
+          "named": true
+        },
+        {
           "type": "primitive_expression",
           "named": true
         }
@@ -2295,6 +2406,10 @@
         },
         {
           "type": "equivalence_expression",
+          "named": true
+        },
+        {
+          "type": "import",
           "named": true
         },
         {
@@ -2374,6 +2489,10 @@
   },
   {
     "type": "\"",
+    "named": false
+  },
+  {
+    "type": "$",
     "named": false
   },
   {
@@ -2637,6 +2756,18 @@
     "named": false
   },
   {
+    "type": "import_as_location",
+    "named": true
+  },
+  {
+    "type": "import_as_text",
+    "named": true
+  },
+  {
+    "type": "import_hash",
+    "named": true
+  },
+  {
     "type": "in",
     "named": false
   },
@@ -2665,12 +2796,20 @@
     "named": true
   },
   {
+    "type": "local_import",
+    "named": true
+  },
+  {
     "type": "merge",
     "named": false
   },
   {
     "type": "missing",
     "named": false
+  },
+  {
+    "type": "missing_import",
+    "named": true
   },
   {
     "type": "natural_literal",

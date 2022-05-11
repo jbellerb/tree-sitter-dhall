@@ -1,0 +1,189 @@
+==================
+Missing import (unit/import/MissingA.dhall)
+==================
+
+missing
+
+---
+
+(expression
+  (import (missing_import)))
+
+==================
+Absolute path import (unit/import/pathAbsoluteA.dhall)
+==================
+
+/absolute/path
+
+---
+
+(expression
+  (import (local_import)))
+
+==================
+Relative path import (unit/import/pathHereA.dhall)
+==================
+
+./relative/path
+
+---
+
+(expression
+  (import (local_import)))
+
+==================
+Relative home path import (unit/import/pathHomeA.dhall)
+==================
+
+~/home/anchored/path
+
+---
+
+(expression
+  (import (local_import)))
+
+==================
+Relative parent path import (unit/import/pathParentA.dhall)
+==================
+
+../parent/path
+
+---
+
+(expression
+  (import (local_import)))
+
+==================
+Paths are terminated by lambda characters (unit/import/pathTerminationLambdaA.dhall)
+==================
+
+λ(x : ./example) -> x
+
+---
+
+(expression
+  (lambda_expression (lambda_operator)
+    label: (label)
+    (type_operator)
+    type: (expression (import (local_import)))
+    (arrow_operator)
+    expression: (expression (primitive_expression (identifier (label))))))
+
+==================
+Paths are terminated by list characters (unit/import/pathTerminationListA.dhall)
+==================
+
+[./example,./example, ./example]
+
+---
+
+(expression
+  (primitive_expression (list_literal
+    (expression (import (local_import)))
+    (expression (import (local_import)))
+    (expression (import (local_import))))))
+
+==================
+Paths are terminated by record characters (unit/import/pathTerminationRecordA.dhall)
+==================
+
+{foo = ./example, bar = ./example}
+
+---
+
+(expression
+  (primitive_expression (record_literal
+    (record_literal_entry (label) (assign_operator)
+      (expression (import (local_import))))
+    (record_literal_entry (label) (assign_operator)
+      (expression (import (local_import)))))))
+
+==================
+Paths can contain quoted segments (unit/import/quotedPathsA.dhall)
+==================
+
+/"foo"/bar/"baz qux"
+
+---
+
+(expression
+  (import (local_import)))
+
+==================
+Paths can contain unicode (unit/import/unicodePathsA.dhall)
+==================
+
+./families/"禺.dhall"
+
+---
+
+(expression
+  (import (local_import)))
+
+==================
+Relative path import with hash (unit/import/hash.dhall)
+==================
+
+./a.dhall sha256:16173e984d35ee3ffd8b6b79167df89480e67d1cd03ea5d0fc93689e4d928e61
+
+---
+
+(expression
+  (import (local_import) (import_hash)))
+
+==================
+Missing import as location (unit/import/AsLocationMissingA.dhall)
+==================
+
+missing as Location
+
+---
+
+(expression
+  (import (missing_import) (import_as_location)))
+
+==================
+Absolute path import as location (unit/import/AsLocationAbsoluteA.dhall)
+==================
+
+/absolute/import as Location
+
+---
+
+(expression
+  (import (local_import) (import_as_location)))
+
+==================
+Relative path import as location (unit/import/AsLocationLocalA.dhall)
+==================
+
+./local/import as Location
+
+---
+
+(expression
+  (import (local_import) (import_as_location)))
+
+==================
+Relative path import as location with hash (unit/import/AsLocationHashA.dhall)
+==================
+
+./some/import sha256:0000000000000000000000000000000000000000000000000000000000000000 as Location
+
+---
+
+(expression
+  (import (local_import) (import_hash) (import_as_location)))
+
+==================
+Import as without a space (unit/import/ImportAsNoSpaceA.dhall)
+==================
+
+./import asText
+
+---
+
+(expression
+  (application_expression
+    (import (local_import))
+    (primitive_expression (identifier (label)))))
