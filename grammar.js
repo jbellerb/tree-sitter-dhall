@@ -13,6 +13,80 @@ const operator = (precedence, $, symbol) => prec.left(
   ),
 );
 
+const http_raw = () => {
+  const octet = /[0-9]{1,3}/;
+  const ipv4 = seq(octet, '.', octet, '.', octet, '.', octet);
+
+  const h16 = /[0-9A-Fa-f]{1,4}/;
+  const ls32 = choice(seq(h16, ':', h16), ipv4);
+  const ipv6 = choice(...(function*() {
+    const repeat = (n, x) => Array(n).fill(x);
+
+    yield seq(...repeat(6, seq(h16, ':')), ls32);
+    yield seq('::', ...repeat(5, seq(h16, ':')), ls32);
+    for (i = 0; i < 5; i++) {
+      yield seq(
+        optional(seq(h16, ...repeat(i, optional(seq(':', h16))))),
+        '::',
+        ...repeat(4 - i, seq(h16, ':')),
+        ls32,
+      );
+    }
+    yield seq(
+      optional(seq(h16, ...repeat(5, optional(seq(':', h16))))),
+      '::',
+      h16,
+    );
+    yield seq(
+      optional(seq(h16, ...repeat(6, optional(seq(':', h16))))),
+      '::',
+    );
+  })());
+
+  const alphanum = /[0-9A-Za-z]/;
+  const unreserved = choice(alphanum, '-', '.', '_', '~');
+  const pct_encoded = seq('%', hexdigit, hexdigit);
+  const sub_delims = /[\!\$\&\'\*\+;=]/;
+
+  const ipvfuture = seq(
+    'v',
+    repeat1(digit),
+    '.',
+    repeat1(choice(unreserved, sub_delims, ':')),
+  );
+
+  const domainlabel = seq(
+    repeat1(alphanum),
+    repeat(seq(repeat1('-'), repeat1(alphanum))),
+  );
+  const domain = seq(
+    domainlabel,
+    repeat(seq('.', domainlabel)),
+    optional('.'),
+  );
+
+  const pchar = choice(unreserved, pct_encoded, sub_delims, ':', '@');
+
+  const http_scheme = seq(choice('http', 'https'), '://');
+  const http_authority = seq(
+    optional(seq(
+      repeat(choice(unreserved, pct_encoded, sub_delims, ':')),
+      '@',
+    )),
+    choice(seq('[', choice(ipv6, ipvfuture), ']'), ipv4, domain),
+    optional(seq(':', repeat(digit))),
+  );
+  const http_path_segment = repeat(pchar);
+  const http_query = repeat(choice(pchar, '/', '?'));
+
+  return seq(
+    http_scheme,
+    http_authority,
+    repeat(seq('/', http_path_segment)),
+    optional(seq('?', http_query)),
+  );
+};
+
 module.exports = grammar({
   name: 'dhall',
 
@@ -304,8 +378,8 @@ module.exports = grammar({
     _import_type: $ => choice(
       alias('missing', $.missing_import),
       $.local_import,
-      // $.http_import,
-      // $.env_import,
+      $.http_import,
+      $.env_import,
     ),
     import_hash: $ => /sha256:[0-9A-Fa-f]{64}/,
 
@@ -316,6 +390,20 @@ module.exports = grammar({
         /\/"[^\x00-\x1f\\\/]+"/,
       )),
     )),
+
+    http_import: $ => seq(
+      $.http_raw,
+      optional(seq('using', $._import_expression)),
+    ),
+    http_raw: $ => token(http_raw()),
+
+    env_import: $ => seq(
+      /[eE][nN][vV]:/,
+      $.env_variable
+    ),
+    env_variable: $ => choice($._env_bash, $._env_posix),
+    _env_bash: $ => /[A-Z_a-z][0-9A-Z_a-z]*/,
+    _env_posix: $ => /"(:?\\[\"\\abfnrtv]|[ \!\#-<>-\[\]-~])+"/,
 
     line_comment: $ => seq($.line_comment_prefix, $.line_comment_content),
     line_comment_prefix: $ => '--',
@@ -357,10 +445,10 @@ module.exports = grammar({
     text_literal: $ => choice($.double_quote_literal), //, $.single_quote_literal),
     double_quote_literal: $ => seq('"', repeat($._double_quote_chunk), '"'),
     _double_quote_chunk: $ => choice(
-      $.interpolation,
+      prec(1, $.interpolation),
       $.double_quote_escaped,
       token.immediate(prec(1, /[^\x00-\x1f\"\\\$]+/)),
-      token.immediate(prec(1, '$')),
+      token.immediate('$'),
     ),
     interpolation: $ => seq('${', $.expression, '}'),
     double_quote_escaped: $ => token(

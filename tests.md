@@ -214,24 +214,24 @@
 - [x] unit/WithSome
 - [x] unit/ifThenElse
 - [x] unit/import/AsLocationAbsolute
-- [ ] unit/import/AsLocationEnv
+- [x] unit/import/AsLocationEnv
 - [x] unit/import/AsLocationHash
 - [x] unit/import/AsLocationLocal
 - [x] unit/import/AsLocationMissing
-- [ ] unit/import/AsLocationRemote
-- [ ] unit/import/Headers
-- [ ] unit/import/HeadersDoubleHash
-- [ ] unit/import/HeadersDoubleHashPrecedence
-- [ ] unit/import/HeadersHashPrecedence
-- [ ] unit/import/HeadersInteriorHash
+- [x] unit/import/AsLocationRemote
+- [x] unit/import/Headers
+- [x] unit/import/HeadersDoubleHash
+- [x] unit/import/HeadersDoubleHashPrecedence
+- [x] unit/import/HeadersHashPrecedence
+- [x] unit/import/HeadersInteriorHash
 - [x] unit/import/ImportAsNoSpace
 - [x] unit/import/Missing
-- [ ] unit/import/asText
-- [ ] unit/import/environmentVariableBash
-- [ ] unit/import/environmentVariablePosix
+- [x] unit/import/asText
+- [x] unit/import/environmentVariableBash
+- [x] unit/import/environmentVariablePosix
 - [x] unit/import/hash
-- [ ] unit/import/importAlt
-- [ ] unit/import/inlineUsing
+- [x] unit/import/importAlt
+- [x] unit/import/inlineUsing
 - [x] unit/import/pathAbsolute
 - [x] unit/import/pathHere
 - [x] unit/import/pathHome
@@ -242,25 +242,25 @@
 - [ ] unit/import/pathTerminationUnion
 - [x] unit/import/quotedPaths
 - [x] unit/import/unicodePaths
-- [ ] unit/import/urls/basicHttp
-- [ ] unit/import/urls/basicHttps
-- [ ] unit/import/urls/emptyPath0
-- [ ] unit/import/urls/emptyPath1
-- [ ] unit/import/urls/emptyPathSegment
-- [ ] unit/import/urls/emptyQuery
-- [ ] unit/import/urls/escapedPath
-- [ ] unit/import/urls/escapedQuery
-- [ ] unit/import/urls/fragmentParsesAsListAppend
-- [ ] unit/import/urls/ipv4
-- [ ] unit/import/urls/ipv4upperoctets
-- [ ] unit/import/urls/ipv6long
-- [ ] unit/import/urls/ipv6medium
-- [ ] unit/import/urls/ipv6short
-- [ ] unit/import/urls/ipv6verylong
-- [ ] unit/import/urls/ipv6withipv4
-- [ ] unit/import/urls/port
-- [ ] unit/import/urls/potPourri
-- [ ] unit/import/urls/userinfo
+- [x] unit/import/urls/basicHttp
+- [x] unit/import/urls/basicHttps
+- [x] unit/import/urls/emptyPath0
+- [x] unit/import/urls/emptyPath1
+- [x] unit/import/urls/emptyPathSegment
+- [x] unit/import/urls/emptyQuery
+- [x] unit/import/urls/escapedPath
+- [x] unit/import/urls/escapedQuery
+- [x] unit/import/urls/fragmentParsesAsListAppend
+- [x] unit/import/urls/ipv4
+- [x] unit/import/urls/ipv4upperoctets
+- [x] unit/import/urls/ipv6long
+- [x] unit/import/urls/ipv6medium
+- [x] unit/import/urls/ipv6short
+- [x] unit/import/urls/ipv6verylong
+- [x] unit/import/urls/ipv6withipv4
+- [x] unit/import/urls/port
+- [x] unit/import/urls/potPourri
+- [x] unit/import/urls/userinfo
 - [x] unit/operators/BoolAnd
 - [x] unit/operators/BoolAndAssoc
 - [x] unit/operators/BoolEQ

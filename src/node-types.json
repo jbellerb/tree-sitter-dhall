@@ -457,6 +457,26 @@
     }
   },
   {
+    "type": "env_import",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "env_variable",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "env_variable",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "equal_expression",
     "named": true,
     "fields": {},
@@ -968,6 +988,33 @@
     }
   },
   {
+    "type": "http_import",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "completion",
+          "named": true
+        },
+        {
+          "type": "http_raw",
+          "named": true
+        },
+        {
+          "type": "import",
+          "named": true
+        },
+        {
+          "type": "primitive_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "identifier",
     "named": true,
     "fields": {},
@@ -1034,6 +1081,14 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "env_import",
+          "named": true
+        },
+        {
+          "type": "http_import",
+          "named": true
+        },
         {
           "type": "import_as_location",
           "named": true
@@ -2750,6 +2805,10 @@
   {
     "type": "forall",
     "named": false
+  },
+  {
+    "type": "http_raw",
+    "named": true
   },
   {
     "type": "if",
