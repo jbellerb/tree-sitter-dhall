@@ -121,6 +121,24 @@ Paths are terminated by record characters (unit/import/pathTerminationRecordA.dh
       (expression (import (local_import)))))))
 
 ==================
+Paths are terminated by union characters (unit/import/pathTerminationUnionA.dhall)
+==================
+
+<foo: ./example| bar: ./example>
+
+---
+
+(expression
+  (primitive_expression (union_type
+    (union_type_entry (label) (type_operator)
+      (expression
+        (application_expression
+          (import (local_import))
+          (primitive_expression (identifier (label))))
+        (type_operator)
+        (expression (import (local_import))))))))
+
+==================
 Remote http import (unit/import/urls/basicHttpA.dhall)
 ==================
 

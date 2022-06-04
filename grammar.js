@@ -342,9 +342,10 @@ module.exports = grammar({
       choice(
         $.numeric_literal,
         $.text_literal,
-        $.list_literal,
         $.record_literal,
         $.record_type,
+        $.union_type,
+        $.list_literal,
         $.identifier,
         seq('(', $.expression, ')'),
       ),
@@ -399,7 +400,7 @@ module.exports = grammar({
 
     env_import: $ => seq(
       /[eE][nN][vV]:/,
-      $.env_variable
+      $.env_variable,
     ),
     env_variable: $ => choice($._env_bash, $._env_posix),
     _env_bash: $ => /[A-Z_a-z][0-9A-Z_a-z]*/,
@@ -460,15 +461,6 @@ module.exports = grammar({
     ),
     // TODO: single_quote_literal: $ => ,
 
-    list_literal: $ => seq(
-      '[',
-      optional(','),
-      $.expression,
-      repeat(seq(',', $.expression)),
-      optional(','),
-      ']',
-    ),
-
     record_literal: $ => seq(
       '{',
       optional(','),
@@ -505,6 +497,27 @@ module.exports = grammar({
       '}',
     ),
     record_type_entry: $ => seq($._label_or_some, $.type),
+
+    union_type: $ => seq(
+      '<',
+      optional('|'),
+      optional(seq(
+        $.union_type_entry,
+        repeat(seq('|', $.union_type_entry)),
+        optional('|'),
+      )),
+      '>',
+    ),
+    union_type_entry: $ => seq($._label_or_some, optional($.type)),
+
+    list_literal: $ => seq(
+      '[',
+      optional(','),
+      $.expression,
+      repeat(seq(',', $.expression)),
+      optional(','),
+      ']',
+    ),
 
     identifier: $ => choice(
       // TODO: exclude reserved labels (implicit?)

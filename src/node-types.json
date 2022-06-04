@@ -1988,6 +1988,10 @@
         {
           "type": "text_literal",
           "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
         }
       ]
     }
@@ -2424,6 +2428,51 @@
     }
   },
   {
+    "type": "union_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "union_type_entry",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "union_type_entry",
+    "named": true,
+    "fields": {
+      "type": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "label",
+          "named": true
+        },
+        {
+          "type": "type_operator",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "with_expression",
     "named": true,
     "fields": {},
@@ -2572,6 +2621,14 @@
   },
   {
     "type": "-Infinity",
+    "named": false
+  },
+  {
+    "type": "<",
+    "named": false
+  },
+  {
+    "type": ">",
     "named": false
   },
   {
@@ -2912,6 +2969,10 @@
   },
   {
     "type": "{",
+    "named": false
+  },
+  {
+    "type": "|",
     "named": false
   },
   {

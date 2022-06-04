@@ -45,7 +45,7 @@
 - [ ] quotedBoundVariable
 - [x] quotedLabel
 - [x] quotedRecordLabel
-- [ ] quotedUnionLabel
+- [x] quotedUnionLabel
 - [x] record
 - [ ] recordProjectionByExpression
 - [ ] reservedPrefix
@@ -192,17 +192,17 @@
 - [x] unit/ToMapAnnot
 - [ ] unit/TrailingLineCommentWithoutNewline
 - [ ] unit/Type
-- [ ] unit/UnionTypeEmpty
-- [ ] unit/UnionTypeEmptyDelim
-- [ ] unit/UnionTypeLeadingDelim
-- [ ] unit/UnionTypeSome
-- [ ] unit/UnionTypeTrailingAndLeadingDelims
-- [ ] unit/UnionTypeTrailingDelim
-- [ ] unit/UnionTypeX
-- [ ] unit/UnionTypeXTY
-- [ ] unit/UnionTypeXTYU
-- [ ] unit/UnionTypeXY
-- [ ] unit/UnionTypeXYT
+- [x] unit/UnionTypeEmpty
+- [x] unit/UnionTypeEmptyDelim
+- [x] unit/UnionTypeLeadingDelim
+- [x] unit/UnionTypeSome
+- [x] unit/UnionTypeTrailingAndLeadingDelims
+- [x] unit/UnionTypeTrailingDelim
+- [x] unit/UnionTypeX
+- [x] unit/UnionTypeXTY
+- [x] unit/UnionTypeXTYU
+- [x] unit/UnionTypeXY
+- [x] unit/UnionTypeXYT
 - [ ] unit/Variable
 - [ ] unit/VariableQuotedWithSpace
 - [ ] unit/VariableUnderscore
@@ -239,7 +239,7 @@
 - [x] unit/import/pathTerminationLambda
 - [x] unit/import/pathTerminationList
 - [x] unit/import/pathTerminationRecord
-- [ ] unit/import/pathTerminationUnion
+- [x] unit/import/pathTerminationUnion
 - [x] unit/import/quotedPaths
 - [x] unit/import/unicodePaths
 - [x] unit/import/urls/basicHttp

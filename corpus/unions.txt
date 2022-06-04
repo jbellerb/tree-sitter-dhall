@@ -1,0 +1,163 @@
+==================
+Union type (unit/UnionTypeXA.dhall)
+==================
+
+< x >
+
+---
+
+(expression
+  (primitive_expression (union_type (union_type_entry (label)))))
+
+==================
+Union type with Some (unit/UnionTypeSomeA.dhall)
+==================
+
+< Some: Natural >
+
+---
+
+(expression
+  (primitive_expression (union_type
+    (union_type_entry (label) (type_operator)
+      (expression (primitive_expression (identifier (builtin))))))))
+
+==================
+Union type with two types (unit/UnionTypeXYA.dhall)
+==================
+
+< x | y >
+
+---
+
+(expression
+  (primitive_expression (union_type
+    (union_type_entry (label))
+    (union_type_entry (label)))))
+
+==================
+Union type with two types, the first annotated (unit/UnionTypeXTYA.dhall)
+==================
+
+< x: T | y >
+
+---
+
+(expression
+  (primitive_expression (union_type
+    (union_type_entry (label) (type_operator)
+      (expression (primitive_expression (identifier (label)))))
+    (union_type_entry (label)))))
+
+==================
+Union type with two types, the second annotated (unit/UnionTypeXYTA.dhall)
+==================
+
+< x | y: T >
+
+---
+
+(expression
+  (primitive_expression (union_type
+    (union_type_entry (label))
+    (union_type_entry (label) (type_operator)
+      (expression (primitive_expression (identifier (label))))))))
+
+==================
+Union type with two types, both annotated (unit/UnionTypeXTYUA.dhall)
+==================
+
+< x: T | y: U >
+
+---
+
+(expression
+  (primitive_expression (union_type
+    (union_type_entry (label) (type_operator)
+      (expression (primitive_expression (identifier (label)))))
+    (union_type_entry (label) (type_operator)
+      (expression (primitive_expression (identifier (label))))))))
+
+==================
+Union type with a leading delimiter (unit/UnionTypeLeadingDelimA.dhall)
+==================
+
+< | x: T | y: U >
+
+---
+
+(expression
+  (primitive_expression (union_type
+    (union_type_entry (label) (type_operator)
+      (expression (primitive_expression (identifier (label)))))
+    (union_type_entry (label) (type_operator)
+      (expression (primitive_expression (identifier (label))))))))
+
+==================
+Union type with a trailing delimiter (unit/UnionTypeTrailingDelimA.dhall)
+==================
+
+< x: T | y: U | >
+
+---
+
+(expression
+  (primitive_expression (union_type
+    (union_type_entry (label) (type_operator)
+      (expression (primitive_expression (identifier (label)))))
+    (union_type_entry (label) (type_operator)
+      (expression (primitive_expression (identifier (label))))))))
+
+==================
+Union type with a leading and trailing delimiter (unit/UnionTypeTrailingAndLeadingDelimsA.dhall)
+==================
+
+< | x: T | y: U | >
+
+---
+
+(expression
+  (primitive_expression (union_type
+    (union_type_entry (label) (type_operator)
+      (expression (primitive_expression (identifier (label)))))
+    (union_type_entry (label) (type_operator)
+      (expression (primitive_expression (identifier (label))))))))
+
+==================
+Empty union type (unit/UnionTypeEmptyA.dhall)
+==================
+
+< >
+
+---
+
+(expression
+  (primitive_expression (union_type)))
+
+==================
+Empty union type with a delimiter (unit/UnionTypeEmptyDelimA.dhall)
+==================
+
+< | >
+
+---
+
+(expression
+  (primitive_expression (union_type)))
+
+==================
+Quoted union type labels (quotedUnionLabelA.dhall)
+==================
+
+<foo: Natural|``: Natural|` `: Natural>
+
+---
+
+(expression
+  (primitive_expression (union_type
+    (union_type_entry (label) (type_operator)
+      (expression (primitive_expression (identifier (builtin)))))
+    (union_type_entry (label) (type_operator)
+      (expression (primitive_expression (identifier (builtin)))))
+    (union_type_entry (label) (type_operator)
+      (expression (primitive_expression (identifier (builtin))))))))
