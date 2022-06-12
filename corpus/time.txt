@@ -1,0 +1,120 @@
+==================
+Date literal (unit/DateLiteralA.dhall)
+==================
+
+2020-01-01
+
+---
+
+(expression
+  (primitive_expression (temporal_literal)))
+
+==================
+Time literal (unit/TimeLiteralA.dhall)
+==================
+
+12:00:00
+
+---
+
+(expression
+  (primitive_expression (temporal_literal)))
+
+==================
+TimeZone literal (unit/TimeZoneLiteralA.dhall)
+==================
+
++08:00
+
+---
+
+(expression
+  (primitive_expression (temporal_literal)))
+
+==================
+Date and time literal (time/DateTimeA.dhall)
+==================
+
+1960-12-25T04:23:34
+
+---
+
+(expression
+  (primitive_expression (temporal_literal)))
+
+==================
+Time literal with time zone (time/TimeTimeZoneA.dhall)
+==================
+
+00:00:00+00:00
+
+---
+
+(expression
+  (primitive_expression (temporal_literal)))
+
+==================
+Time literal with Z time zone (time/TimeTimeZoneZA.dhall)
+==================
+
+00:00:00Z
+
+---
+
+(expression
+  (primitive_expression (temporal_literal)))
+
+==================
+Date and time literal with time zone (time/DateTimeTimeZoneA.dhall)
+==================
+
+2020-01-01T12:00:00-08:00
+
+---
+
+(expression
+  (primitive_expression (temporal_literal)))
+
+==================
+Date and time literal with lower-case T (time/LowercaseTA.dhall)
+==================
+
+2000-01-01t12:00:00
+
+---
+
+(expression
+  (primitive_expression (temporal_literal)))
+
+==================
+Date type (unit/DateA.dhall)
+==================
+
+Date
+
+---
+
+(expression
+  (primitive_expression (identifier (builtin))))
+
+==================
+Time type (unit/TimeA.dhall)
+==================
+
+Time
+
+---
+
+(expression
+  (primitive_expression (identifier (builtin))))
+
+==================
+TimeZone type (unit/TimeZoneA.dhall)
+==================
+
+TimeZone
+
+---
+
+(expression
+  (primitive_expression (identifier (builtin))))

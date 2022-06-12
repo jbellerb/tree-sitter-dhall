@@ -73,11 +73,11 @@
 - [ ] text/template
 - [ ] text/twoLines
 - [x] text/unicodeDoubleQuotedString
-- [ ] time/DateTime
-- [ ] time/DateTimeTimeZone
-- [ ] time/LowercaseT
-- [ ] time/TimeTimeZone
-- [ ] time/TimeTimeZoneZ
+- [x] time/DateTime
+- [x] time/DateTimeTimeZone
+- [x] time/LowercaseT
+- [x] time/TimeTimeZone
+- [x] time/TimeTimeZoneZ
 - [x] toMap
 - [x] unicodeComment
 - [x] unit/Annotation
@@ -89,8 +89,8 @@
 - [ ] unit/BoolLitTrue
 - [ ] unit/BuiltinListBuild
 - [x] unit/Completion
-- [ ] unit/Date
-- [ ] unit/DateLiteral
+- [x] unit/Date
+- [x] unit/DateLiteral
 - [x] unit/DoubleLit16bit
 - [x] unit/DoubleLit32bit
 - [x] unit/DoubleLit64bit
@@ -184,10 +184,10 @@
 - [ ] unit/SomeX
 - [ ] unit/SomeXYZ
 - [ ] unit/Sort
-- [ ] unit/Time
-- [ ] unit/TimeLiteral
-- [ ] unit/TimeZone
-- [ ] unit/TimeZoneLiteral
+- [x] unit/Time
+- [x] unit/TimeLiteral
+- [x] unit/TimeZone
+- [x] unit/TimeZoneLiteral
 - [x] unit/ToMap
 - [x] unit/ToMapAnnot
 - [ ] unit/TrailingLineCommentWithoutNewline

@@ -1986,6 +1986,10 @@
           "named": true
         },
         {
+          "type": "temporal_literal",
+          "named": true
+        },
+        {
           "type": "text_literal",
           "named": true
         },
@@ -2942,6 +2946,10 @@
   {
     "type": "showConstructor",
     "named": false
+  },
+  {
+    "type": "temporal_literal",
+    "named": true
   },
   {
     "type": "then",

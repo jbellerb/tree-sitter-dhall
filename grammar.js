@@ -3,6 +3,13 @@ const hexdigit = /[0-9A-Fa-f]/;
 const decimal_natural = choice('0', seq(/[1-9]/, repeat(digit)));
 const hexadecimal_natural = seq('0x', repeat1(hexdigit));
 const double_exponent = seq(/[Ee][+-]?/, repeat1(digit));
+const full_date = /[0-9]{4}-[0-9]{2}-[0-9]{2}/;
+const time_offset = /[+-][0-9]{2}:[0-9]{2}/;
+const partial_time = seq(
+  /[0-9]{2}:[0-9]{2}:[0-9]{2}/,
+  optional(seq('.', repeat1(digit))),
+  optional(choice(/[Zz]/, time_offset)),
+);
 
 const operator = (precedence, $, symbol) => prec.left(
   precedence,
@@ -340,6 +347,7 @@ module.exports = grammar({
     ),
     primitive_expression: $ => seq(
       choice(
+        $.temporal_literal,
         $.numeric_literal,
         $.text_literal,
         $.record_literal,
@@ -419,6 +427,13 @@ module.exports = grammar({
     ),
     block_comment_open: $ => '{-',
     block_comment_close: $ => '-}',
+
+    temporal_literal: $ => token(choice(
+      seq(full_date, /[Tt]/, partial_time),
+      partial_time,
+      full_date,
+      time_offset,
+    )),
 
     numeric_literal: $ => choice(
       $.double_literal,
