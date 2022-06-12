@@ -51,27 +51,27 @@
 - [ ] reservedPrefix
 - [x] text/dollarSign
 - [x] text/doubleQuotedString
-- [ ] text/escape
+- [x] text/escape
 - [x] text/escapedDoubleQuotedString
-- [ ] text/escapedSingleQuotedString
+- [x] text/escapedSingleQuotedString
 - [ ] text/interesting
-- [ ] text/interiorIndent
-- [ ] text/interpolatedDoubleQuotedString
-- [ ] text/interpolatedSingleQuotedString
-- [ ] text/interpolation
-- [ ] text/multilineBlankLine
-- [ ] text/multilineBlankLineCrlf
-- [ ] text/multilineCorruptedLeadingWhitespace
-- [ ] text/multilineIndentedAndAligned
-- [ ] text/multilineMismatchedLeadingWhitespace
-- [ ] text/multilineTabs
+- [x] text/interiorIndent
+- [x] text/interpolatedDoubleQuotedString
+- [x] text/interpolatedSingleQuotedString
+- [x] text/interpolation
+- [x] text/multilineBlankLine
+- [x] text/multilineBlankLineCrlf
+- [x] text/multilineCorruptedLeadingWhitespace
+- [x] text/multilineIndentedAndAligned
+- [x] text/multilineMismatchedLeadingWhitespace
+- [x] text/multilineTabs
 - [x] text/nonAssignedUnicode
-- [ ] text/preserveComment
-- [ ] text/singleLine
+- [x] text/preserveComment
+- [x] text/singleLine
 - [ ] text/singleQuoteConcat
-- [ ] text/singleQuotedString
+- [x] text/singleQuotedString
 - [ ] text/template
-- [ ] text/twoLines
+- [x] text/twoLines
 - [x] text/unicodeDoubleQuotedString
 - [x] time/DateTime
 - [x] time/DateTimeTimeZone

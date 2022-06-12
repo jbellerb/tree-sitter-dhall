@@ -2150,6 +2150,21 @@
     }
   },
   {
+    "type": "single_quote_literal",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "interpolation",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "some_expression",
     "named": true,
     "fields": {},
@@ -2285,6 +2300,10 @@
       "types": [
         {
           "type": "double_quote_literal",
+          "named": true
+        },
+        {
+          "type": "single_quote_literal",
           "named": true
         }
       ]
@@ -2596,6 +2615,14 @@
     }
   },
   {
+    "type": "\n",
+    "named": false
+  },
+  {
+    "type": "\r\n",
+    "named": false
+  },
+  {
     "type": "\"",
     "named": false
   },
@@ -2605,6 +2632,22 @@
   },
   {
     "type": "${",
+    "named": false
+  },
+  {
+    "type": "'",
+    "named": false
+  },
+  {
+    "type": "''",
+    "named": false
+  },
+  {
+    "type": "''${",
+    "named": false
+  },
+  {
+    "type": "'''",
     "named": false
   },
   {

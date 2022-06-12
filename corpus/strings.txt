@@ -10,6 +10,20 @@ Basic double-quoted string (text/doubleQuotedStringA.dhall)
   (primitive_expression (text_literal (double_quote_literal))))
 
 ==================
+Basic single-quoted string (text/singleQuotedStringA.dhall)
+==================
+
+''
+ABC
+DEF
+''
+
+---
+
+(expression
+  (primitive_expression (text_literal (single_quote_literal))))
+
+==================
 Unicode double-quoted string (text/unicodeDoubleQuotedStringA.dhall)
 ==================
 
@@ -74,6 +88,85 @@ Double-quoted string with an invalid unicode escape (text/nonAssignedUnicodeA.dh
     (double_quote_literal (double_quote_escaped)))))
 
 ==================
+Single-quoted string with escaped interpolation and single quote (text/escapedSingleQuotedStringA.dhall)
+==================
+
+''
+''${
+'''
+''
+
+---
+
+(expression
+  (primitive_expression (text_literal (single_quote_literal))))
+
+==================
+Single-quoted string with more escape sequences (text/escapeA.dhall)
+==================
+
+''
+''${
+'''
+$
+"
+\
+''
+
+---
+
+(expression
+  (primitive_expression (text_literal (single_quote_literal))))
+
+==================
+Double-quoted string with an interpolation (text/interpolatedDoubleQuotedStringA.dhall)
+==================
+
+"ABC${Natural/show 123}"
+
+---
+
+(expression
+  (primitive_expression (text_literal (double_quote_literal
+    (interpolation (expression (application_expression
+      (primitive_expression (identifier (builtin)))
+      (primitive_expression (numeric_literal (natural_literal))))))))))
+
+==================
+Single-quoted string with an interpolation (text/interpolatedSingleQuotedStringA.dhall)
+==================
+
+''
+ABC
+${Natural/show 123}
+''
+
+---
+
+(expression
+  (primitive_expression (text_literal (single_quote_literal
+    (interpolation (expression (application_expression
+      (primitive_expression (identifier (builtin)))
+      (primitive_expression (numeric_literal (natural_literal))))))))))
+
+==================
+Single-quoted string with another interpolation (text/interpolationA.dhall)
+==================
+
+''
+${Natural/show 1}      foo
+  bar
+''
+
+---
+
+(expression
+  (primitive_expression (text_literal (single_quote_literal
+    (interpolation (expression (application_expression
+      (primitive_expression (identifier (builtin)))
+      (primitive_expression (numeric_literal (natural_literal))))))))))
+
+==================
 Double-quoted string with a dollar sign (text/dollarSignA.dhall)
 ==================
 
@@ -85,6 +178,108 @@ Double-quoted string with a dollar sign (text/dollarSignA.dhall)
   (primitive_expression (text_literal (double_quote_literal))))
 
 ==================
+Single-quoted string with an interior indent (text/interiorIndentA.dhall)
+==================
+
+''
+  foo
+  bar
+''
+
+---
+
+(expression
+  (primitive_expression (text_literal (single_quote_literal))))
+
+==================
+Single-quoted string with a full indent (text/multilineBlankLineA.dhall)
+==================
+
+    ''
+    hello
+
+    there
+    ''
+
+---
+
+(expression
+  (primitive_expression (text_literal (single_quote_literal))))
+
+==================
+Single-quoted string with a full indent and windows line endings (text/multilineBlankLineCrlfA.dhall)
+==================
+
+    ''
+    hello
+
+    there
+    ''
+
+---
+
+(expression
+  (primitive_expression (text_literal (single_quote_literal))))
+
+==================
+Single-quoted string with a tabbed full indent (text/multilineTabsA.dhall)
+==================
+
+	''
+	hai
+		there
+	   lol
+	''
+
+---
+
+(expression
+  (primitive_expression (text_literal (single_quote_literal))))
+
+==================
+Single-quoted string with mixed indent (text/multilineIndentedAndAlignedA.dhall)
+==================
+
+	 ''
+	 hai
+	 there
+	 ''
+
+---
+
+(expression
+  (primitive_expression (text_literal (single_quote_literal))))
+
+==================
+Single-quoted string with improper indent (text/multilineCorruptedLeadingWhitespaceA.dhall)
+==================
+
+	  	''
+	  	hai
+	  	there
+	   ok
+	  	''
+
+---
+
+(expression
+  (primitive_expression (text_literal (single_quote_literal))))
+
+==================
+Single-quoted string with mixed level (text/multilineMismatchedLeadingWhitespaceA.dhall)
+==================
+
+''
+	a
+ b
+''
+
+---
+
+(expression
+  (primitive_expression (text_literal (single_quote_literal))))
+
+==================
 Comments inside a double-quoted string
 ==================
 
@@ -94,3 +289,42 @@ Comments inside a double-quoted string
 
 (expression
   (primitive_expression (text_literal (double_quote_literal))))
+
+==================
+Comments inside a single-quoted string (text/preserveCommentA.dhall)
+==================
+
+''
+-- Hello
+{- world -}
+''
+
+---
+
+(expression
+  (primitive_expression (text_literal (single_quote_literal))))
+
+==================
+Single-quoted string without a newline (text/singleLineA.dhall)
+==================
+
+''
+foo''
+
+---
+
+(expression
+  (primitive_expression (text_literal (single_quote_literal))))
+
+==================
+Single-quoted string with only one newline (text/twoLinesA.dhall)
+==================
+
+''
+foo
+bar''
+
+---
+
+(expression
+  (primitive_expression (text_literal (single_quote_literal))))

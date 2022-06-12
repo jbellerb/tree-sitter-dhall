@@ -458,7 +458,7 @@ module.exports = grammar({
       seq(choice('+', '-'), choice(hexadecimal_natural, decimal_natural)),
     ),
 
-    text_literal: $ => choice($.double_quote_literal), //, $.single_quote_literal),
+    text_literal: $ => choice($.double_quote_literal, $.single_quote_literal),
     double_quote_literal: $ => seq('"', repeat($._double_quote_chunk), '"'),
     _double_quote_chunk: $ => choice(
       prec(1, $.interpolation),
@@ -466,7 +466,6 @@ module.exports = grammar({
       token.immediate(prec(1, /[^\x00-\x1f\"\\\$]+/)),
       token.immediate('$'),
     ),
-    interpolation: $ => seq('${', $.expression, '}'),
     double_quote_escaped: $ => token(
       choice(
         /\\["\$\\/bfnrt]/,
@@ -474,7 +473,21 @@ module.exports = grammar({
         /\\u\{0*[0-9A-Fa-f]{1,6}\}/,
       ),
     ),
-    // TODO: single_quote_literal: $ => ,
+    single_quote_literal: $ => seq(
+      '\'\'',
+      choice('\n', '\r\n'),
+      repeat($._single_quote_chunk),
+      '\'\'',
+    ),
+    _single_quote_chunk: $ => choice(
+      prec(1, $.interpolation),
+      '\'\'\'',
+      '\'\'${',
+      token.immediate(prec(1, /[^\'\$]+/)),
+      token.immediate('\''),
+      token.immediate('$'),
+    ),
+    interpolation: $ => seq('${', $.expression, '}'),
 
     record_literal: $ => seq(
       '{',
