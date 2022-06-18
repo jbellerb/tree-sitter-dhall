@@ -41,7 +41,7 @@ Positive integer literals (unit/IntegerLitPositiveA.dhall)
 Negative integer literals (unit/IntegerLitNegativeA.dhall)
 ==================
 
-+10
+-10
 
 ---
 

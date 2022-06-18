@@ -8,7 +8,7 @@ merge x y
 
 (expression
   (merge_expression
-    (builtin_operator)
+    (builtin_function)
     (primitive_expression (identifier (label)))
     (primitive_expression (identifier (label)))))
 
@@ -22,7 +22,7 @@ merge x y : t
 
 (expression
   (merge_expression
-    (builtin_operator)
+    (builtin_function)
     (primitive_expression (identifier (label)))
     (primitive_expression (identifier (label))))
   (type_operator)
@@ -38,7 +38,7 @@ merge x y : t a
 
 (expression
   (merge_expression
-    (builtin_operator)
+    (builtin_function)
     (primitive_expression (identifier (label)))
     (primitive_expression (identifier (label))))
   (type_operator)
@@ -56,7 +56,7 @@ Merge statement precendence with parens (unit/MergeParenPrecedenceA.dhall)
 
 (expression
   (primitive_expression (expression (merge_expression
-    (builtin_operator)
+    (builtin_function)
     (primitive_expression (identifier (label)))
     (primitive_expression (identifier (label))))))
   (type_operator)
@@ -73,7 +73,7 @@ merge x y z
 (expression
   (application_expression
     (merge_expression
-      (builtin_operator)
+      (builtin_function)
       (primitive_expression (identifier (label)))
       (primitive_expression (identifier (label))))
     (primitive_expression (identifier (label)))))
@@ -88,7 +88,7 @@ toMap x
 
 (expression
   (to_map_expression
-    (builtin_operator)
+    (builtin_function)
     (primitive_expression (identifier (label)))))
 
 ==================
@@ -101,7 +101,7 @@ toMap x : T
 
 (expression
   (to_map_expression
-    (builtin_operator)
+    (builtin_function)
     (primitive_expression (identifier (label))))
   (type_operator)
   type: (expression (primitive_expression (identifier (label)))))
@@ -116,7 +116,7 @@ toMap { foo= 1, bar= 4, baz= 9 }
 
 (expression
   (to_map_expression
-    (builtin_operator)
+    (builtin_function)
     (primitive_expression (record_literal
       (record_literal_entry (label) (assign_operator)
         (expression (primitive_expression

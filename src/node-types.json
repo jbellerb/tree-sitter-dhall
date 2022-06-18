@@ -1505,7 +1505,7 @@
       "required": true,
       "types": [
         {
-          "type": "builtin_operator",
+          "type": "builtin_function",
           "named": true
         },
         {
@@ -2131,7 +2131,7 @@
       "required": true,
       "types": [
         {
-          "type": "builtin_operator",
+          "type": "builtin_function",
           "named": true
         },
         {
@@ -2160,6 +2160,10 @@
         {
           "type": "interpolation",
           "named": true
+        },
+        {
+          "type": "single_quote_escaped",
+          "named": true
         }
       ]
     }
@@ -2173,7 +2177,7 @@
       "required": true,
       "types": [
         {
-          "type": "builtin_operator",
+          "type": "builtin_function",
           "named": true
         },
         {
@@ -2417,7 +2421,7 @@
       "required": true,
       "types": [
         {
-          "type": "builtin_operator",
+          "type": "builtin_function",
           "named": true
         },
         {
@@ -2606,10 +2610,6 @@
         {
           "type": "with_expression",
           "named": true
-        },
-        {
-          "type": "with_operator",
-          "named": true
         }
       ]
     }
@@ -2640,14 +2640,6 @@
   },
   {
     "type": "''",
-    "named": false
-  },
-  {
-    "type": "''${",
-    "named": false
-  },
-  {
-    "type": "'''",
     "named": false
   },
   {
@@ -2887,7 +2879,7 @@
     "named": true
   },
   {
-    "type": "builtin_operator",
+    "type": "builtin_function",
     "named": true
   },
   {
@@ -2991,6 +2983,10 @@
     "named": false
   },
   {
+    "type": "single_quote_escaped",
+    "named": true
+  },
+  {
     "type": "temporal_literal",
     "named": true
   },
@@ -3013,10 +3009,6 @@
   {
     "type": "with",
     "named": false
-  },
-  {
-    "type": "with_operator",
-    "named": true
   },
   {
     "type": "{",

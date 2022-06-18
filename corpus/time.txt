@@ -57,11 +57,19 @@ Time literal with time zone (time/TimeTimeZoneA.dhall)
 Time literal with Z time zone (time/TimeTimeZoneZA.dhall)
 ==================
 
+-- Same as `./TimeTimeZoneA.dhall`, but with `Z` as the `TimeZone`
+--
+-- This ensures that implementation still parse `Z` in conjunction with a time,
+-- even if `Z` by itself is not permitted
 00:00:00Z
 
 ---
 
 (expression
+  (line_comment (line_comment_prefix) (line_comment_content))
+  (line_comment (line_comment_prefix) (line_comment_content))
+  (line_comment (line_comment_prefix) (line_comment_content))
+  (line_comment (line_comment_prefix) (line_comment_content))
   (primitive_expression (temporal_literal)))
 
 ==================
@@ -79,11 +87,13 @@ Date and time literal with time zone (time/DateTimeTimeZoneA.dhall)
 Date and time literal with lower-case T (time/LowercaseTA.dhall)
 ==================
 
+-- Check that lowercase `t` is supported
 2000-01-01t12:00:00
 
 ---
 
 (expression
+  (line_comment (line_comment_prefix) (line_comment_content))
   (primitive_expression (temporal_literal)))
 
 ==================

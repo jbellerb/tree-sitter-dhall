@@ -12,7 +12,6 @@ Basic with statement (unit/WithA.dhall)
       (record_literal_entry (label) (assign_operator)
         (expression (primitive_expression
           (numeric_literal (natural_literal)))))))
-    (with_operator)
     (label)
     (assign_operator)
     (primitive_expression (numeric_literal (natural_literal)))))
@@ -21,11 +20,16 @@ Basic with statement (unit/WithA.dhall)
 Chained with statements (unit/WithMultipleA.dhall)
 ==================
 
+{- This test verifies that an implementation correctly encodes chained
+   `with` expressions in a left-associative way.
+-}
 { a.b = 1, c.d = 2 } with a.b = 3 with c.e = 4
 
 ---
 
 (expression
+  (block_comment
+    (block_comment_open) (block_comment_content) (block_comment_close))
   (with_expression
     (with_expression
       (primitive_expression (record_literal
@@ -39,11 +43,9 @@ Chained with statements (unit/WithMultipleA.dhall)
           (assign_operator)
           (expression (primitive_expression
             (numeric_literal (natural_literal)))))))
-      (with_operator)
       (label) (selector (selector_dot) (label))
       (assign_operator)
       (primitive_expression (numeric_literal (natural_literal))))
-    (with_operator)
     (label) (selector (selector_dot) (label))
     (assign_operator)
     (primitive_expression (numeric_literal (natural_literal)))))
@@ -52,30 +54,42 @@ Chained with statements (unit/WithMultipleA.dhall)
 Chained with statement precedence (unit/WithPrecedence1A.dhall)
 ==================
 
+{-  The purpose of this test is to illustrate that function application has
+    higher precedence than `with` so that chained with expressions parse
+    correctly
+
+    The following expression should parse as:
+
+        ({ a = Some 1 } with a = Some 2) with a = Some 3
+
+    ... and not parse as:
+
+        { a = Some 1 } with a = (Some 2 with a = Some 3)
+-}
 { a = Some 1 } with a = Some 2 with a = Some 3
 
 ---
 
 (expression
+  (block_comment
+    (block_comment_open) (block_comment_content) (block_comment_close))
   (with_expression
     (with_expression
       (primitive_expression (record_literal
         (record_literal_entry (label) (assign_operator)
           (expression (some_expression
-            (builtin_operator)
+            (builtin_function)
             (primitive_expression
               (numeric_literal (natural_literal))))))))
-      (with_operator)
       (label)
       (assign_operator)
       (some_expression
-        (builtin_operator)
+        (builtin_function)
         (primitive_expression (numeric_literal (natural_literal)))))
-    (with_operator)
     (label)
     (assign_operator)
     (some_expression
-      (builtin_operator)
+      (builtin_function)
       (primitive_expression (numeric_literal (natural_literal))))))
 
 ==================
@@ -94,7 +108,6 @@ With statement operator precedence (unit/WithPrecedence2A.dhall)
         (assign_operator)
         (expression (primitive_expression
           (numeric_literal (natural_literal)))))))
-    (with_operator)
     (label)
     (assign_operator)
     (plus_expression
@@ -122,7 +135,6 @@ foo::{ x = 0 } with x = 1
             (assign_operator)
             (expression (primitive_expression
               (numeric_literal (natural_literal))))))))
-    (with_operator)
     (label)
     (assign_operator)
     (primitive_expression (numeric_literal (natural_literal)))))
@@ -143,7 +155,6 @@ With statement using Some (unit/WithSomeA.dhall)
         (assign_operator)
         (expression (primitive_expression
           (numeric_literal (natural_literal)))))))
-    (with_operator)
     (label)
     (assign_operator)
     (primitive_expression (numeric_literal (natural_literal)))))
@@ -159,9 +170,8 @@ With statement question mark (withQuestionMarkA.dhall)
 (expression
   (with_expression
     (primitive_expression (expression (some_expression
-      (builtin_operator)
+      (builtin_function)
       (primitive_expression (numeric_literal (natural_literal))))))
-    (with_operator)
     (question_mark)
     (assign_operator)
     (primitive_expression (numeric_literal (natural_literal)))))

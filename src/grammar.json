@@ -568,13 +568,8 @@
           ]
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "STRING",
-            "value": "with"
-          },
-          "named": true,
-          "value": "with_operator"
+          "type": "STRING",
+          "value": "with"
         },
         {
           "type": "SYMBOL",
@@ -1217,7 +1212,7 @@
             "value": "merge"
           },
           "named": true,
-          "value": "builtin_operator"
+          "value": "builtin_function"
         },
         {
           "type": "SYMBOL",
@@ -1239,7 +1234,7 @@
             "value": "Some"
           },
           "named": true,
-          "value": "builtin_operator"
+          "value": "builtin_function"
         },
         {
           "type": "SYMBOL",
@@ -1257,7 +1252,7 @@
             "value": "toMap"
           },
           "named": true,
-          "value": "builtin_operator"
+          "value": "builtin_function"
         },
         {
           "type": "SYMBOL",
@@ -1275,7 +1270,7 @@
             "value": "showConstructor"
           },
           "named": true,
-          "value": "builtin_operator"
+          "value": "builtin_function"
         },
         {
           "type": "SYMBOL",
@@ -4159,12 +4154,8 @@
           }
         },
         {
-          "type": "STRING",
-          "value": "'''"
-        },
-        {
-          "type": "STRING",
-          "value": "''${"
+          "type": "SYMBOL",
+          "name": "single_quote_escaped"
         },
         {
           "type": "IMMEDIATE_TOKEN",
@@ -4192,6 +4183,22 @@
           }
         }
       ]
+    },
+    "single_quote_escaped": {
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "'''"
+          },
+          {
+            "type": "STRING",
+            "value": "''${"
+          }
+        ]
+      }
     },
     "interpolation": {
       "type": "SEQ",

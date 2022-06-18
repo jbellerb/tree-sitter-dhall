@@ -79,11 +79,13 @@ Paths can contain unicode (unit/import/unicodePathsA.dhall)
 Paths are terminated by lambda characters (unit/import/pathTerminationLambdaA.dhall)
 ==================
 
+-- Verify that certain punctuation marks terminate paths correctly
 λ(x : ./example) -> x
 
 ---
 
 (expression
+  (line_comment (line_comment_prefix) (line_comment_content))
   (lambda_expression (lambda_operator)
     label: (label)
     (type_operator)
@@ -95,11 +97,13 @@ Paths are terminated by lambda characters (unit/import/pathTerminationLambdaA.dh
 Paths are terminated by list characters (unit/import/pathTerminationListA.dhall)
 ==================
 
+-- Verify that certain punctuation marks terminate paths correctly
 [./example,./example, ./example]
 
 ---
 
 (expression
+  (line_comment (line_comment_prefix) (line_comment_content))
   (primitive_expression (list_literal
     (expression (import (local_import)))
     (expression (import (local_import)))
@@ -109,11 +113,13 @@ Paths are terminated by list characters (unit/import/pathTerminationListA.dhall)
 Paths are terminated by record characters (unit/import/pathTerminationRecordA.dhall)
 ==================
 
+-- Verify that certain punctuation marks terminate paths correctly
 {foo = ./example, bar = ./example}
 
 ---
 
 (expression
+  (line_comment (line_comment_prefix) (line_comment_content))
   (primitive_expression (record_literal
     (record_literal_entry (label) (assign_operator)
       (expression (import (local_import))))
@@ -124,11 +130,13 @@ Paths are terminated by record characters (unit/import/pathTerminationRecordA.dh
 Paths are terminated by union characters (unit/import/pathTerminationUnionA.dhall)
 ==================
 
+-- Verify that certain punctuation marks terminate paths correctly
 <foo: ./example| bar: ./example>
 
 ---
 
 (expression
+  (line_comment (line_comment_prefix) (line_comment_content))
   (primitive_expression (union_type
     (union_type_entry (label) (type_operator)
       (expression
@@ -274,11 +282,13 @@ https://example.com/a%20b/c%2fd/e+f/g%2dh
 Remote https import with an empty path segment (unit/import/urls/emptyPathSegmentA.dhall)
 ==================
 
+-- empty path segments are not equivalent to missing path segments
 https://example.com/foo//bar
 
 ---
 
 (expression
+  (line_comment (line_comment_prefix) (line_comment_content))
   (import (http_import (http_raw))))
 
 ==================
@@ -296,33 +306,53 @@ https://example.com/
 Remote https import with a missing path (unit/import/urls/emptyPath0A.dhall)
 ==================
 
+-- the normal form for an empty path is a path of `/`
+-- see RFC7230 section 2.7.3
 https://example.com
 
 ---
 
 (expression
+  (line_comment (line_comment_prefix) (line_comment_content))
+  (line_comment (line_comment_prefix) (line_comment_content))
   (import (http_import (http_raw))))
 
 ==================
 Remote https import with an empty query (unit/import/urls/emptyQueryA.dhall)
 ==================
 
+-- an empty query string is not the same as a missing one
+-- see RFC 3986 section 6.2.3
 https://example.com/foo?
 
 ---
 
 (expression
+  (line_comment (line_comment_prefix) (line_comment_content))
+  (line_comment (line_comment_prefix) (line_comment_content))
   (import (http_import (http_raw))))
 
 ==================
 Remote https import with a fragment identifier (unit/import/urls/fragmentParsesAsListAppendA.dhall)
 ==================
 
+{- Fragment identifiers are not allowed in URLs because they serve no purpose
+   for Dhall and they could lead to ambiguity if a parser interprets them as
+   the list append operator (`#`)
+
+   The following expression therefore only has one valid parse, which is to
+   interpret the `#` as a list append.  In other words, the following expression
+   is parsed as:
+
+   (https://example.com/foo) # bar
+-}
 https://example.com/foo#bar
 
 ---
 
 (expression
+  (block_comment
+    (block_comment_open) (block_comment_content) (block_comment_close))
   (list_append_expression
     (import (http_import (http_raw)))
     (infix_operator)
@@ -354,11 +384,13 @@ env:FOO
 Posix-style environment variable import (unit/import/environmentVariablePosixA.dhall)
 ==================
 
+-- Yes, this is legal
 env:"\"\\\a\b\f\n\r\t\v!<[~"
 
 ---
 
 (expression
+  (line_comment (line_comment_prefix) (line_comment_content))
   (import (env_import (env_variable))))
 
 ==================
@@ -478,6 +510,15 @@ https://example.com/foo using x
 Remote import using inline headers (unit/import/inlineUsingA.dhall)
 ==================
 
+{- The language standard used to require that custom headers were provided via
+   an external import, but was later amended to support inline headers as part
+   of:
+
+   https://github.com/dhall-lang/dhall-lang/pull/560
+
+   This test verifies that an implementation supports such inline custom headers
+-}
+
 https://example.com/foo using
     [ { mapKey   = "Authorization"
       , mapValue = "token 5199831f4dd3b79e7c5b7e0ebe75d67aa66e79d4"
@@ -487,6 +528,8 @@ https://example.com/foo using
 ---
 
 (expression
+  (block_comment
+    (block_comment_open) (block_comment_content) (block_comment_close))
   (import (http_import
     (http_raw)
     (primitive_expression (list_literal (expression (primitive_expression

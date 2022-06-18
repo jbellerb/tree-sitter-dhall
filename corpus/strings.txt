@@ -99,11 +99,15 @@ Single-quoted string with escaped interpolation and single quote (text/escapedSi
 ---
 
 (expression
-  (primitive_expression (text_literal (single_quote_literal))))
+  (primitive_expression (text_literal (single_quote_literal
+    (single_quote_escaped)
+    (single_quote_escaped)))))
 
 ==================
 Single-quoted string with more escape sequences (text/escapeA.dhall)
 ==================
+
+-- Verify that an implementation is processing escape sequences correctly
 
 ''
 ''${
@@ -116,7 +120,10 @@ $
 ---
 
 (expression
-  (primitive_expression (text_literal (single_quote_literal))))
+  (line_comment (line_comment_prefix) (line_comment_content))
+  (primitive_expression (text_literal (single_quote_literal
+    (single_quote_escaped)
+    (single_quote_escaped)))))
 
 ==================
 Double-quoted string with an interpolation (text/interpolatedDoubleQuotedStringA.dhall)
@@ -153,6 +160,11 @@ ${Natural/show 123}
 Single-quoted string with another interpolation (text/interpolationA.dhall)
 ==================
 
+{- This example verifies that an implementation is correctly breaking leading
+   spaces at interpolated expressions.  The first line has the fewest number of
+   leading spaces (2) due to the interruption by the interpolated expression.
+-}
+
 ''
 ${Natural/show 1}      foo
   bar
@@ -161,6 +173,8 @@ ${Natural/show 1}      foo
 ---
 
 (expression
+  (block_comment
+    (block_comment_open) (block_comment_content) (block_comment_close))
   (primitive_expression (text_literal (single_quote_literal
     (interpolation (expression (application_expression
       (primitive_expression (identifier (builtin)))
@@ -181,6 +195,18 @@ Double-quoted string with a dollar sign (text/dollarSignA.dhall)
 Single-quoted string with an interior indent (text/interiorIndentA.dhall)
 ==================
 
+{- The indent is computed as the minimum number of leading spaces over all lines
+   in a multi-line literal, including the line right before the closing quotes.
+   In this case, there are three lines:
+
+   * The first line containing "  foo" with two leading spaces
+   * The second line containing "  bar" with two leading spaces
+   * The third line containing "" with zero leading spaces
+
+   Since the last line has zero leading spaces, the minimum number of leading
+   spaces over all three lines is zero, so we don't strip any spaces.
+-}
+
 ''
   foo
   bar
@@ -189,6 +215,8 @@ Single-quoted string with an interior indent (text/interiorIndentA.dhall)
 ---
 
 (expression
+  (block_comment
+    (block_comment_open) (block_comment_content) (block_comment_close))
   (primitive_expression (text_literal (single_quote_literal))))
 
 ==================
@@ -294,6 +322,10 @@ Comments inside a double-quoted string
 Comments inside a single-quoted string (text/preserveCommentA.dhall)
 ==================
 
+{- A comment within the interior of a multi-line literal counts as part of the
+   literal
+-}
+
 ''
 -- Hello
 {- world -}
@@ -302,23 +334,35 @@ Comments inside a single-quoted string (text/preserveCommentA.dhall)
 ---
 
 (expression
+  (block_comment
+    (block_comment_open) (block_comment_content) (block_comment_close))
   (primitive_expression (text_literal (single_quote_literal))))
 
 ==================
 Single-quoted string without a newline (text/singleLineA.dhall)
 ==================
 
+{- This is how you encode a multi-line literal that contains no newlines
+
+   The leading newline is stripped
+-}
 ''
 foo''
 
 ---
 
 (expression
+  (block_comment
+    (block_comment_open) (block_comment_content) (block_comment_close))
   (primitive_expression (text_literal (single_quote_literal))))
 
 ==================
 Single-quoted string with only one newline (text/twoLinesA.dhall)
 ==================
+
+{- Verify that an implementation is correctly preserving newlines in the
+   corresponding double-quoted literal
+-}
 
 ''
 foo
@@ -327,4 +371,6 @@ bar''
 ---
 
 (expression
+  (block_comment
+    (block_comment_open) (block_comment_content) (block_comment_close))
   (primitive_expression (text_literal (single_quote_literal))))

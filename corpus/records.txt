@@ -92,11 +92,19 @@ Quoted record labels (quotedRecordLabelA.dhall)
 Dotted record labels (unit/RecordLitDottedA.dhall)
 ==================
 
+{-  The purpose of this test is to illustrate that dotted fields are syntactic
+    sugar that does not survive the parsing stage.  The underlying expression is
+    actually represented and encoded as:
+
+    { x = { y = { z = 1 } } }
+-}
 { x.y.z = 1 }
 
 ---
 
 (expression
+  (block_comment
+    (block_comment_open) (block_comment_content) (block_comment_close))
   (primitive_expression (record_literal
     (record_literal_entry
       (label)
@@ -109,11 +117,17 @@ Dotted record labels (unit/RecordLitDottedA.dhall)
 Multiple dotted record labels (unit/RecordLitNixLikeA.dhall)
 ==================
 
+{- The purpose of this test is to verify that the combination of the dotted
+   field notation and the duplicate record fields desugar to the desired syntax
+   tree
+-}
 { x.y = 1, x.z = True }
 
 ---
 
 (expression
+  (block_comment
+    (block_comment_open) (block_comment_content) (block_comment_close))
   (primitive_expression (record_literal
     (record_literal_entry
       (label)
@@ -148,11 +162,19 @@ Quoted dotted record labels (unit/RecordLitDottedEscapeA.dhall)
 Record literal with duplicate fields (unit/RecordLitDuplicatesA.dhall)
 ==================
 
+{-  The purpose of this test is to illustrate that duplicate fields are
+    syntactic sugar that does not survive the parsing stage.  The underlying
+    expression is actually represented and encoded as:
+
+    { x = { y = 1 } ∧ { z = 1 } }
+-}
 { x = { y = 1 }, x = { z = 1 } }
 
 ---
 
 (expression
+  (block_comment
+    (block_comment_open) (block_comment_content) (block_comment_close))
   (primitive_expression (record_literal
     (record_literal_entry
       (label)
@@ -298,7 +320,7 @@ Record literal Some pun (unit/RecordLitPunSomeA.dhall)
 Record type (unit/RecordTypeA.dhall)
 ==================
 
-{ x : T, y : U }
+{ x: T, y: U }
 
 ---
 

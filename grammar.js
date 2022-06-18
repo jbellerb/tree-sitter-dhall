@@ -234,7 +234,7 @@ module.exports = grammar({
 
     with_expression: $ => seq(
       choice($.with_expression, $._import_expression),
-      alias('with', $.with_operator),
+      'with',
       $._with_entry,
     ),
     _with_entry: $ => seq(
@@ -311,20 +311,20 @@ module.exports = grammar({
       $.show_constructor_expression,
     ),
     merge_expression: $ => seq(
-      alias('merge', $.builtin_operator),
+      alias('merge', $.builtin_function),
       $._import_expression,
       $._import_expression,
     ),
     some_expression: $ => seq(
-      alias('Some', $.builtin_operator),
+      alias('Some', $.builtin_function),
       $._import_expression,
     ),
     to_map_expression: $ => seq(
-      alias('toMap', $.builtin_operator),
+      alias('toMap', $.builtin_function),
       $._import_expression,
     ),
     show_constructor_expression: $ => seq(
-      alias('showConstructor', $.builtin_operator),
+      alias('showConstructor', $.builtin_function),
       $._import_expression,
     ),
     application_expression: $ => seq(
@@ -481,12 +481,12 @@ module.exports = grammar({
     ),
     _single_quote_chunk: $ => choice(
       prec(1, $.interpolation),
-      '\'\'\'',
-      '\'\'${',
+      $.single_quote_escaped,
       token.immediate(prec(1, /[^\'\$]+/)),
       token.immediate('\''),
       token.immediate('$'),
     ),
+    single_quote_escaped: $ => token(choice('\'\'\'', '\'\'${')),
     interpolation: $ => seq('${', $.expression, '}'),
 
     record_literal: $ => seq(
