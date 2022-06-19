@@ -10,6 +10,39 @@ missing
   (import (missing_import)))
 
 ==================
+Missing import in parens (missingInParenthesesA.dhall)
+==================
+
+(missing)
+
+---
+
+(expression
+  (primitive_expression (expression (import (missing_import)))))
+
+==================
+Missing import must be followed by a space (preferMissingNoSpacesA.dhall)
+==================
+
+missing//foo
+
+---
+
+(expression
+  (primitive_expression (identifier (label))))
+
+==================
+Missing import with a slash is invalid (missingSlashA.dhall)
+==================
+
+missing/
+
+---
+
+(expression
+  (primitive_expression (identifier (label))))
+
+==================
 Absolute path import (unit/import/pathAbsoluteA.dhall)
 ==================
 
@@ -279,6 +312,17 @@ https://example.com/a%20b/c%2fd/e+f/g%2dh
   (import (http_import (http_raw))))
 
 ==================
+Remote https import with a url-escaped query (unit/import/urls/escapedQueryA.dhall)
+==================
+
+https://example.com/foo?a%20b=c%2fd&e+f/?
+
+---
+
+(expression
+  (import (http_import (http_raw))))
+
+==================
 Remote https import with an empty path segment (unit/import/urls/emptyPathSegmentA.dhall)
 ==================
 
@@ -438,7 +482,7 @@ Relative path import as location (unit/import/AsLocationLocalA.dhall)
   (import (local_import) (import_as_location)))
 
 ==================
-Remote import as location (unit/import/AsLocationLocalA.dhall)
+Remote import as location (unit/import/AsLocationRemoteA.dhall)
 ==================
 
 https://prelude.dhall-lang.org/package.dhall as Location
@@ -544,6 +588,25 @@ https://example.com/foo using
           (assign_operator)
           (expression (primitive_expression
             (text_literal (double_quote_literal)))))))))))))
+
+==================
+Remote import using toMap (usingToMapA.dhall)
+==================
+
+https://example.com using (toMap { Foo = "Bar" })
+
+---
+
+(expression
+  (import (http_import
+    (http_raw)
+    (primitive_expression (expression
+      (to_map_expression
+        (builtin_function)
+        (primitive_expression (record_literal
+          (record_literal_entry (label) (assign_operator)
+            (expression (primitive_expression
+              (text_literal (double_quote_literal)))))))))))))
 
 ==================
 Remote import using hashed, imported headers (unit/import/HeadersInteriorHashA.dhall)

@@ -192,14 +192,20 @@ NaN
   (primitive_expression (numeric_literal (double_literal))))
 
 ==================
-Integer-valued double literal (unit/DoubleLitSecretlyIntA.dhall)
+Integer-valued double literal (unit/DoubleLitSecretelyIntA.dhall)
 ==================
 
+{-
+    Some languages do not make principled distinctions between number types, so
+    this checks that this Double is not silently considered as a Natural
+-}
 1.0
 
 ---
 
 (expression
+  (block_comment
+    (block_comment_open) (block_comment_content) (block_comment_close))
   (primitive_expression (numeric_literal (double_literal))))
 
 ==================

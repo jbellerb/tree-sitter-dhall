@@ -250,6 +250,39 @@ Single-quoted string with a full indent and windows line endings (text/multiline
   (primitive_expression (text_literal (single_quote_literal))))
 
 ==================
+Single-quoted string with leading tabs (leadingTabsA.dhall)
+==================
+
+{- This test verifies that leading tabs are correctly stripped
+
+   Since one line is blank and the other line only has tabs, they are all
+   stripped since they all count as leading whitespace for dedenting purposes.
+
+   The end result is that the dedented string is equivalent to:
+
+```
+''
+
+''
+```
+
+   ... which desugars to a single "\n".
+
+   Carefully note that the two spaces before the starting quotes are not
+   counted for dedenting purposes.
+-}
+  ''
+
+		''
+
+---
+
+(expression
+  (block_comment
+    (block_comment_open) (block_comment_content) (block_comment_close))
+  (primitive_expression (text_literal (single_quote_literal))))
+
+==================
 Single-quoted string with a tabbed full indent (text/multilineTabsA.dhall)
 ==================
 
@@ -294,7 +327,7 @@ Single-quoted string with improper indent (text/multilineCorruptedLeadingWhitesp
   (primitive_expression (text_literal (single_quote_literal))))
 
 ==================
-Single-quoted string with mixed level (text/multilineMismatchedLeadingWhitespaceA.dhall)
+Single-quoted string with mixed level indent (text/multilineMismatchedLeadingWhitespaceA.dhall)
 ==================
 
 ''
@@ -374,3 +407,47 @@ bar''
   (block_comment
     (block_comment_open) (block_comment_content) (block_comment_close))
   (primitive_expression (text_literal (single_quote_literal))))
+
+==================
+Single-quoted string can be appended (text/singleQuoteConcatA.dhall)
+==================
+
+''
+a''
+++
+''
+b''
+
+---
+
+(expression
+  (text_append_expression
+    (primitive_expression (text_literal (single_quote_literal)))
+    (infix_operator)
+    (primitive_expression (text_literal (single_quote_literal)))))
+
+==================
+Complex single-quoted string (text/interestingA.dhall)
+==================
+
+-- Non-trivial example that combines several multi-line literal features
+
+λ(x : Text) → ''
+  ${x}    baz
+      bar
+    foo
+    ''
+
+---
+
+(expression
+  (line_comment (line_comment_prefix) (line_comment_content))
+  (lambda_expression
+    (lambda_operator)
+    label: (label)
+    (type_operator)
+    type: (expression (primitive_expression (identifier (builtin))))
+    (arrow_operator)
+    expression: (expression (primitive_expression
+      (text_literal (single_quote_literal (interpolation
+        (expression (primitive_expression (identifier (label)))))))))))

@@ -1,4 +1,32 @@
 ==================
+Function application with one argument (unit/FunctionApplicationOneArgA.dhall)
+==================
+
+f x
+
+---
+
+(expression
+  (application_expression
+    (primitive_expression (identifier (label)))
+    (primitive_expression (identifier (label)))))
+
+==================
+Function application with multiple argument (unit/FunctionApplicationMultipleArgsA.dhall)
+==================
+
+f x y z
+
+---
+
+(expression
+  (application_expression
+    (primitive_expression (identifier (label)))
+    (primitive_expression (identifier (label)))
+    (primitive_expression (identifier (label)))
+    (primitive_expression (identifier (label)))))
+
+==================
 Merge statement (unit/MergeA.dhall)
 ==================
 
@@ -47,7 +75,7 @@ merge x y : t a
     (primitive_expression (identifier (label))))))
 
 ==================
-Merge statement precendence with parens (unit/MergeParenPrecedenceA.dhall)
+Merge statement precendence with parens (unit/MergeParenAnnotationA.dhall)
 ==================
 
 (merge x y) : t
@@ -76,6 +104,42 @@ merge x y z
       (builtin_function)
       (primitive_expression (identifier (label)))
       (primitive_expression (identifier (label))))
+    (primitive_expression (identifier (label)))))
+
+==================
+Some statement (unit/SomeXA.dhall)
+==================
+
+Some x
+
+---
+
+(expression
+  (some_expression
+    (builtin_function)
+    (primitive_expression (identifier (label)))))
+
+==================
+Some statement with too many arguments (unit/SomeXYZA.dhall)
+==================
+
+{-
+This is always a type error, but if this
+was a parse error it would be quite confusing
+because Some looks like a builtin.
+-}
+Some x y z
+
+---
+
+(expression
+  (block_comment
+    (block_comment_open) (block_comment_content) (block_comment_close))
+  (application_expression
+    (some_expression
+      (builtin_function)
+      (primitive_expression (identifier (label))))
+    (primitive_expression (identifier (label)))
     (primitive_expression (identifier (label)))))
 
 ==================

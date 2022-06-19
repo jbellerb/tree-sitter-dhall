@@ -1,89 +1,79 @@
 ==================
-Builtins (builtinsA.dhall*)
+Variable (unit/VariableA.dhall)
 ==================
 
-[ Natural/fold
-, Natural/build
-, Natural/isZero
-, Natural/even
-, Natural/odd
-, Natural/toInteger
-, Natural/show
-, Integer/toDouble
-, Integer/show
-, Integer/negate
-, Integer/clamp
-, Natural/subtract
-, Double/show
-, List/build
-, List/fold
-, List/length
-, List/head
-, List/last
-, List/indexed
-, List/reverse
-, Text/show
-, Text/replace
-, Bool
-, True
-, False
-, Optional
-, None
-, Natural
-, Integer
-, Double
-, Text
-, Date
-, Time
-, TimeZone
-, List
-, Type
-, Kind
-, Sort
-]
+x
 
 ---
 
 (expression
-  (primitive_expression (list_literal
-    (expression (primitive_expression (identifier (builtin))))
-    (expression (primitive_expression (identifier (builtin))))
-    (expression (primitive_expression (identifier (builtin))))
-    (expression (primitive_expression (identifier (builtin))))
-    (expression (primitive_expression (identifier (builtin))))
-    (expression (primitive_expression (identifier (builtin))))
-    (expression (primitive_expression (identifier (builtin))))
-    (expression (primitive_expression (identifier (builtin))))
-    (expression (primitive_expression (identifier (builtin))))
-    (expression (primitive_expression (identifier (builtin))))
-    (expression (primitive_expression (identifier (builtin))))
-    (expression (primitive_expression (identifier (builtin))))
-    (expression (primitive_expression (identifier (builtin))))
-    (expression (primitive_expression (identifier (builtin))))
-    (expression (primitive_expression (identifier (builtin))))
-    (expression (primitive_expression (identifier (builtin))))
-    (expression (primitive_expression (identifier (builtin))))
-    (expression (primitive_expression (identifier (builtin))))
-    (expression (primitive_expression (identifier (builtin))))
-    (expression (primitive_expression (identifier (builtin))))
-    (expression (primitive_expression (identifier (builtin))))
-    (expression (primitive_expression (identifier (builtin))))
-    (expression (primitive_expression (identifier (builtin))))
-    (expression (primitive_expression (identifier (builtin))))
-    (expression (primitive_expression (identifier (builtin))))
-    (expression (primitive_expression (identifier (builtin))))
-    (expression (primitive_expression (identifier (builtin))))
-    (expression (primitive_expression (identifier (builtin))))
-    (expression (primitive_expression (identifier (builtin))))
-    (expression (primitive_expression (identifier (builtin))))
-    (expression (primitive_expression (identifier (builtin))))
-    (expression (primitive_expression (identifier (builtin))))
-    (expression (primitive_expression (identifier (builtin))))
-    (expression (primitive_expression (identifier (builtin))))
-    (expression (primitive_expression (identifier (builtin))))
-    (expression (primitive_expression (identifier (builtin))))
-    (expression (primitive_expression (identifier (builtin))))
-    (expression (primitive_expression (identifier (builtin)))))))
+  (primitive_expression (identifier (label))))
+
+==================
+Quoted variable containing spaces (unit/VariableQuotedWithSpaceA.dhall)
+==================
+
+` x `
+
+---
+
+(expression
+  (primitive_expression (identifier (label))))
+
+==================
+Quoted variable containing an operator (unit/QuotedVariableA.dhall)
+==================
+
+`x+y`
+
+---
+
+(expression
+  (primitive_expression (identifier (label))))
+
+==================
+Quoted variable containing builtin value (unit/QuotedTrueA.dhall)
+==================
+
+`True`
+
+---
+
+(expression
+  (primitive_expression (identifier (label))))
+
+==================
+Quoted variable containing builtin types (unit/QuotedBoolA.dhall)
+==================
+
+`Bool`
+
+---
+
+(expression
+  (primitive_expression (identifier (label))))
+
+==================
+Quoted variable with Type (unit/QuotedTypeA.dhall)
+==================
+
+`Type`
+
+---
+
+(expression
+  (primitive_expression (identifier (label))))
+
+==================
+Underscore is a valid variable name (unit/VariableUnderscoreA.dhall)
+==================
+
+_
+
+---
+
+(expression
+  (primitive_expression (identifier (label))))
 
 ==================
 Labels are alphanumeric (labelA.dhall)
@@ -102,7 +92,7 @@ in  _ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-/
     (expression (primitive_expression (identifier (label))))))
 
 ==================
-Labels can contain reserved keywords (missingFooA.dhall)
+Label containing reserved keywords (missingFooA.dhall)
 ==================
 
 missingFoo

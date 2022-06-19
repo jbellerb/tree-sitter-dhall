@@ -25,6 +25,52 @@ r.x
     (selector (selector_dot) (label))))
 
 ==================
+Field names can be quoted (unit/FieldQuotedA.dhall)
+==================
+
+r.`x`
+
+---
+
+(expression
+  (primitive_expression
+    (identifier (label))
+    (selector (selector_dot) (label))))
+
+==================
+Fields can use builtin names (unit/FieldBuiltinNameA.dhall)
+==================
+
+r.List
+
+---
+
+(expression
+  (primitive_expression
+    (identifier (label))
+    (selector (selector_dot) (label))))
+
+==================
+Fields can use keyword names (builtinNameAsFieldA.dhall)
+==================
+
+let Prelude = https://prelude.dhall-lang.org/package.dhall
+
+in  Prelude.List.map
+
+---
+
+(expression
+  (let_expression
+    (let_binding
+      label: (label)
+      (assign_operator)
+      (expression (import (http_import (http_raw)))))
+    (expression (primitive_expression
+      (identifier (label))
+      selector: (selector (selector_dot) (label) (selector_dot) (label))))))
+
+==================
 Field projection (unit/RecordProjectFieldsA.dhall)
 ==================
 
