@@ -242,3 +242,36 @@ toMap { foo= 1, bar= 4, baz= 9 }
       (record_literal_entry (label) (assign_operator)
         (expression (primitive_expression
           (numeric_literal (natural_literal)))))))))
+
+==================
+showConstructor statement
+==================
+
+showConstructor <A>.A
+
+---
+
+(expression
+  (show_constructor_expression
+    (builtin_function)
+    (primitive_expression
+      (union_type (union_type_entry (label)))
+      (selector (selector_dot) (label)))))
+
+==================
+showConstructor statement with a value
+==================
+
+showConstructor (<A : Bool>.A False)
+
+---
+
+(expression
+  (show_constructor_expression
+    (builtin_function)
+    (primitive_expression (expression (application_expression
+      (primitive_expression
+        (union_type (union_type_entry (label) (type_operator)
+          type: (expression (primitive_expression (identifier (builtin))))))
+        selector: (selector (selector_dot) (label)))
+      (primitive_expression (boolean_literal)))))))
