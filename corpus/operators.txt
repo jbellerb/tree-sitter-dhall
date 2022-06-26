@@ -673,7 +673,7 @@ General operator precedence (operatorsA.dhall)
       (record_literal_entry (label) (assign_operator)
         (expression (or_expression
           (and_expression
-            (primitive_expression (identifier (builtin)))
+            (primitive_expression (boolean_literal))
             (infix_operator)
             (application_expression
               (primitive_expression (identifier (builtin)))
@@ -686,12 +686,12 @@ General operator precedence (operatorsA.dhall)
                   (primitive_expression (numeric_literal (natural_literal)))))))))
           (infix_operator)
           (equal_expression
-            (primitive_expression (identifier (builtin)))
+            (primitive_expression (boolean_literal))
             (infix_operator)
             (not_equal_expression
-              (primitive_expression (identifier (builtin)))
+              (primitive_expression (boolean_literal))
               (infix_operator)
-              (primitive_expression (identifier (builtin))))))))))
+              (primitive_expression (boolean_literal)))))))))
     (infix_operator)
     (prefer_expression
       (primitive_expression (record_literal
@@ -711,7 +711,7 @@ General operator precedence (operatorsA.dhall)
       (infix_operator)
       (primitive_expression (record_literal
         (record_literal_entry (label) (assign_operator)
-          (expression (primitive_expression (identifier (builtin)))))))))
+          (expression (primitive_expression (boolean_literal))))))))
   (type_operator)
   type: (expression (combine_types_expression
     (primitive_expression (record_type

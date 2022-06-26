@@ -185,6 +185,11 @@
     }
   },
   {
+    "type": "boolean_literal",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "builtin",
     "named": true,
     "fields": {}
@@ -1961,6 +1966,10 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "boolean_literal",
+          "named": true
+        },
         {
           "type": "expression",
           "named": true

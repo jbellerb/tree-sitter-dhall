@@ -24,8 +24,7 @@ Record literals (recordA.dhall)
     (record_literal_entry
       (label)
       (assign_operator)
-      (expression (primitive_expression
-        (identifier (builtin)))))))
+      (expression (primitive_expression (boolean_literal))))))
   (type_operator)
   type: (expression (primitive_expression (record_type
     (record_type_entry
@@ -139,7 +138,7 @@ Multiple dotted record labels (unit/RecordLitNixLikeA.dhall)
       (label)
       (selector (selector_dot) (label))
       (assign_operator)
-      (expression (primitive_expression (identifier (builtin))))))))
+      (expression (primitive_expression (boolean_literal)))))))
 
 ==================
 Quoted dotted record labels (unit/RecordLitDottedEscapeA.dhall)

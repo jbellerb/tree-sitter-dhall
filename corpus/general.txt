@@ -74,7 +74,7 @@ Leading separators (leadingSeparatorsA.dhall)
           (expression (primitive_expression
             (numeric_literal (natural_literal)))))
         (record_literal_entry (label) (assign_operator)
-          (expression (primitive_expression (identifier (builtin)))))))))
+          (expression (primitive_expression (boolean_literal))))))))
     (record_literal_entry (label) (assign_operator)
       (expression (primitive_expression (record_type
         (record_type_entry (label) (type_operator)

@@ -69,8 +69,8 @@ All builtins (builtinsA.dhall*)
     (expression (primitive_expression (identifier (builtin))))
     (expression (primitive_expression (identifier (builtin))))
     (expression (primitive_expression (identifier (builtin))))
-    (expression (primitive_expression (identifier (builtin))))
-    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (boolean_literal)))
+    (expression (primitive_expression (boolean_literal)))
     (expression (primitive_expression (identifier (builtin))))
     (expression (primitive_expression (identifier (builtin))))
     (expression (primitive_expression (identifier (builtin))))
@@ -84,6 +84,28 @@ All builtins (builtinsA.dhall*)
     (expression (primitive_expression (identifier (builtin))))
     (expression (primitive_expression (identifier (builtin))))
     (expression (primitive_expression (identifier (builtin)))))))
+
+==================
+Bool (unit/BoolA.dhall)
+==================
+
+Bool
+
+---
+
+(expression
+  (primitive_expression (identifier (builtin))))
+
+==================
+Boolean literal (unit/BoolLitTrueA.dhall)
+==================
+
+True
+
+---
+
+(expression
+  (primitive_expression (boolean_literal)))
 
 ==================
 Type (unit/TypeA.dhall)

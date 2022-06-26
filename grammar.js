@@ -177,8 +177,6 @@ module.exports = grammar({
       'Text/show',
       'Text/replace',
       'Bool',
-      'True',
-      'False',
       'Optional',
       'None',
       'Natural',
@@ -354,6 +352,7 @@ module.exports = grammar({
         $.record_type,
         $.union_type,
         $.list_literal,
+        $.boolean_literal,
         $.identifier,
         seq('(', $.expression, ')'),
       ),
@@ -547,8 +546,9 @@ module.exports = grammar({
       ']',
     ),
 
+    boolean_literal: $ => choice('True', 'False'),
+
     identifier: $ => choice(
-      // TODO: exclude reserved labels (implicit?)
       seq($.label, optional($.de_bruijn_index)),
       $.builtin,
     ),

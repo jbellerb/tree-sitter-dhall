@@ -261,14 +261,6 @@
         },
         {
           "type": "STRING",
-          "value": "True"
-        },
-        {
-          "type": "STRING",
-          "value": "False"
-        },
-        {
-          "type": "STRING",
           "value": "Optional"
         },
         {
@@ -1397,6 +1389,10 @@
             {
               "type": "SYMBOL",
               "name": "list_literal"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "boolean_literal"
             },
             {
               "type": "SYMBOL",
@@ -4582,6 +4578,19 @@
         {
           "type": "STRING",
           "value": "]"
+        }
+      ]
+    },
+    "boolean_literal": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "True"
+        },
+        {
+          "type": "STRING",
+          "value": "False"
         }
       ]
     },
