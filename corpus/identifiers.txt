@@ -43,7 +43,7 @@ Quoted variable containing builtin value (unit/QuotedTrueA.dhall)
   (primitive_expression (identifier (label))))
 
 ==================
-Quoted variable containing builtin types (unit/QuotedBoolA.dhall)
+Quoted variable containing builtin type (unit/QuotedBoolA.dhall)
 ==================
 
 `Bool`
@@ -52,6 +52,29 @@ Quoted variable containing builtin types (unit/QuotedBoolA.dhall)
 
 (expression
   (primitive_expression (identifier (label))))
+
+==================
+Quoted variable containing builtin function (quotedBoundVariableA.dhall)
+==================
+
+(\(`Natural/even`: Natural -> Bool) -> `Natural/even`) Natural/odd 0
+
+---
+
+(expression
+  (application_expression
+    (primitive_expression (expression (lambda_expression
+      (lambda_operator)
+      label: (label)
+      (type_operator)
+      type: (expression (function_type
+        left: (primitive_expression (identifier (builtin)))
+        (arrow_operator)
+        right: (expression (primitive_expression (identifier (builtin))))))
+      (arrow_operator)
+      expression: (expression (primitive_expression (identifier (label)))))))
+    (primitive_expression (identifier (builtin)))
+    (primitive_expression (numeric_literal (natural_literal)))))
 
 ==================
 Quoted variable with Type (unit/QuotedTypeA.dhall)
@@ -63,6 +86,25 @@ Quoted variable with Type (unit/QuotedTypeA.dhall)
 
 (expression
   (primitive_expression (identifier (label))))
+
+==================
+Variable name starts with Type (reservedPrefixA.dhall)
+==================
+
+let TypeSynonym = Integer in +1 : TypeSynonym
+
+---
+
+(expression
+  (let_expression
+    (let_binding
+      label: (label)
+      (assign_operator)
+      (expression (primitive_expression (identifier (builtin)))))
+    (expression
+      (primitive_expression (numeric_literal (integer_literal)))
+      (type_operator)
+      type: (expression (primitive_expression (identifier (label)))))))
 
 ==================
 Underscore is a valid variable name (unit/VariableUnderscoreA.dhall)

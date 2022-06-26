@@ -663,6 +663,30 @@ https://example.com/foo using ./headers sha256:000000000000000000000000000000000
     (import_hash)))
 
 ==================
+Importing types (collectionImportTypeA.dhall)
+==================
+
+{ example0 = None ./type.dhall
+, example1 = [] : List ./type.dhall
+}
+
+---
+
+(expression
+  (primitive_expression (record_literal
+    (record_literal_entry (label) (assign_operator)
+      (expression (application_expression
+        (primitive_expression (identifier (builtin)))
+        (import (local_import)))))
+    (record_literal_entry (label) (assign_operator)
+      (expression
+        (primitive_expression (list_literal))
+        (type_operator)
+        type: (expression (application_expression
+          (primitive_expression (identifier (builtin)))
+          (import (local_import)))))))))
+
+==================
 Import alternative expressions (unit/import/importAltA.dhall)
 ==================
 

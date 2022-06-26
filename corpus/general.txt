@@ -1,0 +1,97 @@
+==================
+Whitespace (whitespaceA.dhall)
+==================
+
+
+1
+
+
+---
+
+(expression
+  (primitive_expression (numeric_literal (natural_literal))))
+
+==================
+Complex whitespace (whitespaceBuffetA.dhall)
+==================
+
+    -- This
+
+     Natural/even {-
+
+{- file
+-}
+  has
+
+ -}  2 -- mixed {- line endings -}
+
+---
+
+(expression
+  (line_comment (line_comment_prefix) (line_comment_content))
+  (application_expression
+    (primitive_expression (identifier (builtin)))
+    (block_comment
+      (block_comment_open) (block_comment_content) (block_comment_close))
+    (primitive_expression (numeric_literal (natural_literal))))
+  (line_comment (line_comment_prefix) (line_comment_content)))
+
+==================
+Leading separators (leadingSeparatorsA.dhall)
+==================
+
+{ emptyRecordLiteral = { , = }
+, emptyRecordType = { , }
+, emptyList = [,] : List Natural
+, emptyUnionType = < | >
+
+, recordLiteral = { , x = 1, y = True }
+, recordType = { , x : Natural, y : Bool }
+, list = [ , 1, 2 ]
+, unionType = < | x : Natural | y : Bool >
+}
+
+---
+
+(expression
+  (primitive_expression (record_literal
+    (record_literal_entry (label) (assign_operator)
+      (expression (primitive_expression
+        (record_literal (empty_record_literal)))))
+    (record_literal_entry (label) (assign_operator)
+      (expression (primitive_expression (record_type))))
+    (record_literal_entry (label) (assign_operator)
+      (expression (primitive_expression (list_literal))
+        (type_operator)
+        type: (expression (application_expression
+          (primitive_expression (identifier (builtin)))
+          (primitive_expression (identifier (builtin)))))))
+    (record_literal_entry (label) (assign_operator)
+      (expression (primitive_expression (union_type))))
+    (record_literal_entry (label) (assign_operator)
+      (expression (primitive_expression (record_literal
+        (record_literal_entry (label) (assign_operator)
+          (expression (primitive_expression
+            (numeric_literal (natural_literal)))))
+        (record_literal_entry (label) (assign_operator)
+          (expression (primitive_expression (identifier (builtin)))))))))
+    (record_literal_entry (label) (assign_operator)
+      (expression (primitive_expression (record_type
+        (record_type_entry (label) (type_operator)
+          type: (expression (primitive_expression (identifier (builtin)))))
+        (record_type_entry (label) (type_operator)
+          type: (expression (primitive_expression (identifier (builtin)))))))))
+    (record_literal_entry (label) (assign_operator)
+      (expression (primitive_expression (list_literal
+        (expression (primitive_expression
+          (numeric_literal (natural_literal))))
+        (expression (primitive_expression
+          (numeric_literal (natural_literal))))))))
+    (record_literal_entry (label) (assign_operator)
+      (expression (primitive_expression (union_type
+        (union_type_entry (label) (type_operator)
+          type: (expression (primitive_expression
+            (identifier (builtin)))))
+        (union_type_entry (label) (type_operator)
+          type: (expression (primitive_expression
+            (identifier (builtin))))))))))))

@@ -451,3 +451,63 @@ Complex single-quoted string (text/interestingA.dhall)
     expression: (expression (primitive_expression
       (text_literal (single_quote_literal (interpolation
         (expression (primitive_expression (identifier (label)))))))))))
+
+==================
+Comprehensive string test (text/templateA.dhall)
+==================
+
+    \(record : { name        : Text
+               , value       : Double
+               , taxed_value : Double
+               , in_ca       : Bool
+               }
+     ) ->  ''
+Hello ${record.name}
+You have just won ${Double/show record.value} dollars!
+${ if record.in_ca
+   then "Well, ${Double/show record.taxed_value} dollars, after taxes"
+   else ""
+ }
+''
+
+---
+
+(expression
+  (lambda_expression
+    (lambda_operator)
+    label: (label)
+    (type_operator)
+    type: (expression (primitive_expression (record_type
+      (record_type_entry (label) (type_operator)
+        type: (expression (primitive_expression (identifier (builtin)))))
+      (record_type_entry (label) (type_operator)
+        type: (expression (primitive_expression (identifier (builtin)))))
+      (record_type_entry (label) (type_operator)
+        type: (expression (primitive_expression (identifier (builtin)))))
+      (record_type_entry (label) (type_operator)
+        type: (expression (primitive_expression (identifier (builtin))))))))
+    (arrow_operator)
+    expression: (expression
+      (primitive_expression (text_literal (single_quote_literal
+        (interpolation (expression
+          (primitive_expression
+            (identifier (label))
+            selector: (selector (selector_dot) (label)))))
+        (interpolation (expression (application_expression
+          (primitive_expression (identifier (builtin)))
+          (primitive_expression
+            (identifier (label))
+            selector: (selector (selector_dot) (label))))))
+        (interpolation (expression (if_then_else_expression
+          predicate: (expression (primitive_expression
+            (identifier (label))
+            selector: (selector (selector_dot) (label))))
+          expression: (expression (primitive_expression
+            (text_literal (double_quote_literal
+              (interpolation (expression (application_expression
+                (primitive_expression (identifier (builtin)))
+                (primitive_expression
+                  (identifier (label))
+                  selector: (selector (selector_dot) (label))))))))))
+          alternate: (expression (primitive_expression
+            (text_literal (double_quote_literal)))))))))))))

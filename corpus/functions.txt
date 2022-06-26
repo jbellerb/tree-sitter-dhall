@@ -107,6 +107,57 @@ merge x y z
     (primitive_expression (identifier (label)))))
 
 ==================
+Comprehensive merge statement test (mergeA.dhall)
+==================
+
+  λ(x : <>)
+→ { bar = merge {=} x : Integer
+  , foo =
+	  merge
+	  { Left = λ(b : Bool) → b, Right = Natural/even }
+	  (< Left : Bool | Right : Natural >.Left True)
+  }
+
+---
+
+(expression
+  (lambda_expression
+    (lambda_operator)
+    label: (label)
+    (type_operator)
+    type: (expression (primitive_expression (union_type)))
+    (arrow_operator)
+    expression: (expression (primitive_expression (record_literal
+      (record_literal_entry (label) (assign_operator) (expression
+        (merge_expression (builtin_function)
+          (primitive_expression (record_literal (empty_record_literal)))
+          (primitive_expression (identifier (label))))
+        (type_operator)
+        type: (expression (primitive_expression (identifier (builtin))))))
+      (record_literal_entry (label) (assign_operator) (expression
+        (merge_expression (builtin_function)
+          (primitive_expression (record_literal
+            (record_literal_entry (label) (assign_operator)
+              (expression (lambda_expression
+                (lambda_operator)
+                label: (label)
+                (type_operator)
+                type: (expression (primitive_expression (identifier (builtin))))
+                (arrow_operator)
+                expression: (expression (primitive_expression (identifier (label)))))))
+            (record_literal_entry (label) (assign_operator)
+              (expression (primitive_expression (identifier (builtin)))))))
+          (primitive_expression (expression (application_expression
+            (primitive_expression
+              (union_type
+                (union_type_entry (label) (type_operator)
+                  type: (expression (primitive_expression (identifier (builtin)))))
+                (union_type_entry (label) (type_operator)
+                  type: (expression (primitive_expression (identifier (builtin))))))
+              selector: (selector (selector_dot) (label)))
+            (primitive_expression (identifier (builtin))))))))))))))
+
+==================
 Some statement (unit/SomeXA.dhall)
 ==================
 
