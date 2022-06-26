@@ -4,12 +4,12 @@
 
 ## Scope
 
-This parser is designed for syntax highlighting and does not strictly follow the Dhall language semantics. My goal is for all valid Dhall expressions to parse to something sensible with little regard for whether an invalid expression parses, except when it is obviously wrong. To help with this, the output of the parser is checked with hand-written [syntax trees](corpus/) for every Dhall [successful parse test](https://github.com/dhall-lang/dhall-lang/tree/master/tests/parser/success) (WIP) (current with dhall-lang commit [4bedfcf](https://github.com/dhall-lang/dhall-lang/commit/4bedfcfd409ca9914b435ab366e47b64b9a9ddf4)) except the following:
+This parser is designed for syntax highlighting and does not strictly follow the Dhall language semantics. My goal is for all valid Dhall expressions to parse to something sensible. An invalid expression parsing is fine, except when it is obviously wrong. To help with this, the output of the parser is checked with hand-written [syntax trees](corpus/) for every Dhall [successful parse test](https://github.com/dhall-lang/dhall-lang/tree/master/tests/parser/success) (WIP) (current with dhall-lang commit [4bedfcf](https://github.com/dhall-lang/dhall-lang/commit/4bedfcfd409ca9914b435ab366e47b64b9a9ddf4)) except:
 
 - unit/ShebangA.dhall, unit/ShebangNixA.dhall: Handled by the text editor.
 - unit/TrailingLineCommentWithoutNewlineA.dhall: Unclear how to test with tree-sitter.
 
-These tests also serve as a reference for what syntax trees various Dhall expressions produce. A shell script ([tests.sh](tests.sh)) is used to check that all tests are included. It's probably not portable, so [open an issue](https://github.com/jbellerb/tree-sitter-dhall/issues/new) if that becomes a problem. There may also be additional test cases besides with the Dhall ones. Ideally, those would eventually get upstreamed.
+These tests also serve as a reference for what syntax trees various Dhall expressions produce. A shell script ([tests.sh](tests.sh)) is used to check that all tests are included. It's probably not portable, so [open an issue](https://github.com/jbellerb/tree-sitter-dhall/issues/new) if that becomes a problem. There may be extra test cases besides the Dhall ones. Ideally, those would eventually get upstreamed.
 
 ## References
 

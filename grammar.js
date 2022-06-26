@@ -109,9 +109,9 @@ module.exports = grammar({
   ],
 
   inline: $ => [
-    $.type,
-    $.annotated_expression,
     $.empty_list_literal,
+    $._double_quote_chunk,
+    $._single_quote_chunk,
   ],
 
   word: $ => $.label,
@@ -126,10 +126,10 @@ module.exports = grammar({
       $.with_expression,
       $.empty_list_literal,
       $.assert_expression,
-      $.annotated_expression,
+      seq($._operator_expression, optional($._type)),
     ),
     label: $ => /`[ -_a-~]*`|[A-Z_a-z][0-9\-/A-Z_a-z]*/,
-    type: $ => seq(alias(':', $.type_operator), field('type', $.expression)),
+    _type: $ => seq(alias(':', $.type_operator), field('type', $.expression)),
 
     _label_or_some: $ => choice($.label, alias('Some', $.label)),
 
@@ -197,7 +197,7 @@ module.exports = grammar({
     _function_expression: $ => seq(
       '(',
       field('label', $.label),
-      $.type,
+      $._type,
       ')',
       $.arrow_operator,
       field('expression', $.expression),
@@ -219,7 +219,7 @@ module.exports = grammar({
     let_binding: $ => seq(
       'let',
       field('label', $.label),
-      optional($.type),
+      optional($._type),
       alias('=', $.assign_operator),
       $.expression,
     ),
@@ -233,16 +233,15 @@ module.exports = grammar({
     with_expression: $ => seq(
       choice($.with_expression, $._import_expression),
       'with',
-      $._with_entry,
-    ),
-    _with_entry: $ => seq(
-      $._with_component,
-      alias(
-        repeat(seq(alias('.', $.selector_dot), $._with_component)),
-        $.selector,
+      seq(
+        $._with_component,
+        alias(
+          repeat(seq(alias('.', $.selector_dot), $._with_component)),
+          $.selector,
+        ),
+        alias('=', $.assign_operator),
+        $._operator_expression,
       ),
-      alias('=', $.assign_operator),
-      $._operator_expression,
     ),
     _with_component: $ => choice(
       $._label_or_some,
@@ -251,7 +250,7 @@ module.exports = grammar({
 
     empty_list_literal: $ => seq(
       alias($._empty_list_literal_primitive, $.primitive_expression),
-      $.type,
+      $._type,
     ),
     _empty_list_literal_primitive: $ => alias(
       $._empty_list_literal_text,
@@ -263,11 +262,6 @@ module.exports = grammar({
       'assert',
       alias(':', $.assert_operator),
       $.expression,
-    ),
-
-    annotated_expression: $ => seq(
-      $._operator_expression,
-      optional($.type),
     ),
 
     _operator_expression: $ => choice(
@@ -284,7 +278,6 @@ module.exports = grammar({
       $.times_expression,
       $.equal_expression,
       $.not_equal_expression,
-      $._builtin_expression,
       $.application_expression,
       $._import_expression,
     ),
@@ -302,47 +295,29 @@ module.exports = grammar({
     equal_expression: $ => operator(11, $, '=='),
     not_equal_expression: $ => operator(12, $, '!='),
 
-    _builtin_expression: $ => choice(
-      $.merge_expression,
-      $.some_expression,
-      $.to_map_expression,
-      $.show_constructor_expression,
-    ),
-    merge_expression: $ => seq(
-      alias('merge', $.builtin_function),
-      $._import_expression,
-      $._import_expression,
-    ),
-    some_expression: $ => seq(
-      alias('Some', $.builtin_function),
-      $._import_expression,
-    ),
-    to_map_expression: $ => seq(
-      alias('toMap', $.builtin_function),
-      $._import_expression,
-    ),
-    show_constructor_expression: $ => seq(
-      alias('showConstructor', $.builtin_function),
-      $._import_expression,
-    ),
     application_expression: $ => seq(
-      choice(
-        seq($._builtin_expression, $._import_expression),
-        seq($._import_expression, $._import_expression),
-      ),
+      choice($.builtin_function, $._import_expression),
+      $._import_expression,
       repeat($._import_expression),
+    ),
+    builtin_function: $ => choice(
+      'merge',
+      'Some',
+      'toMap',
+      'showConstructor',
     ),
 
     _import_expression: $ => choice(
-      $.import,
       $.completion,
       $.primitive_expression,
+      $.import,
     ),
     completion: $ => seq(
       field('type', $.primitive_expression),
       alias('::', $.completion_operator),
       $.primitive_expression,
     ),
+
     primitive_expression: $ => seq(
       choice(
         $.temporal_literal,
@@ -358,7 +333,6 @@ module.exports = grammar({
       ),
       optional(field('selector', $.selector)),
     ),
-
     selector: $ => repeat1(seq(
       alias('.', $.selector_dot),
       choice($.label, $.label_set, $.type_selector),
@@ -523,7 +497,7 @@ module.exports = grammar({
       )),
       '}',
     ),
-    record_type_entry: $ => seq($._label_or_some, $.type),
+    record_type_entry: $ => seq($._label_or_some, $._type),
 
     union_type: $ => seq(
       '<',
@@ -535,7 +509,7 @@ module.exports = grammar({
       )),
       '>',
     ),
-    union_type_entry: $ => seq($._label_or_some, optional($.type)),
+    union_type_entry: $ => seq($._label_or_some, optional($._type)),
 
     list_literal: $ => seq(
       '[',

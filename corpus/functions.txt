@@ -35,7 +35,7 @@ merge x y
 ---
 
 (expression
-  (merge_expression
+  (application_expression
     (builtin_function)
     (primitive_expression (identifier (label)))
     (primitive_expression (identifier (label)))))
@@ -49,7 +49,7 @@ merge x y : t
 ---
 
 (expression
-  (merge_expression
+  (application_expression
     (builtin_function)
     (primitive_expression (identifier (label)))
     (primitive_expression (identifier (label))))
@@ -65,7 +65,7 @@ merge x y : t a
 ---
 
 (expression
-  (merge_expression
+  (application_expression
     (builtin_function)
     (primitive_expression (identifier (label)))
     (primitive_expression (identifier (label))))
@@ -83,7 +83,7 @@ Merge statement precendence with parens (unit/MergeParenAnnotationA.dhall)
 ---
 
 (expression
-  (primitive_expression (expression (merge_expression
+  (primitive_expression (expression (application_expression
     (builtin_function)
     (primitive_expression (identifier (label)))
     (primitive_expression (identifier (label))))))
@@ -100,10 +100,9 @@ merge x y z
 
 (expression
   (application_expression
-    (merge_expression
-      (builtin_function)
-      (primitive_expression (identifier (label)))
-      (primitive_expression (identifier (label))))
+    (builtin_function)
+    (primitive_expression (identifier (label)))
+    (primitive_expression (identifier (label)))
     (primitive_expression (identifier (label)))))
 
 ==================
@@ -129,13 +128,13 @@ Comprehensive merge statement test (mergeA.dhall)
     (arrow_operator)
     expression: (expression (primitive_expression (record_literal
       (record_literal_entry (label) (assign_operator) (expression
-        (merge_expression (builtin_function)
+        (application_expression (builtin_function)
           (primitive_expression (record_literal (empty_record_literal)))
           (primitive_expression (identifier (label))))
         (type_operator)
         type: (expression (primitive_expression (identifier (builtin))))))
       (record_literal_entry (label) (assign_operator) (expression
-        (merge_expression (builtin_function)
+        (application_expression (builtin_function)
           (primitive_expression (record_literal
             (record_literal_entry (label) (assign_operator)
               (expression (lambda_expression
@@ -166,7 +165,7 @@ Some x
 ---
 
 (expression
-  (some_expression
+  (application_expression
     (builtin_function)
     (primitive_expression (identifier (label)))))
 
@@ -187,9 +186,8 @@ Some x y z
   (block_comment
     (block_comment_open) (block_comment_content) (block_comment_close))
   (application_expression
-    (some_expression
-      (builtin_function)
-      (primitive_expression (identifier (label))))
+    (builtin_function)
+    (primitive_expression (identifier (label)))
     (primitive_expression (identifier (label)))
     (primitive_expression (identifier (label)))))
 
@@ -202,7 +200,7 @@ toMap x
 ---
 
 (expression
-  (to_map_expression
+  (application_expression
     (builtin_function)
     (primitive_expression (identifier (label)))))
 
@@ -215,7 +213,7 @@ toMap x : T
 ---
 
 (expression
-  (to_map_expression
+  (application_expression
     (builtin_function)
     (primitive_expression (identifier (label))))
   (type_operator)
@@ -230,7 +228,7 @@ toMap { foo= 1, bar= 4, baz= 9 }
 ---
 
 (expression
-  (to_map_expression
+  (application_expression
     (builtin_function)
     (primitive_expression (record_literal
       (record_literal_entry (label) (assign_operator)
@@ -252,7 +250,7 @@ showConstructor <A>.A
 ---
 
 (expression
-  (show_constructor_expression
+  (application_expression
     (builtin_function)
     (primitive_expression
       (union_type (union_type_entry (label)))
@@ -267,7 +265,7 @@ showConstructor (<A : Bool>.A False)
 ---
 
 (expression
-  (show_constructor_expression
+  (application_expression
     (builtin_function)
     (primitive_expression (expression (application_expression
       (primitive_expression

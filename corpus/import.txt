@@ -601,7 +601,7 @@ https://example.com using (toMap { Foo = "Bar" })
   (import (http_import
     (http_raw)
     (primitive_expression (expression
-      (to_map_expression
+      (application_expression
         (builtin_function)
         (primitive_expression (record_literal
           (record_literal_entry (label) (assign_operator)
