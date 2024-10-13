@@ -31,7 +31,7 @@ const http_raw = () => {
 
     yield seq(...repeat(6, seq(h16, ':')), ls32);
     yield seq('::', ...repeat(5, seq(h16, ':')), ls32);
-    for (i = 0; i < 5; i++) {
+    for (let i = 0; i < 5; i++) {
       yield seq(
         optional(seq(h16, ...repeat(i, optional(seq(':', h16))))),
         '::',
