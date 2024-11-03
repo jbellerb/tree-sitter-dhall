@@ -22,7 +22,7 @@ These tests also serve as a reference for what syntax trees various Dhall expres
 #### License
 
 <sup>
-Copyright (C) Jared Beller, 2022.
+Copyright (C) jae beller, 2022.
 </sup>
 <br />
 <sup>

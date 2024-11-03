@@ -8,7 +8,7 @@
   "scripts": {
     "test": "tree-sitter test"
   },
-  "author": "Jared Beller",
+  "author": "jae beller",
   "license": "MIT",
   "dependencies": {
     "nan": "^2.15.0"
