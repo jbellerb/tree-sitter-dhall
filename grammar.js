@@ -1,3 +1,12 @@
+/**
+ * @file Dhall grammar for the tree-sitter parsing library
+ * @author jae beller <foss@jae.zone>
+ * @license MIT
+ */
+
+/// <reference types="tree-sitter-cli/dsl" />
+// @ts-check
+
 const digit = /[0-9]/;
 const hexdigit = /[0-9A-Fa-f]/;
 const decimal_natural = choice('0', seq(/[1-9]/, repeat(digit)));

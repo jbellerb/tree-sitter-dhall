@@ -595,6 +595,7 @@
   {
     "type": "expression",
     "named": true,
+    "root": true,
     "fields": {
       "type": {
         "multiple": false,
@@ -2590,10 +2591,6 @@
   },
   {
     "type": "merge",
-    "named": false
-  },
-  {
-    "type": "missing",
     "named": false
   },
   {

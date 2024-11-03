@@ -1,0 +1,11 @@
+src/** linguist-generated
+bindings/** linguist-generated
+
+binding.gyp linguist-generated
+Cargo.toml linguist-generated
+CMakeLists.txt linguist-generated
+go.mod linguist-generated
+Makefile linguist-generated
+Package.swift linguist-generated
+pyproject.toml linguist-generated
+setup.py linguist-generated
