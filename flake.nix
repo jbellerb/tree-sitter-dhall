@@ -105,15 +105,17 @@
             dhall = fetchFromGitHub {
               owner = "dhall-lang";
               repo = "dhall-lang";
-              rev = "4bedfcfd409ca9914b435ab366e47b64b9a9ddf4";
-              hash = "sha256-WUJhOK2PWUAy2VQZ7j6QnyXwPXxOto7E4Uc8qqrQtmw=";
+              rev = "4fecb49a83caac4477d1e413fa6e4ee722b43b62";
+              hash = "sha256-VjOBG5kYY89njGpOxIpLFRK2mRP1UWr6QDOHtb7VMzE=";
             };
 
             missing = [
-              "recordProjectionByExpressionA.dhall"
-              "largeExpressionA.dhall"
+              "binaryA.dhall"
+              "builtinsA.dhall"
+              "bytesA.dhall"
               "unit/ShebangA.dhall"
               "unit/ShebangNixA.dhall"
+              "unit/TrailingLineCommentWithoutNewlineA.dhall"
             ];
 
           in stdenvNoCC.mkDerivation {

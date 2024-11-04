@@ -218,3 +218,138 @@ Nested selections (fieldsA.dhall)
       (selector_dot) (label)
       (selector_dot) (label)
       (selector_dot) (label))))
+
+==================
+Field projection in lambda expressions (recordProjectionByExpressionA.dhall)
+==================
+
+let example1 = λ(A : Type) → λ(B : Type) → λ(C : { x : A, y : B }) → C.({ x : A }) : { x : A }
+
+let example2 =
+	  λ(A : Type)
+	→ λ(B : Type)
+	→ λ(C : { p : A, q : B })
+	→ C.(let r = { p : A } in r) : { p : A }
+
+let A = Natural
+
+let B = Text
+
+in
+
+(example1 A B { x = 10, y = "Text" }) ∧ (example2 A B { p = 10, q = "Text" }) : { x : A, p : A }
+
+---
+
+(expression
+  (let_expression
+    (let_binding
+      label: (label)
+      (assign_operator)
+      (expression (lambda_expression
+        (lambda_operator)
+        label: (label)
+        (type_operator)
+        type: (expression (primitive_expression (identifier (builtin))))
+        (arrow_operator)
+        expression: (expression (lambda_expression
+          (lambda_operator)
+          label: (label)
+          (type_operator)
+          type: (expression (primitive_expression (identifier (builtin))))
+          (arrow_operator)
+          expression: (expression (lambda_expression
+            (lambda_operator)
+            label: (label)
+            (type_operator)
+            type: (expression (primitive_expression (record_type
+              (record_type_entry (label) (type_operator)
+                type: (expression (primitive_expression (identifier (label)))))
+              (record_type_entry (label) (type_operator)
+                type: (expression (primitive_expression (identifier (label))))))))
+            (arrow_operator)
+            expression: (expression
+              (primitive_expression
+                (identifier (label))
+                selector: (selector (selector_dot)
+                  (type_selector
+                    (expression (primitive_expression (record_type
+                      (record_type_entry (label) (type_operator)
+                        type: (expression (primitive_expression (identifier (label)))))))))))
+              (type_operator)
+              type: (expression (primitive_expression (record_type
+                (record_type_entry (label) (type_operator)
+                  type: (expression (primitive_expression (identifier (label))))))))))))))))
+    (let_binding
+      label: (label)
+      (assign_operator)
+      (expression (lambda_expression
+        (lambda_operator)
+        label: (label)
+        (type_operator)
+        type: (expression (primitive_expression (identifier (builtin))))
+        (arrow_operator)
+        expression: (expression (lambda_expression
+          (lambda_operator)
+          label: (label)
+          (type_operator)
+          type: (expression (primitive_expression (identifier (builtin))))
+          (arrow_operator)
+          expression: (expression (lambda_expression
+            (lambda_operator)
+            label: (label)
+            (type_operator)
+            type: (expression (primitive_expression (record_type
+              (record_type_entry (label) (type_operator)
+                type: (expression (primitive_expression (identifier (label)))))
+              (record_type_entry (label) (type_operator)
+                type: (expression (primitive_expression (identifier (label))))))))
+            (arrow_operator)
+            expression: (expression (primitive_expression (identifier (label))
+              selector: (selector (selector_dot)
+                (type_selector (expression
+                  (let_expression
+                    (let_binding
+                      label: (label)
+                      (assign_operator)
+                      (expression (primitive_expression (record_type
+                        (record_type_entry (label) (type_operator)
+                          type: (expression (primitive_expression (identifier (label)))))))))
+                    (expression (primitive_expression (identifier (label)))))))))
+              (type_operator)
+              type: (expression (primitive_expression (record_type
+                (record_type_entry (label) (type_operator)
+                  type: (expression (primitive_expression (identifier (label))))))))))))))))
+    (let_binding label: (label) (assign_operator)
+      (expression (primitive_expression (identifier (builtin)))))
+    (let_binding label: (label) (assign_operator)
+      (expression (primitive_expression (identifier (builtin)))))
+    (expression
+      (combine_expression
+        (primitive_expression (expression
+          (application_expression
+            (primitive_expression (identifier (label)))
+            (primitive_expression (identifier (label)))
+            (primitive_expression (identifier (label)))
+            (primitive_expression (record_literal
+              (record_literal_entry (label) (assign_operator)
+                (expression (primitive_expression (numeric_literal (natural_literal)))))
+              (record_literal_entry (label) (assign_operator)
+                (expression (primitive_expression (text_literal (double_quote_literal))))))))))
+        (infix_operator)
+        (primitive_expression (expression
+          (application_expression
+            (primitive_expression (identifier (label)))
+            (primitive_expression (identifier (label)))
+            (primitive_expression (identifier (label)))
+            (primitive_expression (record_literal
+              (record_literal_entry (label) (assign_operator)
+                (expression (primitive_expression (numeric_literal (natural_literal)))))
+              (record_literal_entry (label) (assign_operator)
+                (expression (primitive_expression (text_literal (double_quote_literal)))))))))))
+      (type_operator)
+      type: (expression (primitive_expression (record_type
+        (record_type_entry (label) (type_operator)
+          type: (expression (primitive_expression (identifier (label)))))
+        (record_type_entry (label) (type_operator)
+          type: (expression (primitive_expression (identifier (label)))))))))))

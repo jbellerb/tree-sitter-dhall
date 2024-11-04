@@ -53,6 +53,7 @@ EOF
             if test "$TEST_HASH" != "$MATCH_HASH"
             then
                 echo "mismatch: $TEST_NAME ($FILE)"
+                ERROR=1
             fi
 
             # can't think of a better way to do this
