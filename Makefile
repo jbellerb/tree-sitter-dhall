@@ -4,7 +4,7 @@ endif
 
 LANGUAGE_NAME := tree-sitter-dhall
 HOMEPAGE_URL := https://github.com/jbellerb/tree-sitter-dhall
-VERSION := 0.0.1
+VERSION := 0.1.0
 
 # repository
 SRC_DIR := src
