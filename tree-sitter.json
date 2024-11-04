@@ -6,6 +6,8 @@
       "scope": "source.dhall",
       "path": ".",
       "file-types": ["dhall"],
+      "highlights": "queries/highlights.scm",
+      "injections": "queries/injections.scm",
       "injection-regex": "^dhall$"
     }
   ],
