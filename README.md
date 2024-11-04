@@ -6,7 +6,6 @@
 
 This parser is designed for syntax highlighting and does not strictly follow the Dhall language semantics. My goal is for all valid Dhall expressions to parse to something sensible. An invalid expression parsing is fine, except when it is obviously wrong. To help with this, the output of the parser is checked with hand-written [syntax trees](test/corpus/) for every Dhall [successful parse test](https://github.com/dhall-lang/dhall-lang/tree/master/tests/parser/success) (current with dhall-lang commit [4fecb49](https://github.com/dhall-lang/dhall-lang/commit/4fecb49a83caac4477d1e413fa6e4ee722b43b62)) except:
 
-- binaryA.dhall, bytesA.dhall: Not yet implemented.
 - unit/ShebangA.dhall, unit/ShebangNixA.dhall: Handled by the text editor.
 - unit/TrailingLineCommentWithoutNewlineA.dhall: Unclear how to test with tree-sitter.
 

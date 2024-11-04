@@ -209,6 +209,51 @@ Integer-valued double literal (unit/DoubleLitSecretelyIntA.dhall)
   (primitive_expression (numeric_literal (double_literal))))
 
 ==================
+Binary natural and integer literals (binaryA.dhall)
+==================
+
+  λ(x : Bool)
+→ λ(x : Bool)
+→ { example0 = 0b0
+  , example1 = 0b10
+  , example2 = -0b11001
+  , example3 = +0b100
+  , example4 = x@0b01
+  }
+
+---
+
+(expression
+  (lambda_expression
+    (lambda_operator)
+    label: (label)
+    (type_operator)
+    type: (expression (primitive_expression (identifier (builtin))))
+    (arrow_operator)
+    expression: (expression (lambda_expression
+      (lambda_operator)
+      label: (label)
+      (type_operator)
+      type: (expression (primitive_expression (identifier (builtin))))
+      (arrow_operator)
+      expression: (expression (primitive_expression (record_literal
+        (record_literal_entry (label) (assign_operator)
+          (expression (primitive_expression
+            (numeric_literal (natural_literal)))))
+        (record_literal_entry (label) (assign_operator)
+          (expression (primitive_expression
+            (numeric_literal (natural_literal)))))
+        (record_literal_entry (label) (assign_operator)
+          (expression (primitive_expression
+            (numeric_literal (integer_literal)))))
+        (record_literal_entry (label) (assign_operator)
+          (expression (primitive_expression
+            (numeric_literal (integer_literal)))))
+        (record_literal_entry (label) (assign_operator)
+          (expression (primitive_expression
+            (identifier (label) (de_bruijn_index (natural_literal)))))))))))))
+
+==================
 Hexadecimal natural and integer literals (hexadecimalA.dhall)
 ==================
 

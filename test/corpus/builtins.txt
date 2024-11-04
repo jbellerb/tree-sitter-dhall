@@ -24,6 +24,9 @@ All builtins (builtinsA.dhall*)
 , List/reverse
 , Text/show
 , Text/replace
+, Date/show
+, Time/show
+, TimeZone/show
 , Bool
 , True
 , False
@@ -33,6 +36,7 @@ All builtins (builtinsA.dhall*)
 , Integer
 , Double
 , Text
+, Bytes
 , Date
 , Time
 , TimeZone
@@ -69,8 +73,12 @@ All builtins (builtinsA.dhall*)
     (expression (primitive_expression (identifier (builtin))))
     (expression (primitive_expression (identifier (builtin))))
     (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin))))
+    (expression (primitive_expression (identifier (builtin))))
     (expression (primitive_expression (boolean_literal)))
     (expression (primitive_expression (boolean_literal)))
+    (expression (primitive_expression (identifier (builtin))))
     (expression (primitive_expression (identifier (builtin))))
     (expression (primitive_expression (identifier (builtin))))
     (expression (primitive_expression (identifier (builtin))))

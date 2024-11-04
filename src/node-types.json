@@ -172,6 +172,11 @@
     "fields": {}
   },
   {
+    "type": "bytes_literal",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "combine_expression",
     "named": true,
     "fields": {},
@@ -977,6 +982,10 @@
           "named": true
         },
         {
+          "type": "import_as_bytes",
+          "named": true
+        },
+        {
           "type": "import_as_location",
           "named": true
         },
@@ -1730,6 +1739,10 @@
           "named": true
         },
         {
+          "type": "bytes_literal",
+          "named": true
+        },
+        {
           "type": "expression",
           "named": true
         },
@@ -2302,6 +2315,10 @@
     "named": false
   },
   {
+    "type": "0x\"",
+    "named": false
+  },
+  {
     "type": "<",
     "named": false
   },
@@ -2318,7 +2335,15 @@
     "named": false
   },
   {
+    "type": "Bytes",
+    "named": false
+  },
+  {
     "type": "Date",
+    "named": false
+  },
+  {
+    "type": "Date/show",
     "named": false
   },
   {
@@ -2466,7 +2491,15 @@
     "named": false
   },
   {
+    "type": "Time/show",
+    "named": false
+  },
+  {
     "type": "TimeZone",
+    "named": false
+  },
+  {
+    "type": "TimeZone/show",
     "named": false
   },
   {
@@ -2544,6 +2577,10 @@
   {
     "type": "if",
     "named": false
+  },
+  {
+    "type": "import_as_bytes",
+    "named": true
   },
   {
     "type": "import_as_location",

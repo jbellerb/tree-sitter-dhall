@@ -275,6 +275,18 @@
         },
         {
           "type": "STRING",
+          "value": "Date/show"
+        },
+        {
+          "type": "STRING",
+          "value": "Time/show"
+        },
+        {
+          "type": "STRING",
+          "value": "TimeZone/show"
+        },
+        {
+          "type": "STRING",
           "value": "Bool"
         },
         {
@@ -300,6 +312,10 @@
         {
           "type": "STRING",
           "value": "Text"
+        },
+        {
+          "type": "STRING",
+          "value": "Bytes"
         },
         {
           "type": "STRING",
@@ -1275,6 +1291,10 @@
             },
             {
               "type": "SYMBOL",
+              "name": "bytes_literal"
+            },
+            {
+              "type": "SYMBOL",
               "name": "record_literal"
             },
             {
@@ -1507,6 +1527,15 @@
                         },
                         "named": true,
                         "value": "import_as_location"
+                      },
+                      {
+                        "type": "ALIAS",
+                        "content": {
+                          "type": "STRING",
+                          "value": "Bytes"
+                        },
+                        "named": true,
+                        "value": "import_as_bytes"
                       }
                     ]
                   }
@@ -3805,13 +3834,13 @@
             "members": [
               {
                 "type": "STRING",
-                "value": "0x"
+                "value": "0b"
               },
               {
                 "type": "REPEAT1",
                 "content": {
                   "type": "PATTERN",
-                  "value": "[0-9A-Fa-f]"
+                  "value": "[01]"
                 }
               }
             ]
@@ -3838,6 +3867,22 @@
                     }
                   }
                 ]
+              }
+            ]
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "0x"
+              },
+              {
+                "type": "REPEAT1",
+                "content": {
+                  "type": "PATTERN",
+                  "value": "[0-9A-Fa-f]"
+                }
               }
             ]
           }
@@ -3870,13 +3915,13 @@
                 "members": [
                   {
                     "type": "STRING",
-                    "value": "0x"
+                    "value": "0b"
                   },
                   {
                     "type": "REPEAT1",
                     "content": {
                       "type": "PATTERN",
-                      "value": "[0-9A-Fa-f]"
+                      "value": "[01]"
                     }
                   }
                 ]
@@ -3903,6 +3948,22 @@
                         }
                       }
                     ]
+                  }
+                ]
+              },
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": "0x"
+                  },
+                  {
+                    "type": "REPEAT1",
+                    "content": {
+                      "type": "PATTERN",
+                      "value": "[0-9A-Fa-f]"
+                    }
                   }
                 ]
               }
@@ -4104,6 +4165,26 @@
         {
           "type": "STRING",
           "value": "}"
+        }
+      ]
+    },
+    "bytes_literal": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "0x\""
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "PATTERN",
+            "value": "[0-9A-Fa-f]"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "\""
         }
       ]
     },

@@ -2,6 +2,7 @@
 (integer_literal) @constant.numeric.integer
 (natural_literal) @constant.numeric.integer
 (double_literal) @constant.numeric.float
+(bytes_literal) @string
 (boolean_literal) @constant.builtin.boolean
 (builtin "None") @constant.builtin
 
@@ -18,7 +19,7 @@
 (env_variable) @string.special
 (import_hash) @string.special
 (missing_import) @keyword.control.import
-[ (import_as_location) (import_as_text) ] @type
+[ (import_as_bytes) (import_as_location) (import_as_text) ] @type
 
 ;; Comments
 (block_comment) @comment.block
@@ -79,6 +80,7 @@
   "Integer"
   "Double"
   "Text"
+  "Bytes"
   "Date"
   "Time"
   "TimeZone"

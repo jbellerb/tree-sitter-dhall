@@ -7,8 +7,10 @@
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
 
+const bit = /[01]/;
 const digit = /[0-9]/;
 const hexdigit = /[0-9A-Fa-f]/;
+const binary_natural = seq("0b", repeat1(bit));
 const decimal_natural = choice("0", seq(/[1-9]/, repeat(digit)));
 const hexadecimal_natural = seq("0x", repeat1(hexdigit));
 const double_exponent = seq(/[Ee][+-]?/, repeat1(digit));
@@ -189,6 +191,9 @@ module.exports = grammar({
         "List/reverse",
         "Text/show",
         "Text/replace",
+        "Date/show",
+        "Time/show",
+        "TimeZone/show",
         "Bool",
         "Optional",
         "None",
@@ -196,6 +201,7 @@ module.exports = grammar({
         "Integer",
         "Double",
         "Text",
+        "Bytes",
         "Date",
         "Time",
         "TimeZone",
@@ -332,6 +338,7 @@ module.exports = grammar({
           $.temporal_literal,
           $.numeric_literal,
           $.text_literal,
+          $.bytes_literal,
           $.record_literal,
           $.record_type,
           $.union_type,
@@ -370,6 +377,7 @@ module.exports = grammar({
               choice(
                 alias("Text", $.import_as_text),
                 alias("Location", $.import_as_location),
+                alias("Bytes", $.import_as_bytes),
               ),
             ),
           ),
@@ -449,10 +457,14 @@ module.exports = grammar({
           ),
         ),
       ),
-    natural_literal: (_) => token(choice(hexadecimal_natural, decimal_natural)),
+    natural_literal: (_) =>
+      token(choice(binary_natural, decimal_natural, hexadecimal_natural)),
     integer_literal: (_) =>
       token(
-        seq(choice("+", "-"), choice(hexadecimal_natural, decimal_natural)),
+        seq(
+          choice("+", "-"),
+          choice(binary_natural, decimal_natural, hexadecimal_natural),
+        ),
       ),
 
     text_literal: ($) => choice($.double_quote_literal, $.single_quote_literal),
@@ -484,6 +496,11 @@ module.exports = grammar({
       ),
     single_quote_escaped: (_) => token(choice("'''", "''${")),
     interpolation: ($) => seq("${", $.expression, "}"),
+
+    // The grammar requires hexdigits be in pairs, but I dislike how this causes
+    // flashing between bytes and error as you type. I've loosened it to accept
+    // any number of bytes.
+    bytes_literal: (_) => seq('0x"', repeat(hexdigit), '"'),
 
     record_literal: ($) =>
       seq(

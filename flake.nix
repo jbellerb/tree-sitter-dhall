@@ -13,7 +13,7 @@
       };
 
       pname = "tree-sitter-dhall";
-      version = "0.1.0";
+      version = "0.2.0";
 
       fileset = nixpkgs.lib.fileset.unions [
         ./grammar.js
@@ -110,9 +110,7 @@
             };
 
             missing = [
-              "binaryA.dhall"
-              "builtinsA.dhall"
-              "bytesA.dhall"
+              "builtinsA.dhall" # modified
               "unit/ShebangA.dhall"
               "unit/ShebangNixA.dhall"
               "unit/TrailingLineCommentWithoutNewlineA.dhall"
