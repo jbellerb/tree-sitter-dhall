@@ -38,25 +38,27 @@ const http_raw = () => {
   const ls32 = choice(seq(h16, ":", h16), ipv4);
   const ipv6 = choice(
     ...(function* () {
-      const repeat = (n, x) => Array(n).fill(x);
+      const repeatN = (n, x) => Array(n).fill(x);
 
-      yield seq(...repeat(6, seq(h16, ":")), ls32);
-      yield seq("::", ...repeat(5, seq(h16, ":")), ls32);
+      yield seq(...repeatN(6, seq(h16, ":")), ls32);
+      yield seq("::", ...repeatN(5, seq(h16, ":")), ls32);
       for (let i = 0; i < 5; i++) {
         yield seq(
-          optional(seq(h16, ...repeat(i, optional(seq(":", h16))))),
+          optional(
+            i === 0 ? h16 : seq(h16, ...repeatN(i, optional(seq(":", h16)))),
+          ),
           "::",
-          ...repeat(4 - i, seq(h16, ":")),
+          ...repeatN(4 - i, seq(h16, ":")),
           ls32,
         );
       }
       yield seq(
-        optional(seq(h16, ...repeat(5, optional(seq(":", h16))))),
+        optional(seq(h16, ...repeatN(5, optional(seq(":", h16))))),
         "::",
         h16,
       );
       yield seq(
-        optional(seq(h16, ...repeat(6, optional(seq(":", h16))))),
+        optional(seq(h16, ...repeatN(6, optional(seq(":", h16))))),
         "::",
       );
     })(),

@@ -2024,13 +2024,8 @@
                                     "type": "CHOICE",
                                     "members": [
                                       {
-                                        "type": "SEQ",
-                                        "members": [
-                                          {
-                                            "type": "PATTERN",
-                                            "value": "[0-9A-Fa-f]{1,4}"
-                                          }
-                                        ]
+                                        "type": "PATTERN",
+                                        "value": "[0-9A-Fa-f]{1,4}"
                                       },
                                       {
                                         "type": "BLANK"
