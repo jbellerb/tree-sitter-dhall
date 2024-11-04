@@ -20,6 +20,13 @@ const partial_time = seq(
   optional(choice(/[Zz]/, time_offset)),
 );
 
+/**
+ * @type {(
+ *   precedence: number,
+ *   $: GrammarSymbols<"_operator_expression">,
+ *   symbol: string | ChoiceRule
+ * ) => Rule}
+ */
 const operator = (precedence, $, symbol) =>
   prec.left(
     precedence,
@@ -38,6 +45,7 @@ const http_raw = () => {
   const ls32 = choice(seq(h16, ":", h16), ipv4);
   const ipv6 = choice(
     ...(function* () {
+      /** @type {(n: number, x: Rule) => Array<Rule>} */
       const repeatN = (n, x) => Array(n).fill(x);
 
       yield seq(...repeatN(6, seq(h16, ":")), ls32);
@@ -131,12 +139,12 @@ module.exports = grammar({
         $.assert_expression,
         seq($._operator_expression, optional($._type)),
       ),
-    label: ($) => /`[ -_a-~]*`|[A-Z_a-z][0-9\-/A-Z_a-z]*/,
+    label: (_) => /`[ -_a-~]*`|[A-Z_a-z][0-9\-/A-Z_a-z]*/,
     _type: ($) => seq(alias(":", $.type_operator), field("type", $.expression)),
 
     _label_or_some: ($) => choice($.label, alias("Some", $.label)),
 
-    keyword: ($) =>
+    keyword: (_) =>
       choice(
         "if",
         "then",
@@ -157,7 +165,7 @@ module.exports = grammar({
         "with",
         "showConstructor",
       ),
-    builtin: ($) =>
+    builtin: (_) =>
       choice(
         "Natural/fold",
         "Natural/build",
@@ -208,9 +216,9 @@ module.exports = grammar({
         $.arrow_operator,
         field("expression", $.expression),
       ),
-    arrow_operator: ($) => choice("\u2192", "->"),
-    lambda_operator: ($) => choice("\u03BB", "\\"),
-    forall_operator: ($) => choice("\u2200", "forall"),
+    arrow_operator: (_) => choice("\u2192", "->"),
+    lambda_operator: (_) => choice("\u03BB", "\\"),
+    forall_operator: (_) => choice("\u2200", "forall"),
 
     if_then_else_expression: ($) =>
       seq(
@@ -263,7 +271,7 @@ module.exports = grammar({
       ),
     _empty_list_literal_primitive: ($) =>
       alias($._empty_list_literal_text, $.list_literal),
-    _empty_list_literal_text: ($) => seq("[", optional(","), "]"),
+    _empty_list_literal_text: (_) => seq("[", optional(","), "]"),
 
     assert_expression: ($) =>
       seq("assert", alias(":", $.assert_operator), $.expression),
@@ -306,7 +314,7 @@ module.exports = grammar({
         $._import_expression,
         repeat($._import_expression),
       ),
-    builtin_function: ($) =>
+    builtin_function: (_) =>
       choice("merge", "Some", "toMap", "showConstructor"),
 
     _import_expression: ($) =>
@@ -374,9 +382,9 @@ module.exports = grammar({
         $.http_import,
         $.env_import,
       ),
-    import_hash: ($) => /sha256:[0-9A-Fa-f]{64}/,
+    import_hash: (_) => /sha256:[0-9A-Fa-f]{64}/,
 
-    local_import: ($) =>
+    local_import: (_) =>
       token(
         seq(
           optional(choice(".", "..", "~")),
@@ -391,16 +399,16 @@ module.exports = grammar({
 
     http_import: ($) =>
       seq($.http_raw, optional(seq("using", $._import_expression))),
-    http_raw: ($) => token(http_raw()),
+    http_raw: (_) => token(http_raw()),
 
     env_import: ($) => seq(/[eE][nN][vV]:/, $.env_variable),
     env_variable: ($) => choice($._env_bash, $._env_posix),
-    _env_bash: ($) => /[A-Z_a-z][0-9A-Z_a-z]*/,
-    _env_posix: ($) => /"(:?\\[\"\\abfnrtv]|[ \!\#-<>-\[\]-~])+"/,
+    _env_bash: (_) => /[A-Z_a-z][0-9A-Z_a-z]*/,
+    _env_posix: (_) => /"(:?\\[\"\\abfnrtv]|[ \!\#-<>-\[\]-~])+"/,
 
     line_comment: ($) => seq($.line_comment_prefix, $.line_comment_content),
-    line_comment_prefix: ($) => "--",
-    line_comment_content: ($) => /.*/,
+    line_comment_prefix: (_) => "--",
+    line_comment_content: (_) => /.*/,
 
     block_comment: ($) =>
       choice(
@@ -410,10 +418,10 @@ module.exports = grammar({
           $.block_comment_close,
         ),
       ),
-    block_comment_open: ($) => "{-",
-    block_comment_close: ($) => "-}",
+    block_comment_open: (_) => "{-",
+    block_comment_close: (_) => "-}",
 
-    temporal_literal: ($) =>
+    temporal_literal: (_) =>
       token(
         choice(
           seq(full_date, /[Tt]/, partial_time),
@@ -425,7 +433,7 @@ module.exports = grammar({
 
     numeric_literal: ($) =>
       choice($.double_literal, $.natural_literal, $.integer_literal),
-    double_literal: ($) =>
+    double_literal: (_) =>
       choice(
         "-Infinity",
         "Infinity",
@@ -441,8 +449,8 @@ module.exports = grammar({
           ),
         ),
       ),
-    natural_literal: ($) => token(choice(hexadecimal_natural, decimal_natural)),
-    integer_literal: ($) =>
+    natural_literal: (_) => token(choice(hexadecimal_natural, decimal_natural)),
+    integer_literal: (_) =>
       token(
         seq(choice("+", "-"), choice(hexadecimal_natural, decimal_natural)),
       ),
@@ -456,7 +464,7 @@ module.exports = grammar({
         token.immediate(prec(1, /[^\x00-\x1f\"\\\$]+/)),
         token.immediate("$"),
       ),
-    double_quote_escaped: ($) =>
+    double_quote_escaped: (_) =>
       token(
         choice(
           /\\["\$\\/bfnrt]/,
@@ -474,7 +482,7 @@ module.exports = grammar({
         token.immediate("'"),
         token.immediate("$"),
       ),
-    single_quote_escaped: ($) => token(choice("'''", "''${")),
+    single_quote_escaped: (_) => token(choice("'''", "''${")),
     interpolation: ($) => seq("${", $.expression, "}"),
 
     record_literal: ($) =>
@@ -543,7 +551,7 @@ module.exports = grammar({
         "]",
       ),
 
-    boolean_literal: ($) => choice("True", "False"),
+    boolean_literal: (_) => choice("True", "False"),
 
     identifier: ($) =>
       choice(seq($.label, optional($.de_bruijn_index)), $.builtin),
