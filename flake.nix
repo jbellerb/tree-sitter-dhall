@@ -82,6 +82,22 @@
           }
         ) {};
 
+        tree-sitter-dhall-prettier = pkgs.callPackage (
+          { stdenvNoCC, nodePackages }:
+
+          stdenvNoCC.mkDerivation {
+            pname = "${pname}-prettier";
+            inherit version src;
+
+            nativeBuildInputs = [ nodePackages.prettier ];
+
+            buildPhase = "prettier --check .";
+            installPhase = "touch $out";
+
+            meta = meta // { description = "Check Prettier formatting"; };
+          }
+        ) {};
+
         tree-sitter-dhall-coverage = pkgs.callPackage (
           { lib, stdenvNoCC, fetchFromGitHub }:
 

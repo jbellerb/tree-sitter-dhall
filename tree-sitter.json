@@ -5,9 +5,7 @@
       "camelcase": "Dhall",
       "scope": "source.dhall",
       "path": ".",
-      "file-types": [
-        "dhall"
-      ],
+      "file-types": ["dhall"],
       "injection-regex": "^dhall$"
     }
   ],
