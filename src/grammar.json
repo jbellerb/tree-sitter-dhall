@@ -4644,5 +4644,6 @@
     "_double_quote_chunk",
     "_single_quote_chunk"
   ],
-  "supertypes": []
+  "supertypes": [],
+  "reserved": {}
 }

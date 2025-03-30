@@ -1,5 +1,9 @@
 // swift-tools-version:5.3
+
+import Foundation
 import PackageDescription
+
+var sources = ["src/parser.c", "src/scanner.c"]
 
 let package = Package(
     name: "TreeSitterDhall",
@@ -7,17 +11,14 @@ let package = Package(
         .library(name: "TreeSitterDhall", targets: ["TreeSitterDhall"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/ChimeHQ/SwiftTreeSitter", from: "0.8.0"),
+        .package(url: "https://github.com/tree-sitter/swift-tree-sitter", from: "0.8.0"),
     ],
     targets: [
         .target(
             name: "TreeSitterDhall",
             dependencies: [],
             path: ".",
-            sources: [
-                "src/parser.c",
-                "src/scanner.c",
-            ],
+            sources: sources,
             resources: [
                 .copy("queries")
             ],
