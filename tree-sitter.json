@@ -14,7 +14,7 @@
     }
   ],
   "metadata": {
-    "version": "0.2.1",
+    "version": "1.0.0",
     "license": "MIT",
     "description": "Dhall grammar for the tree-sitter parsing library",
     "authors": [

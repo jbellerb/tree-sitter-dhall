@@ -13,12 +13,11 @@
       };
 
       pname = "tree-sitter-dhall";
-      version = "0.2.0";
+      version = "1.0.0";
 
       fileset = nixpkgs.lib.fileset.unions [
         ./grammar.js
         ./package.json
-        ./package-lock.json
         ./src/scanner.c
         ./tree-sitter.json
       ];

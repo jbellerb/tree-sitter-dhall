@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-dhall",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "description": "Dhall grammar for the tree-sitter parsing library",
   "repository": "https://github.com/jbellerb/tree-sitter-dhall",
   "license": "MIT",
