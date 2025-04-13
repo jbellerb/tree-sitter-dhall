@@ -12,19 +12,6 @@ r.x
     (selector (selector_dot) (label))))
 
 ==================
-Record field selection (unit/RecordFieldAccessA.dhall)
-==================
-
-r.x
-
----
-
-(expression
-  (primitive_expression
-    (identifier (label))
-    (selector (selector_dot) (label))))
-
-==================
 Field names can be quoted (unit/FieldQuotedA.dhall)
 ==================
 
@@ -71,19 +58,7 @@ in  Prelude.List.map
       selector: (selector (selector_dot) (label) (selector_dot) (label))))))
 
 ==================
-Field projection (unit/RecordProjectFieldsA.dhall)
-==================
-
-r.{ x, y, z }
-
----
-
-(expression (primitive_expression
-  (identifier (label))
-  (selector (selector_dot) (label_set (label) (label) (label)))))
-
-==================
-Field projection without spaces (unit/ProjectionA.dhall)
+Field projection (unit/ProjectionA.dhall)
 ==================
 
 r.{x, y, z}

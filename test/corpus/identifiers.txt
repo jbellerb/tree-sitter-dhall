@@ -145,7 +145,7 @@ missingFoo
   (primitive_expression (identifier (label))))
 
 ==================
-de Bruijn indices
+de Bruijn indices (unit/DeBruijnIndexA.dhall)
 ==================
 
 x == x@0

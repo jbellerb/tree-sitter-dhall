@@ -6,9 +6,7 @@
       "camelcase": "Dhall",
       "title": "Dhall",
       "scope": "source.dhall",
-      "file-types": [
-        "dhall"
-      ],
+      "file-types": ["dhall"],
       "injection-regex": "^dhall$",
       "highlights": "queries/highlights.scm",
       "injections": "queries/injections.scm",

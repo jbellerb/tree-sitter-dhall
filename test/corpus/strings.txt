@@ -59,15 +59,46 @@ Double-quoted string with escape sequences (text/escapedDoubleQuotedStringA.dhal
     (double_quote_escaped)))))
 
 ==================
-Double-quoted string with unicode escape sequences
+Double-quoted string with unicode escape sequences (text/unicodeEscapedA.dhall)
 ==================
 
-"A\u2115B\u{1FA00}C\u{43}D\u{00000001F574}E"
+"A\u2115B\u{1FA00}C\u{43}D\u{00000001F574}E\u0022F"
 
 ---
 
 (expression
   (primitive_expression (text_literal (double_quote_literal
+    (double_quote_escaped)
+    (double_quote_escaped)
+    (double_quote_escaped)
+    (double_quote_escaped)
+    (double_quote_escaped)))))
+
+==================
+Double-quoted string with an escaped unicode codepoint in plane 16 (text/unicodePlane16A.dhall)
+==================
+
+"\u{10fffd}\u{1fffd}"
+
+---
+
+(expression
+  (primitive_expression (text_literal (double_quote_literal
+    (double_quote_escaped)
+    (double_quote_escaped)))))
+
+==================
+Double-quoted string with every length of unicode escape (text/unicodeBracedA.dhall)
+==================
+
+"\u{1}\u{10}\u{100}\u{1000}\u{10000}\u{100000}"
+
+---
+
+(expression
+  (primitive_expression (text_literal (double_quote_literal
+    (double_quote_escaped)
+    (double_quote_escaped)
     (double_quote_escaped)
     (double_quote_escaped)
     (double_quote_escaped)
@@ -341,7 +372,7 @@ Single-quoted string with mixed level indent (text/multilineMismatchedLeadingWhi
   (primitive_expression (text_literal (single_quote_literal))))
 
 ==================
-Comments inside a double-quoted string
+Comments inside a double-quoted string (text/preserveCommentA.dhall)
 ==================
 
 "-- $--$--{--}$"
@@ -352,7 +383,7 @@ Comments inside a double-quoted string
   (primitive_expression (text_literal (double_quote_literal))))
 
 ==================
-Comments inside a single-quoted string (text/preserveCommentA.dhall)
+Comments inside a single-quoted string (text/multilinePreserveCommentA.dhall)
 ==================
 
 {- A comment within the interior of a multi-line literal counts as part of the

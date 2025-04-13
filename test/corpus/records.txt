@@ -405,7 +405,7 @@ Empty record literal with a trailing comma (unit/RecordLitEmptyTrailingCommaA.dh
   (primitive_expression (record_literal (empty_record_literal))))
 
 ==================
-Empty record literal with a trailing and leading comma
+Empty record literal with a trailing and leading comma (unit/RecordLitEmptyBothCommasA.dhall)
 ==================
 
 { , =, }
@@ -416,7 +416,7 @@ Empty record literal with a trailing and leading comma
   (primitive_expression (record_literal (empty_record_literal))))
 
 ==================
-Empty record type
+Empty record type (unit/RecordTypeEmptyA.dhall)
 ==================
 
 {}

@@ -92,7 +92,15 @@ find_extras() {
 
             if test -z $FOUND
             then
-                echo "unexpected: $1:$LINE:$(sed "${LINE}q;d" "$1")"
+                NAME=$(sed "${LINE}q;d" "$1")
+                IFS=","
+                for IGNORE in $IGNORES
+                do
+                    test "$NAME" = "$IGNORE" && unset IFS && continue 2
+                done
+                unset IFS
+                echo "unexpected: $1:$LINE:$NAME"
+                ERROR=1
             fi
         else
             PREVIOUS=$LINE
@@ -104,7 +112,7 @@ while getopts "c:i:" name
 do
     case $name in
     c) CORPUS="$OPTARG" ;;
-    i) IGNORE=$(echo "$OPTARG" | tr ',' ' ') ;;
+    i) IGNORES="$OPTARG" ;;
     \?) print_usage ;;
     esac
 done
@@ -128,10 +136,12 @@ fi
 TESTS=$(find "$TEST_DIR" -type f -name \*A.dhall)
 for TEST in $TESTS
 do
-    for FILE in $IGNORE
+    IFS=","
+    for IGNORE in $IGNORES
     do
-        test "${TEST#"$TEST_DIR"}" = "$FILE" && continue 2
+        test "${TEST#"$TEST_DIR"}" = "$IGNORE" && unset IFS && continue 2
     done
+    unset IFS
     verify_test "$TEST"
 done
 

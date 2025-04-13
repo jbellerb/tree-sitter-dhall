@@ -203,7 +203,7 @@ w * x * y * z
     (primitive_expression (identifier (label)))))
 
 ==================
-Combine record types operator (unit/operators/RecursiveRecordMergeA.dhall)
+Combine record types operator (unit/operators/RecursiveRecordTypeMergeA.dhall)
 ==================
 
 x //\\ y
@@ -217,7 +217,7 @@ x //\\ y
     (primitive_expression (identifier (label)))))
 
 ==================
-Combine record types operator associativity (unit/operators/RecursiveRecordMergeAssocA.dhall)
+Combine record types operator associativity (unit/operators/RecursiveRecordTypeMergeAssocA.dhall)
 ==================
 
 w //\\ x //\\ y //\\ z
@@ -271,7 +271,7 @@ w ⩓ x //\\ y ⩓ z
     (primitive_expression (identifier (label)))))
 
 ==================
-Combine records operator (unit/operators/RecursiveRecordTypeMergeA.dhall)
+Combine records operator (unit/operators/RecursiveRecordMergeA.dhall)
 ==================
 
 x /\ y
@@ -285,7 +285,7 @@ x /\ y
     (primitive_expression (identifier (label)))))
 
 ==================
-Combine records operator associativity (unit/operators/RecursiveRecordTypeMergeAssocA.dhall)
+Combine records operator associativity (unit/operators/RecursiveRecordMergeAssocA.dhall)
 ==================
 
 w /\ x /\ y /\ z
@@ -421,7 +421,7 @@ x === y
     (primitive_expression (identifier (label)))))
 
 ==================
-Equivalence operator associativity
+Equivalence operator associativity (unit/operators/EquivalenceAssocA.dhall)
 ==================
 
 w === x === y === z

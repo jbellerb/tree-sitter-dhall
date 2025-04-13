@@ -242,7 +242,7 @@ toMap { foo= 1, bar= 4, baz= 9 }
           (numeric_literal (natural_literal)))))))))
 
 ==================
-showConstructor statement
+showConstructor statement (unit/ShowConstructorA.dhall)
 ==================
 
 showConstructor <A>.A
@@ -257,7 +257,7 @@ showConstructor <A>.A
       (selector (selector_dot) (label)))))
 
 ==================
-showConstructor statement with a value
+showConstructor statement with a value (unit/ShowConstructorWithValueA.dhall)
 ==================
 
 showConstructor (<A : Bool>.A False)

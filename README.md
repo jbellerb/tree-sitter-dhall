@@ -4,12 +4,12 @@
 
 ## Scope
 
-This parser is designed for syntax highlighting and does not strictly follow the Dhall language semantics. My goal is for all valid Dhall expressions to parse to something sensible. An invalid expression parsing is fine, except when it is obviously wrong. To help with this, the output of the parser is checked with hand-written [syntax trees](test/corpus/) for every Dhall [successful parse test](https://github.com/dhall-lang/dhall-lang/tree/master/tests/parser/success) (current with dhall-lang commit [4fecb49](https://github.com/dhall-lang/dhall-lang/commit/4fecb49a83caac4477d1e413fa6e4ee722b43b62)) except:
+This parser is designed for syntax highlighting and does not strictly follow the Dhall language semantics. My goal is for all valid Dhall expressions to parse to something sensible. An invalid expression parsing is fine, except when it is obviously wrong. To help with this, the output of the parser is checked with hand-written [syntax trees](test/corpus/) for every Dhall [successful parse test](https://github.com/dhall-lang/dhall-lang/tree/master/tests/parser/success) (current with dhall-lang commit [6d4c9d6](https://github.com/dhall-lang/dhall-lang/commit/6d4c9d6b8812ed3df1f45aabeca3deaf0615ba7b)) except:
 
 - unit/ShebangA.dhall, unit/ShebangNixA.dhall: Handled by the text editor.
 - unit/TrailingLineCommentWithoutNewlineA.dhall: Unclear how to test with tree-sitter.
 
-These tests also serve as a reference for what syntax trees various Dhall expressions produce. A shell script ([tests.sh](tests.sh)) is used to check that all tests are included. There may be extra test cases besides the Dhall ones. Ideally, those would eventually get upstreamed.
+Additionally, these tests serve as a reference for what syntax trees various Dhall expressions produce. A shell script ([tests.sh](tests.sh)) is provided to check that all tests, excluding a few intentionally non-compliant ones, are included.
 
 ## References
 

@@ -105,15 +105,16 @@
             dhall = fetchFromGitHub {
               owner = "dhall-lang";
               repo = "dhall-lang";
-              rev = "4fecb49a83caac4477d1e413fa6e4ee722b43b62";
-              hash = "sha256-VjOBG5kYY89njGpOxIpLFRK2mRP1UWr6QDOHtb7VMzE=";
+              rev = "6d4c9d6b8812ed3df1f45aabeca3deaf0615ba7b";
+              hash = "sha256-5cWQPqnTb59Z8Mov/t/ycaQ94jE+w2mol+0pbdRVbEI=";
             };
 
             missing = [
-              "builtinsA.dhall" # modified
               "unit/ShebangA.dhall"
               "unit/ShebangNixA.dhall"
               "unit/TrailingLineCommentWithoutNewlineA.dhall"
+              "Unterminated block comment"
+              "de Bruijn indices don't apply to builtins"
             ];
 
           in stdenvNoCC.mkDerivation {
@@ -122,7 +123,7 @@
 
             buildPhase = ''
               ${./tests.sh} -c ${test/corpus}\
-                -i ${lib.strings.concatStringsSep "," missing}\
+                -i "${lib.strings.concatStringsSep "," missing}"\
                 ${dhall}/tests/parser/success/
             '';
             installPhase = "touch $out";
